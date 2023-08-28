@@ -1,0 +1,76 @@
+/* Import Google font - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+body{
+  min-height: 100vh;
+  width: 100%;
+  background: #009579;
+}
+.container{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  max-width: 430px;
+  width: 100%;
+  background: #fff;
+  border-radius: 7px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+}
+.rujak {
+    margin-top: 10px;
+    font-size: 2rem;
+    color: #000000e2;
+    font-weight: 600;
+    text-align: center;
+  }
+  .options {
+    margin-top: 20px;
+  }
+  .login-option,
+  .signup-option {
+    margin: 10px;
+    display: inline-block;
+  }
+.logo{
+    text-align: center;
+    margin-top: 1rem;
+  }
+  a {
+    text-decoration: none;
+    color: #009579;
+    font-weight: 500;
+    font-size: 1.2rem;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  .buttons {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .login-button,
+  .signup-button {
+     height: 60px;
+   width: 100%;
+   padding: 0 15px;
+   font-size: 17px;
+   margin-bottom: 1.3rem;
+   border: 1px solid #ddd;
+   border-radius: 6px;
+   outline: none;
+  }
+  .login-button:hover,
+  .signup-button:hover {
+    background-color: #006653;
+  }
+
+ 

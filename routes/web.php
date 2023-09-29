@@ -22,3 +22,11 @@ Route::get('/test', function () {
 
     return view('loginhomepage');
 });
+
+Route::get('/navbar', function () {
+
+    return view('navbar/navbar');
+});
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

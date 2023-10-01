@@ -13,36 +13,39 @@
   <div class="container">
     <input type="checkbox" id="check">
     <div class="login form">
-      <header>Login</header>
+      <header>Masuk</header>
       <div class="welcome">
-        <p>Selamat Datang Kembali !</p>
+        <p>Selamat Datang Sobat Rujak!</p>
       </div>
       <div class="logo">
-        <img src="{{ asset('images/logo.png') }}" alt="Logo">
+        <img src="{{ asset('img/logoRujak5.jpeg') }}" alt="Logo Rujak">
       </div>
       <form action="#">
-        <input type="text" placeholder="Enter your email">
-        <input type="password" placeholder="Enter your password">
-        <a href="#">Forgot password?</a>
+        <input type="text" placeholder="Input Email">
+        <input type="password" placeholder="Input Password">
+        <a href="#">Lupa password?</a>
         <input type="button" class="button" value="Login">
       </form>
       <div class="signup">
-        <span class="signup">Don't have an account?
-         <label for="check">Signup</label>
+        <span class="signup">Belum Punya Akun?
+         <label for="check">Daftar</label>
         </span>
       </div>
     </div>
     <div class="registration form">
-      <header>Signup</header>
+      <header>Daftar</header>
+      <div class="logo">
+        <img src="{{ asset('img/logoRujak5.jpeg') }}" alt="Logo Rujak">
+      </div>
       <form action="#">
-        <input type="text" placeholder="Enter your email">
-        <input type="password" placeholder="Create a password">
-        <input type="password" placeholder="Confirm your password">
-        <input type="button" class="button" value="Signup">
+        <input type="text" placeholder="Input Email">
+        <input type="password" placeholder="Buat Password">
+        <input type="password" placeholder="Konfirmasi Password">
+        <input type="button" class="button" value="Daftar">
       </form>
       <div class="signup">
-        <span class="signup">Already have an account?
-         <label for="check">Login</label>
+        <span class="signup">Sudah Punya Akun?
+         <label for="check">Masuk</label>
         </span>
       </div>
     </div>

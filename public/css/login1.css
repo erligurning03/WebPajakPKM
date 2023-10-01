@@ -9,7 +9,7 @@
 body{
   min-height: 100vh;
   width: 100%;
-  background: #009579;
+  background: #053B50;
 }
 .container{
   position: absolute;
@@ -81,7 +81,7 @@ body{
 }
 .form input.button{
   color: #fff;
-  background: #009579;
+  background: #E9B824;
   font-size: 1.2rem;
   font-weight: 500;
   letter-spacing: 1px;
@@ -97,7 +97,7 @@ body{
   text-align: center;
 }
 .signup label{
-  color: #009579;
+  color: #E9B824;
   cursor: pointer;
 }
 .signup label:hover{

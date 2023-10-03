@@ -1,0 +1,76 @@
+/* CSS untuk halaman Lupa Password */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url('your-background-image.jpg'); /* Ganti dengan path gambar latar belakang yang sesuai */
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.forgot-password.form {
+    width: 375px;
+    height: auto;
+    background: #159895;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    color: #fff;
+    box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.2);
+}
+
+.forgot-password header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+.forgot-password input[type="password"] {
+    height: 43px;
+   width: 361px;
+   background: #DFD7BF;
+    border-radius: 20px;
+    padding: 10px;
+   margin-bottom: 1.3rem;
+   border: none;
+   outline: none;
+}
+
+.forgot-password .button {
+    width: 100%;
+    background-color: #F1C93B;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.forgot-password .button:hover {
+    background-color: #45a049;
+}
+
+.forgot-password a {
+    text-decoration: none;
+    color: #007BFF;
+}
+
+.forgot-password a:hover {
+    text-decoration: underline;
+}
+
+.forgot-password .logo img {
+    max-width: 100px;
+    height: auto;
+    border: none;
+}

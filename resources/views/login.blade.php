@@ -23,7 +23,7 @@
       <form action="#">
         <input type="text" placeholder="Input Email">
         <input type="password" placeholder="Input Password">
-        <a href="#">Lupa password?</a>
+        <a href="{{ route('lupa-password') }}">Lupa password?</a>
         <input type="button" class="button" value="Login">
       </form>
       <div class="signup">

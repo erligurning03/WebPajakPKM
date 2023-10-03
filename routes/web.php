@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LupaPasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,10 @@ Route::get('/navbar', function () {
 
     return view('navbar/navbar');
 });
-Auth::routes();
 
+
+Auth::routes();
+Route::get('/lupa-password', [LupaPasswordController::class, 'index'])->name('lupa-password');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+

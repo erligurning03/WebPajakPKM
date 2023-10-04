@@ -6,7 +6,8 @@
 
 body{
     /* background-color: #146C94; */
-    background-color: #02275D;
+    /* background-color: #02275D; */
+    background-color: #FFFFFF;
 }
 
 a {
@@ -17,6 +18,7 @@ a {
 }
 
 .navbarbro { //ini adalah nama yang adalah callue dari atribut kelasnya, bukan nama tagnya
+    margin-bottom: 20px; //cgpt
     padding : 10px 20px;
     display: flex;
     width: 100%;
@@ -24,6 +26,7 @@ a {
     /* background-color: teal; */
     background-color: #FFA41B;
     /* background-color: #02275D; *///SENDIRI
+    //margin-bottom: 200px;//kasih jarak navbar dan konten 
 }
 
 .navbarbro ul{
@@ -63,6 +66,7 @@ a {
         align-items: center;
         width: 100%;
         padding: 10px;
+        
     }
     .mobile-list i {
         /* font-size: 7vmin; */
@@ -73,3 +77,13 @@ a {
         color: rgb(5, 5, 49);//jika diklik warna ikon berubah jadi warna ini
     }
 }
+
+@media (max-width: 768px) {
+    .col-md-4 {
+      flex: 0 0 33.33%;
+      max-width: 33.33%;
+    }
+    .card-title, .card-text {
+        font-size: 0.8rem; /* Contoh ukuran huruf dalam rem */
+      }
+  }

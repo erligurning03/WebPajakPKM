@@ -28,6 +28,10 @@ Route::get('/navbar', function () {
 
     return view('navbar/navbar');
 });
+Route::get('/podcast', function () {
+
+    return view('beranda/podcast');
+});
 
 
 Auth::routes();

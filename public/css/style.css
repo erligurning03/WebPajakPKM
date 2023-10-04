@@ -55,6 +55,7 @@ a {
     .mobile-list{
         /* background-color: teal; */
         /* background-color: #02275D; */
+        margin-bottom: 1px;//agar navbar berada tepat diatas tombol navigasi hp
         background-color: #FFA41B;
         display: block;
         color: whitesmoke;

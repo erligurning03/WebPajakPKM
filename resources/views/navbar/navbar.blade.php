@@ -21,8 +21,9 @@
   </head>
   <body>
     {{-- <h1>Hello, world!</h1> --}}
-    <nav class="navbarbro">
-        <h1 class="logo">LOGO RUJAK</h1>
+    <nav class="navbarbro fixed-top">
+      <img src="{{ asset('img/logoRujak5.jpeg') }}" alt="Logo Rujak" style="max-width: 100%; height: auto; width: 60px;">
+        <h1 class="logo">RUJAK</h1>
         <ul class="desktop-list">
             <li><a href="#">Beranda</a></li>
             <li><a href="#">Kuis</a></li>
@@ -154,6 +155,7 @@
             </div>
           </div>
         </div>
+        <button type="button" class="btn btn-warning">Semua Podcast   <i class="fa-solid fa-arrow-right"></i></button>
       </div>
       {{-- berita rujak --}}
       <div class="row">
@@ -185,6 +187,7 @@
             </div>
           </div>
         </div>
+        <button type="button" class="btn btn-warning">Semua Berita   <i class="fa-solid fa-arrow-right"></i></button>
       </div>
       {{-- baris video pembelajaran rujak --}}
       <div class="row">
@@ -216,6 +219,8 @@
             </div>
           </div>
         </div>
+        <button type="button" class="btn btn-warning">Semua Tontonan    <i class="fa-solid fa-arrow-right"></i></button>
+
       </div>
 
       

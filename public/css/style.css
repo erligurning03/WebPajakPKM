@@ -55,8 +55,9 @@ a {
     .mobile-list{
         /* background-color: teal; */
         /* background-color: #02275D; */
-        margin-bottom: 1px;//agar navbar berada tepat diatas tombol navigasi hp
         background-color: #FFA41B;
+        margin-bottom: 1px;//agar navbar berada tepat diatas tombol navigasi hp
+        /* background-color: #FFA41B; */
         display: block;
         color: whitesmoke;
         position: fixed;
@@ -88,3 +89,11 @@ a {
         font-size: 0.8rem; /* Contoh ukuran huruf dalam rem */
       }
   }
+
+  //kode untuk halaman kuis
+  .card:hover {
+    /* Atur efek hover sesuai keinginan Anda */
+    transform: scale(1.05);
+    transition: transform 0.2s ease-in-out;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+}

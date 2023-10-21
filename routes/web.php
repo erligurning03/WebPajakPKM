@@ -61,7 +61,15 @@ Route::get('/profil', function () {
 
     return view('profil/profil');
 });
+Route::get('/admin', function () {
 
+    return view('admin/layouts/navbar_admin');
+});
+
+Route::get('/admin/tontonan', function () {
+
+    return view('admin/beranda/tambah_tontonan');
+});
 
 
 Auth::routes();

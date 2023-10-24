@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('share_qnas', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_qna'); 
-            $table->foreign('id_qna')->references('id')->on('qnas'); 
-            $table->unsignedBigInteger('user_id'); 
-            $table->foreign('user_id')->references('id')->on('tabel_users'); 
+            $table->unsignedBigInteger('id_qna');
+            $table->foreign('id_qna')->references('id')->on('qnas');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

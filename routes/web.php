@@ -16,6 +16,11 @@ use App\Http\Controllers\LupaPasswordController;
 
 Route::get('/', function () {
 
+    return view('auth/login');
+});
+
+Route::get('/logins', function () {
+
     return view('login');
 });
 

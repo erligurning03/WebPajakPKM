@@ -78,6 +78,8 @@ Route::get('/admin/tontonan', function () {
 
 
 Auth::routes();
+Route::get('/', function () {return view('auth.login');});
+Route::get('/daftar', function () {return view('auth.login');});
 Route::get('/lupa-password', [LupaPasswordController::class, 'index'])->name('lupa-password');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

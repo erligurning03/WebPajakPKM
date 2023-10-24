@@ -27,23 +27,39 @@
                     @enderror
 
 
-            <input id="password" placeholder="Masukkan Password" type="password"class="form-control @error('password') is-invalid @enderror" name="password" required
-                    autocomplete="current-password">
+            <div class="wrap-input100 validate-input" data-validate="Password diperlukan">
 
-                @error('password')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-            
-            <input id="password" placeholder="Masukkan Password Kembali" type="password"class="form-control @error('password') is-invalid @enderror" name="re-password" required
-                autocomplete="current-password">
+                    <input id="password" type="password"
+                            class="form-control input100 @error('password') is-invalid @enderror" name="password" required
+                            autocomplete="new-password" placeholder="Masukkan Password">
 
-                @error('password')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-lock" aria-hidden="true"></i>
+                            @error('password')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </span>
+
+                    </div>
+
+
+
+            <div class="wrap-input100 validate-input" data-validate="Password diperlukan">
+
+                        <input id="password-confirm" type="password" class="form-control input100" name="password_confirmation"
+                            required autocomplete="new-password" placeholder="Konfirmasi Password">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-lock" aria-hidden="true"></i>
+
+
+                        </span>
+
+                    </div>
+                    
         
             <input type="submit" class="button" value="{{ __('Daftar') }}">
         

@@ -59,6 +59,11 @@
                         </span>
 
                     </div>
+                    <label for="exampleInputEmail1">Gambar</label>
+                            <input type="file" name="image" placeholder="Choose image" id="image">
+                        @error('image')
+                            <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                        @enderror
                     
         
             <input type="submit" class="button" value="{{ __('Daftar') }}">

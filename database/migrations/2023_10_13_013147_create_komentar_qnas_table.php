@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('komentar_qnas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_qna'); // Kolom user_id, tipe data unsigned bigint
-            $table->foreign('id_qna')->references('id')->on('qnas'); 
+            $table->foreign('id_qna')->references('id')->on('qnas');
             $table->unsignedBigInteger('user_id'); // Kolom user_id, tipe data unsigned bigint
-            $table->foreign('user_id')->references('id')->on('tabel_users'); 
+            $table->foreign('user_id')->references('id')->on('users');
             $table->string('isi_komentar');
         });
     }

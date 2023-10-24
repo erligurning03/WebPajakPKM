@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('qnas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id'); // Kolom user_id, tipe data unsigned bigint
-            $table->foreign('user_id')->references('id')->on('tabel_users'); 
+            $table->foreign('user_id')->references('id')->on('users');
             $table->string('isi_pertanyaan');
             $table->bigInteger('jumlah_like');
             $table->bigInteger('jumlah_komentar');

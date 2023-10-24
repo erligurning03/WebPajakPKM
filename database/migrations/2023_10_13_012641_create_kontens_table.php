@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('kontens', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id'); // Kolom user_id, tipe data unsigned bigint
-            $table->foreign('user_id')->references('id')->on('tabel_users'); // Kunci asing ke tabel users
+            $table->foreign('user_id')->references('id')->on('users'); // Kunci asing ke tabel users
             $table->string('judul');
             $table->string('deskripsi_konten');
             $table->string('isi_konten');
@@ -26,7 +26,7 @@ return new class extends Migration
             $table->enum('jenis_konten', ['video', 'podcast','berita']);
             $table->timestamp('tanggal_upload')->useCurrent(); // Kolom "tanggal_upload" yang menyimpan tanggal dan waktu upload
             $table->timestamps(); // Kolom "created_at" dan "updated_at"
-    
+
 
         });
     }

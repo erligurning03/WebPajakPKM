@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('kuis_jawaban', function (Blueprint $table) {
             $table->unsignedBigInteger('id_soal');
             $table->foreign('id_soal')->references('id')->on('kuis_soal');
-            $table->enum('opsi_jawaban',['a','b','c','d']);
+            $table->enum('opsi_jawaban',['A','B','C','D']);
             $table->string('isi_jawaban');
             $table->timestamps();
         });

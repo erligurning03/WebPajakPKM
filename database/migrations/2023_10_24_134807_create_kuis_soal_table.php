@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('no_soal');
             $table->string('isi_soal');
-            $table->enum('jawaban_soal',['a','b','c','d']);
+            $table->enum('jawaban_soal',['A','B','C','D']);
             $table->string('pembahasan_soal');
             $table->unsignedBigInteger('id_kuis');
             $table->foreign('id_kuis')->references('id')->on('kuis_level');

@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -19,6 +19,10 @@ class KuisSoal extends Model
     public function kuisLevel()
     {
         return $this->belongsTo(KuisLevel::class, 'id_kuis');
+    }
+
+    public function kuisJawaban()
+    {
         return $this->hasMany(KuisJawaban::class, 'id_soal');
     }
 }

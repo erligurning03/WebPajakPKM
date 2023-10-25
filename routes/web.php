@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\KuisController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LupaPasswordController;
 
@@ -25,7 +26,7 @@ Route::group(['middleware' => 'auth', 'cekstatus'=>'admin'], function(){
 });
 Route::group(['middleware' => 'auth', 'cekstatus'=>'user'], function(){
     Route::get('/index', [App\Http\Controllers\IndexController::class, 'index'])->name('index');
-    
+
 });
 
 
@@ -37,6 +38,8 @@ Route::get('/', function () {return view('auth.login');});
 Route::get('/daftar', function () {return view('auth.login');});
 Route::get('/lupa-password', [LupaPasswordController::class, 'index'])->name('lupa-password');
 
+Route::get('/kuis', [KuisController::class, 'tampilLevel']);
+Route::get('/kuis/{id}', [KuisController::class, 'tampilSoal']);
 
 Route::get('/', function () {
 
@@ -72,15 +75,12 @@ Route::get('/tontonan', function () {
     return view('beranda/tontonan');
 });
 
-Route::get('/kuis', function () {
 
-    return view('kuis/kuis');
-});
 
 Route::get('/qna', function () {
-
     return view('qna/qna');
 });
+
 Route::get('/layanan', function () {
 
     return view('layanan/layanan');

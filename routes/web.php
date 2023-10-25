@@ -14,6 +14,30 @@ use App\Http\Controllers\LupaPasswordController;
 |
 */
 
+Auth::routes();
+
+route::group(['middleware' => 'auth'],function(){
+    Route::get('/login', function () {return view('auth.login');});
+});
+
+Route::group(['middleware' => 'auth', 'cekstatus'=>'admin'], function(){
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+});
+Route::group(['middleware' => 'auth', 'cekstatus'=>'user'], function(){
+    Route::get('/index', [App\Http\Controllers\IndexController::class, 'index'])->name('index');
+    
+});
+
+
+
+
+
+Auth::routes();
+Route::get('/', function () {return view('auth.login');});
+Route::get('/daftar', function () {return view('auth.login');});
+Route::get('/lupa-password', [LupaPasswordController::class, 'index'])->name('lupa-password');
+
+
 Route::get('/', function () {
 
     return view('auth/login');
@@ -75,12 +99,5 @@ Route::get('/admin/tontonan', function () {
 
     return view('admin/beranda/tambah_tontonan');
 });
-
-
-Auth::routes();
-Route::get('/', function () {return view('auth.login');});
-Route::get('/daftar', function () {return view('auth.login');});
-Route::get('/lupa-password', [LupaPasswordController::class, 'index'])->name('lupa-password');
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 

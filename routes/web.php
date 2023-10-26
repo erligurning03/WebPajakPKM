@@ -48,6 +48,11 @@ Route::get('/tontonan', function () {
     return view('beranda/tontonan');
 });
 
+Route::get('/berita', function(){
+
+    return view('berita.semuaberita');
+});
+
 Route::get('/kuis', function () {
 
     return view('kuis/kuis');

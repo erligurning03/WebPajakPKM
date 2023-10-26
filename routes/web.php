@@ -15,18 +15,29 @@ use App\Http\Controllers\LupaPasswordController;
 */
 
 Auth::routes();
+Route::middleware(['auth'])->group(function () {
+    Route::get('/login', function () {return view('auth.login');});
+
+    //semua route dalam grup ini hanya bisa diakses siswa
+});
+
+Route::middleware(['auth', 'status:admin'])->group(function () {
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+    //semua route dalam grup ini hanya bisa diakses oleh operator
+});
+
+Route::middleware(['auth', 'status:pengguna'])->group(function () {
+    Route::get('/index', [App\Http\Controllers\IndexController::class, 'index'])->name('index');
+
+    //semua route dalam grup ini hanya bisa diakses siswa
+});
 
 route::group(['middleware' => 'auth'],function(){
-    Route::get('/login', function () {return view('auth.login');});
-});
-
-Route::group(['middleware' => 'auth', 'cekstatus'=>'admin'], function(){
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-});
-Route::group(['middleware' => 'auth', 'cekstatus'=>'user'], function(){
-    Route::get('/index', [App\Http\Controllers\IndexController::class, 'index'])->name('index');
+    
     
 });
+
 
 
 
@@ -37,6 +48,10 @@ Route::get('/', function () {return view('auth.login');});
 Route::get('/daftar', function () {return view('auth.login');});
 Route::get('/lupa-password', [LupaPasswordController::class, 'index'])->name('lupa-password');
 
+Route::get('/masuk', function () {
+
+    return view('login');
+});
 
 Route::get('/', function () {
 

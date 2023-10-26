@@ -68,10 +68,12 @@ Route::get('/test', function () {
     return view('loginhomepage');
 });
 
-Route::get('/navbar', function () {
+// Route::get('/navbar', function () {
 
-    return view('navbar/navbar');
-});
+//     return view('navbar/navbar');
+// });
+
+//ini route beranda
 
 Route::get('/beranda', function () {
 
@@ -87,24 +89,42 @@ Route::get('/tontonan', function () {
     return view('beranda/tontonan');
 });
 
+Route::get('/berita', function () {
+
+    return view('beranda/berita');
+});
+Route::get('/list_berita', function () {
+
+    return view('beranda/list_berita');
+});
+
+//ini route semua kuis
+
 Route::get('/kuis', function () {
 
     return view('kuis/kuis');
 });
 
+//ini route semua QNA
 Route::get('/qna', function () {
 
     return view('qna/qna');
 });
+
+//ini route halaman layanan
 Route::get('/layanan', function () {
 
     return view('layanan/layanan');
 });
 
+//ini route profile
+
 Route::get('/profil', function () {
 
     return view('profil/profil');
 });
+
+//ini route semua halaman admin
 Route::get('/admin', function () {
 
     return view('admin/layouts/navbar_admin');

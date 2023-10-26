@@ -5,12 +5,12 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Daftar Tontonan Rujak</h1>
+    <h1 class="h3 mb-2 text-gray-800">Daftar Perangkat Desa</h1>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Tontonan Rujak</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Data Perangkat Desa</h6>
         </div>
 
         <!-- Filter -->
@@ -18,9 +18,8 @@
         <div class="card">
             <div class="card-body">
                 <form action="#" method="GET">
-                    {{-- {{ route('pendapatan.filter') }} --}}
                     <div class="form-group">
-                        <label for="tahun">Filter berdasarkan :</label>
+                        <label for="tahun">Filter berdasarkan periode:</label>
                         <select name="tahun" id="tahun" class="form-control">
                             <option value="">-- Pilih Tahun --</option>
                             // nanti disini untuk di filter agar sesuai dengan filterisasi yang dibuat
@@ -46,23 +45,35 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="ModalTambah">INPUT TONTONAN RUJAKk</h5>
+                        <h5 class="modal-title" id="ModalTambah">INPUT PERANGKAT DESA</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="#" method="POST" enctype="multipart/form-data">
+                        <form action="/tambah_perangkat_desa" method="POST" enctype="multipart/form-data">
                             {{-- pergi ke web.php untuk carik route ini yang bertipe post. actionnya ini adalah yang diketikkan route getnya termasuk tanda slashnya '/'--}}
                             @csrf
                             <div class="mb-3">
-                                <label for="nama" class="form-label">Judul</label>
+                                <label for="nama" class="form-label">Nama</label>
                                 <input type="text" class="form-control" id="nama" aria-describedby="emailHelp" name="nama">
                             </div>
                             <div class="mb-3">
-                                <label for="jabatan" class="form-label">Deskripsi</label>
+                                <label for="jabatan" class="form-label">Jabatan</label>
                                 <input type="text" class="form-control" id="jabatan" aria-describedby="emailHelp" name="jabatan">
                             </div>
                             <div class="mb-3">
-                                <label for="exampleInputPassword1" class="form-label">Input Photo</label>
+                                {{-- <label for="periode" class="form-label" >Periode</label>
+                                        <input type="text" class="form-control" id="periode" aria-describedby="emailHelp" name="periode"> --}}
+                                <label for="periode" class="form-label">Periode</label>
+                                <select name="id_periode" id="id_periode">
+                                    <option disabled value>pilih periode</option>
+                                    {{-- @foreach($periode as $value)
+                                    <option value="{{$value->id}}">{{$value->periode_mulai}}/{{$value->periode_akhir}}</option>
+                                    @endforeach --}}
+
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label">input gambar</label>
                                 <input type="file" class="form-control" id="foto" name="foto">
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
@@ -87,7 +98,7 @@
         <div class="card-body">
             <div class="d-grid gap-2 d-md-block">
                 <!-- Button trigger modal -->
-                <button type="button" class="btn" style="background-color: #609966; color:white;font-weight:bold;" data-bs-toggle="modal" data-bs-target="#ModalTambah"><i class="fa-solid fa-plus"></i>  Tambah Tontonan Rujak</button>
+                <button type="button" class="btn" style="background-color: #609966; color:white;font-weight:bold;" data-bs-toggle="modal" data-bs-target="#ModalTambah"><i class="fa-solid fa-plus"></i>  Tambah Perangkat Desa</button>
             </div>
             <div class="table-wrapper">
                 <div class="table-scroll">
@@ -299,7 +310,7 @@
 
 
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 @endsection

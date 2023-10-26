@@ -62,7 +62,7 @@ Route::get('/beranda', function () {
 
     return view('beranda/beranda');
 });
-
+    
 Route::get('/podcast', function () {
 
     return view('beranda/podcast');

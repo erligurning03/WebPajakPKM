@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Admin Rujak</title>
+    <title>Admin Nagori</title>
 
     <!-- Custom fonts for this template-->
     <!--<link href="{{ asset('admin_assets/assets/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css"> -->
@@ -134,18 +134,13 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePerangkatDesa" aria-expanded="true" aria-controls="collapsePerangkatDesa">
                     <i class="fa-solid fa-sitemap"></i>
-                    <span>Beranda
+                    <span>Perangkat Desa
                     </span>
                 </a>
                 <div id="collapsePerangkatDesa" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Pilih Aksi:</h6>
-                        <a class="collapse-item" href="#">Tontonan</a>
-                        <a class="collapse-item" href="#">Tambah Tontonan</a>
-                        <a class="collapse-item" href="#">Podcast</a>
-                        <a class="collapse-item" href="#">Tambah Podcast</a>
-                        <a class="collapse-item" href="#">Berita</a>
-                        <a class="collapse-item" href="#">Tambah Berita</a>
+                        <a class="collapse-item" href="{{ url('/admin/perangkatdesa') }}">Daftar Perangkat Desa</a>
                         {{-- <a class="collapse-item" href="{{ url('/admin/tambah/perangkat') }}">Tambah Perangkat Desa</a> --}}
                     </div>
                 </div>
@@ -156,19 +151,13 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseGaleri" aria-expanded="true" aria-controls="collapseGaleri">
                     <i class="fa-solid fa-sitemap"></i>
-                    <span>Kuis
+                    <span>Galeri
                     </span>
                 </a>
                 <div id="collapseGaleri" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Pilih Aksi:</h6>
-                        <a class="collapse-item" href="#">Level Dasar</a>
-                        <a class="collapse-item" href="#">Tambah Pertanyaan Dasar</a> 
-                        <a class="collapse-item" href="#">Level Menengah</a> 
-                        <a class="collapse-item" href="#">Tambah Pertanyaan Menengah</a>
-                        <a class="collapse-item" href="#">Level Ahli</a> 
-                        <a class="collapse-item" href="#">Tambah Pertanyaan Ahli</a>
-                        <a class="collapse-item" href="#">Pemenang</a> 
+                        {{-- <a class="collapse-item" href="{{ route('galeri_adm') }}">Galeri Desa</a> --}}
                     </div>
                 </div>
             </li>
@@ -177,13 +166,16 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAnggaran" aria-expanded="true" aria-controls="collapseAnggaran">
                     <i class="fa fa-money" aria-hidden="true"></i>
-                    <span>QnA</span>
+                    <span>Anggaran</span>
                 </a>
                 <div id="collapseAnggaran" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Pilih Aksi:</h6>
-                        <a class="collapse-item" href="#">Daftar QnA</a>
+                        {{-- <a class="collapse-item" href="{{ route('pendapatan.per-tahun') }}">List Pendapatan</a> --}}
                         {{-- ini route nya adalah name yang ada pada web.php --}}
+                        {{-- <a class="collapse-item" href="{{ route('admin.tambahpendapatan.anggaran') }}">Tambah Pendapatan</a>
+                        <a class="collapse-item" href="{{ route('pengeluaran.per-tahun') }}">List Pengeluaran</a>
+                        <a class="collapse-item" href="{{ route('admin.tambahpengeluaran.anggaran') }}">Tambah Pengeluaran</a> --}}
                     </div>
                 </div>
             </li>
@@ -191,12 +183,90 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSuratKeterangan" aria-expanded="true" aria-controls="collapseSuratKeterangan">
                     <i class="fa fa-file" aria-hidden="true"></i>
-                    <span>User</span>
+                    <span>Surat Keterangan</span>
                 </a>
                 <div id="collapseSuratKeterangan" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Pilih Aksi:</h6>
-                        <a class="collapse-item" href="#">Daftar User</a>
+                        {{-- <a class="collapse-item" href="{{ route('admin.suket.pengajuan') }}">List Surat Keterangan</a>
+                        <a class="collapse-item" href="{{ route('admin.tambahsuket.pengajuan') }}">Tambah Surat Keterangan</a>
+                        <a class="collapse-item" href="{{ route('berkas.ajuan') }}">Ajuan Warga</a>
+                        <a class="collapse-item" href="{{ route('berkas.history') }}">History Ajuan Warga</a> --}}
+                    </div>
+                </div>
+            </li>
+            <!-- Sidebar untuk UMKM -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUMKM" aria-expanded="true" aria-controls="collapseUMKM">
+                    <i class="fa fa-shop" aria-hidden="true"></i>
+                    <span>UMKM</span>
+                </a>
+                <div id="collapseUMKM" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Pilih Aksi:</h6>
+                        {{-- <a class="collapse-item" href="{{ route('admin.listumkm.umkm') }}">List UMKM</a>
+                        <a class="collapse-item" href="{{ route('admin.tambahumkm.umkm') }}">Tambah UMKM</a>
+                        <a class="collapse-item" href="{{ route('umkm.validasi') }}">Validasi UMKM</a> --}}
+                    </div>
+                </div>
+            </li>
+
+            <!-- Sidebar untuk Berita -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBerita" aria-expanded="true" aria-controls="collapseBerita">
+                    <i class="fa-solid fa-newspaper" aria-hidden="true"></i>
+                    <span>Berita</span>
+                </a>
+                <div id="collapseBerita" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Pilih Aksi:</h6>
+                        {{-- <a class="collapse-item" href="{{ route('admin.semuaberita.berita') }}">Semua Berita</a>
+                        <a class="collapse-item" href="{{ route('admin.tambahberita.berita') }}">Tambah Berita</a> --}}
+                    </div>
+                </div>
+            </li>
+
+            <!-- Sidebar untuk forum diskusi -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseForumDiskusi" aria-expanded="true" aria-controls="collapseForumDiskusi">
+                    <i class="fa fa-comments" aria-hidden="true"></i>
+                    <span>Forum Diskusi</span>
+                </a>
+                <div id="collapseForumDiskusi" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Pilih Aksi:</h6>
+                        {{-- <a class="collapse-item" href="{{ route('semua-post') }}">Semua Post</a>
+                        <a class="collapse-item" href="{{ route('report-post') }}">Post yang dilaporkan</a> --}}
+                    </div>
+                </div>
+            </li>
+
+            <!-- Sidebar untuk User -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser" aria-expanded="true" aria-controls="collapseUser">
+                    <i class="fa fa-users" aria-hidden="true"></i>
+                    <span>User</span>
+                </a>
+                <div id="collapseUser" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Pilih Aksi:</h6>
+                        {{-- <a class="collapse-item" href="{{ route('validasi-user') }}">Validasi Akun Warga</a>
+                        <a class="collapse-item" href="{{ route('users.index') }}">Semua Akun</a> --}}
+                    </div>
+                </div>
+            </li>
+
+            <!-- Sidebar untuk log aktivitas user -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLogActivity" aria-expanded="true" aria-controls="collapseLogActivity">
+                    <i class="fa fa-comments" aria-hidden="true"></i>
+                    <span>Log / Riwayat Aktivitas user</span>
+                </a>
+                <div id="collapseLogActivity" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Pilih Aksi:</h6>
+                        {{-- <a class="collapse-item" href="{{ route('logActivity.index') }}">Semua aktivitas</a> --}}
+                        {{-- <a class="collapse-item" href="{{ route('report-post') }}">Post yang dilaporkan</a> --}}
                     </div>
                 </div>
             </li>
@@ -383,6 +453,7 @@
                         @php
                         $user = \App\Models\User::where('name', Auth::user()->name)->first();
                         @endphp
+                        
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ $user->name }}</span>
@@ -451,8 +522,8 @@
                 </div>
             </div>
 
-            <<!-- notifikasi 3 detik alert -->
-            <script>
+            <!-- notifikasi 3 detik alert -->
+            {{-- <script>
                 // Mencari elemen notifikasi
                 const notification = document.querySelector('.alert');
 
@@ -463,31 +534,31 @@
                         notification.style.display = 'none';
                     }, 3000);
                 }
-            </script>
+            </script> --}}
 
-<!-- Bootstrap core JavaScript-->
-<script src=" {{ asset('admin_assets/assets/vendor/jquery/jquery.min.js')}}"></script>
-<script src="{{ asset('admin_assets/vendor/assets/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+            <!-- Bootstrap core JavaScript-->
+            <script src=" {{ asset('admin_assets/assets/vendor/jquery/jquery.min.js')}}"></script>
+            <script src="{{ asset('admin_assets/vendor/assets/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
-<!-- Core plugin JavaScript-->
-<script src="{{ asset('admin_assets/assets/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+            <!-- Core plugin JavaScript-->
+            <script src="{{ asset('admin_assets/assets/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 
-<!-- Custom scripts for all pages-->
-<script src="{{ asset('admin_assets/assets/js/sb-admin-2.min.js')}}"></script>
+            <!-- Custom scripts for all pages-->
+            <script src="{{ asset('admin_assets/assets/js/sb-admin-2.min.js')}}"></script>
 
-<!-- Page level plugins -->
-<script src="{{ asset('admin_assets/assets/vendor/chart.js/Chart.min.js') }}"></script>
+            <!-- Page level plugins -->
+            <script src="{{ asset('admin_assets/assets/vendor/chart.js/Chart.min.js') }}"></script>
 
-<!-- Page level custom scripts -->
-<script src="{{ asset('admin_assets/assets/js/demo/chart-area-demo.js') }}"></script>
-<script src="{{ asset('admin_assets/assets/js/demo/chart-pie-demo.js') }}"></script>
-<script src="https://kit.fontawesome.com/a87d4ae636.js" crossorigin="anonymous"></script>
+            <!-- Page level custom scripts -->
+            <script src="{{ asset('admin_assets/assets/js/demo/chart-area-demo.js') }}"></script>
+            <script src="{{ asset('admin_assets/assets/js/demo/chart-pie-demo.js') }}"></script>
+            <script src="https://kit.fontawesome.com/a87d4ae636.js" crossorigin="anonymous"></script>
 
-<!-- Chat GPT Recommendation Why the drop down doesn't work ini yang bikin modal jalan bro-->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+            <!-- Chat GPT Recommendation Why the drop down doesn't work ini yang bikin modal jalan bro-->
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 
 

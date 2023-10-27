@@ -19,7 +19,7 @@ Auth::routes();
 Route::middleware(['auth'])->group(function () {
     Route::get('/login', function () {return view('auth.login');});
 
-    //semua route dalam grup ini hanya bisa diakses siswa
+    //semua route dalam grup ini hanya bisa diakses siswa - siswa
 });
 
 Route::middleware(['auth', 'status:admin'])->group(function () {

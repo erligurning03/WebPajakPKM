@@ -96,6 +96,12 @@ a {
     transform: scale(1.05);
     transition: transform 0.2s ease-in-out;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+<<<<<<< HEAD
+<<<<<<< Updated upstream
+}
+=======
+=======
+>>>>>>> 3d85955de58ac3c5051cb05728081ea329577e0e
 }
 
 video{
@@ -103,7 +109,19 @@ video{
     width:100%;
 }
 
+audio{
+    align-items :center;
+    width:100%;
+    /* display: flex; */
+
+}
+
 /* .form-control input{
     display:block;
     width:50%;
+<<<<<<< HEAD
 } */
+>>>>>>> Stashed changes
+=======
+} */
+>>>>>>> 3d85955de58ac3c5051cb05728081ea329577e0e

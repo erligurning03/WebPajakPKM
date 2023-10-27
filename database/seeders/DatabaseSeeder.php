@@ -17,6 +17,9 @@ class DatabaseSeeder extends Seeder
         User::factory(10)->create();
         $this->call(TipeKontenSeeder::class);
         $this->call(Konten_seeder::class);
+        $this->call(Komentar_konten_seeder::class);
+        $this->call(Like_konten_seeder::class);
+        $this->call(Share_konten_seeder::class);
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([

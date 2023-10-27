@@ -14,27 +14,19 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
+
         $this->call(UserSeeder::class);
-=======
         User::factory(10)->create();
         $this->call(TipeKontenSeeder::class);
         $this->call(Konten_seeder::class);
         $this->call(Komentar_konten_seeder::class);
         $this->call(Like_konten_seeder::class);
         $this->call(Share_konten_seeder::class);
->>>>>>> Stashed changes
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-<<<<<<< Updated upstream
-=======
->>>>>>> 3d85955de58ac3c5051cb05728081ea329577e0e
->>>>>>> Stashed changes
     }
 }

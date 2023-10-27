@@ -13,14 +13,11 @@ return new class extends Migration
     {
         Schema::create('kontens', function (Blueprint $table) {
             $table->id();
-<<<<<<< HEAD
             $table->unsignedBigInteger('user_id'); // Kolom user_id, tipe data unsigned bigint
             $table->foreign('user_id')->references('id')->on('tabel_users'); // Kunci asing ke tabel users
             $table->string('judul');
             $table->string('deskripsi_konten');
             $table->string('isi_konten');
-=======
->>>>>>> 3d85955de58ac3c5051cb05728081ea329577e0e
             $table->string('cover_konten');
             $table->string('judul_konten');
             $table->string('url_konten');
@@ -29,8 +26,6 @@ return new class extends Migration
             $table->unsignedBigInteger('diupload_oleh'); // Kolom user_id, tipe data unsigned bigint
             $table->foreign('diupload_oleh')->references('id')->on('users'); // Kunci asing ke tabel users
             $table->timestamps(); // Kolom "created_at" dan "updated_at"
-    
-
         });
     }
 

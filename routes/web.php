@@ -52,15 +52,12 @@ Route::get('/tontonan', function () {
     return view('beranda/tontonan');
 });
 
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
+
 Route::get('/berita', function(){
 
     return view('berita.semuaberita');
 });
 
-=======
 Route::get('/berita', function () {
 
     return view('beranda/berita');
@@ -72,8 +69,6 @@ Route::get('/list_berita', function () {
 
 //ini route semua kuis
 
->>>>>>> 6c8db20255fc065607bc8e04778728b42a4242e5
->>>>>>> Stashed changes
 Route::get('/kuis', function () {
 
     return view('kuis/kuis');

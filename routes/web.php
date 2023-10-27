@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LupaPasswordController;
+use Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -75,7 +76,7 @@ Route::get('/beranda', function () {
 
     return view('beranda/beranda');
 });
-    
+
 Route::get('/podcast', function () {
 
     return view('beranda/podcast');
@@ -89,18 +90,11 @@ Route::get('/tontonan', function () {
     return view('beranda/tontonan');
 });
 
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> 3d85955de58ac3c5051cb05728081ea329577e0e
-<<<<<<< HEAD
+
 Route::get('/berita', function(){
 
     return view('berita.semuaberita');
 });
-
-=======
 Route::get('/berita', function () {
 
     return view('beranda/berita');
@@ -112,11 +106,6 @@ Route::get('/list_berita', function () {
 
 //ini route semua kuis
 
->>>>>>> 6c8db20255fc065607bc8e04778728b42a4242e5
-<<<<<<< HEAD
->>>>>>> Stashed changes
-=======
->>>>>>> 3d85955de58ac3c5051cb05728081ea329577e0e
 Route::get('/kuis', function () {
 
     return view('kuis/kuis');

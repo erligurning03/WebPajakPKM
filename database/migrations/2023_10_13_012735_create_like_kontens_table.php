@@ -22,7 +22,6 @@ return new class extends Migration
             $table->unsignedBigInteger('disukai_oleh'); // Kolom user_id, tipe data unsigned bigint
             $table->foreign('disukai_oleh')->references('id')->on('users');
             $table->timestamps();
-
         });
     }
 

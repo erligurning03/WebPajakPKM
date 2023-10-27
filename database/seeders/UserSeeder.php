@@ -31,7 +31,7 @@ class UserSeeder extends Seeder
                 'password' => bcrypt('user1234'),
                 'status' => 'pengguna',
             ],
-            
+
         ]);
     }
     public function down(): void

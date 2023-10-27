@@ -20,10 +20,44 @@ class KuisController extends Controller
 
     public function tampilSoal($id)
     {
-        $tampil = KuisSoal::with('kuisJawaban')->get();
-
-        return view('kuis.kuisSoal', compact('tampil'));
+        $tampil = KuisSoal::with('kuisJawaban')->where('id_kuis', $id)->get();
+        return view('kuis.kuisSoal', compact('tampil' ,'id'));
     }
+
+
+    public function prosesKuis(Request $request, $id)
+    {
+        // dd($request);
+        $tampil = KuisSoal::with('kuisJawaban')->where('id_kuis', $id)->get();
+        $userAnswers = $request->input('answers');
+        $quizId = $id;
+
+        $questions = KuisSoal::where('id_kuis', $quizId)->get();
+
+        $score = 0;
+        $correctAnswers = [];
+        $explanations = [];
+
+        foreach ($questions as $question) {
+            $questionNumber = $question->no_soal;
+            $correctAnswer = $question->jawaban_soal;
+            $userAnswer = $userAnswers[$question->id];
+
+            if ($userAnswer === $correctAnswer) {
+                $score++;
+            }
+
+            $correctAnswers[$questionNumber] = $correctAnswer;
+            $explanations[$questionNumber] = $question->pembahasan_soal;
+        }
+
+        return view('kuis.kuisHasil', compact('tampil','id'), [
+            'score' => $score,
+            'correctAnswers' => $correctAnswers,
+            'explanations' => $explanations,
+        ]);
+    }
+
 
     /**
      * Show the form for creating a new resource.

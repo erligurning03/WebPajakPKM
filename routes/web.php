@@ -40,6 +40,7 @@ Route::get('/lupa-password', [LupaPasswordController::class, 'index'])->name('lu
 
 Route::get('/kuis', [KuisController::class, 'tampilLevel']);
 Route::get('/kuis/{id}', [KuisController::class, 'tampilSoal']);
+Route::post('/kuis/{id}/proseskuis', [KuisController::class, 'prosesKuis']);
 
 Route::get('/', function () {
 

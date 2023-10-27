@@ -19,14 +19,17 @@
                         @foreach ($data->kuisJawaban as $Jawaban)
                             <div class="card-body">
                                 <label>
-                                    <input type="radio" name="answers[{{ $data->id }}]" value="{{ $Jawaban->opsi_jawaban }}">
+                                    {{-- <input type="radio" name="answers[{{ $data->id }}]" value="{{ $Jawaban->opsi_jawaban }}"> --}}
                                     {{ $Jawaban->opsi_jawaban }}. {{ $Jawaban->isi_jawaban }}
                                 </label>
                             </div>
                         @endforeach
+                        <h6>
+                            Jawabannya ialah {{ $correctAnswers[$data->no_soal] }}. {{ $explanations[$data->no_soal] }}
+                        </h6>
                     </div>
                 @endforeach
-                <button type="submit">Submit</button>
+                    <h3>anda benar {{$score}}</h3>
             </form>
         </div>
     </div>

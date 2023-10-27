@@ -50,6 +50,10 @@ Route::get('/podcast', function () {
 
     return view('beranda/podcast');
 });
+Route::get('/list_podcast', function () {
+
+    return view('beranda/list_podcast');
+});
 Route::get('/tontonan', function () {
 
     return view('beranda/tontonan');

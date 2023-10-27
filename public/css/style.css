@@ -103,6 +103,13 @@ video{
     width:100%;
 }
 
+audio{
+    align-items :center;
+    width:100%;
+    /* display: flex; */
+
+}
+
 /* .form-control input{
     display:block;
     width:50%;

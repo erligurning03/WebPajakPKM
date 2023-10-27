@@ -1,60 +1,66 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.navbar')
+@section('container')
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    
-    <title>RUJAK - Ruang Pajak</title>
-    <link rel="stylesheet" href="css/style.css">
-    {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css"> --}}
+<div class="container mt-4">
+    {{-- <form class="d-flex" action="">
+        <input class="form-control me-1" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-primary" type="submit">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+    </form> --}}
+  {{-- konten video --}}
 
-    <!-- font awesome untuk icon -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Font Lato -->
-    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
-    <!-- icon bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css" rel="stylesheet">
-  </head>
-  <body>
-    {{-- start navbar --}}
-    <nav class="navbarbro fixed-top">
-      <img src="{{ asset('img/logoRujak5.jpeg') }}" alt="Logo Rujak" style="max-width: 100%; height: auto; width: 60px;">
-        <h1 class="logo">RUJAK</h1>
-        <ul class="desktop-list">
-            <li><a href="#">Beranda</a></li>
-            <li><a href="#">Kuis</a></li>
-            <li><a href="#">Q&A</a></li>
-            <li><a href="#">Layanan</a></li>
-            <li><a href="#">Profil</a></li>
-        </ul>
-        <ul class="mobile-list">
-            <li><i class="fa-solid fa-house"></i></li>
-            <li><i class="fa-solid fa-puzzle-piece"></i></li>
-            <li><i class="fa-solid fa-circle-question"></i></li>
-            {{-- <li><i class="fa-regular fa-handshake"></i></li> --}}
-            <li><i class="fa-solid fa-handshake"></i></li>
-            {{-- <li><i class="fa-regular fa-user"></i></li> --}}
-            <li><i class="fa-solid fa-user"></i></li>
-        </ul>
-    </nav>
-    {{-- end navbar --}}
-    <div class="container mt-4">
-        <form class="d-flex" action="">
-            <input class="form-control me-1" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-primary" type="submit">
-                <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
-        </form>
-      
+  {{-- <div class="row">
+    <div class="col-md-12">
+      <div class="embed-responsive embed-responsive-16by9">
+          <video controls>
+            <source src="{{asset('video/dumping.MP4')}}" type="video/mp4">
+          </video>
+          <hr size="5px" width="100%" align="center">
+          <h2>Apasih Pajak Itu ?</h2>
+          <h6>Kita akan belajar mengenai pajak dan jenis-jenis pajak pada video ini. jadi tetap disimak ya!</h6>
+      </div>
     </div>
+  </div> --}}
+  <div class="row">
+    <div class="col-md-12">
+      <button type="button" class="btn btn-warning" style="text-align: center; width:110px; height:35px;";><i class="fa-solid fa-arrow-left"></i> Kembali</button>
+        <div class="embed-responsive embed-responsive-16by9 mt-3">
+          <img src="{{asset('img/podcast2.jpg')}}" class="card-img-top img-fluid" alt="..."  style="border: 5px solid rgb(70, 70, 70); display:block; ">
+            {{-- <video class="embed-responsive-item" width= "50%"controls>
+                <source src="{{ asset('video/dumping.MP4') }}" type="video/mp4">
+            </video> --}}
+            <div class="audio-component">
+              <figure>
+                {{-- <figcaption>
+                  <b>Judul podcast</b>
+                </figcaption> --}}
+                <audio controls>
+                  <source src="{{asset('audio/datang_kembali.mpeg')}}" type="audio/mpeg">
+                </audio>
+              </figure>
+            </div>
+        </div>
+        <hr size="5px" width="100%" align="center">
+        <div class="row">
+          <div class="col-6 col-md-6" style="text-align:left">
+            <i class="far fa-heart fa-xl love-icon action-icon"></i>
+            <i class="fas fa-heart fa-xl love-icon action-icon text-danger"></i>            
+            <b>100</b>
+          </div>
+          <div class="col-6 col-md-6" style="text-align: right">
+            {{-- <i class="fa-regular fa-share-from-square"></i> --}}
+            <i class="fa-solid fa-share-from-square"></i>
+            <b>78</b>
+          </div>
+        </div>
 
+        <h2>Tatacata bayar pajak ?</h2>
+        <p>ada penjelasan dari bapak jendral pajak nih mengenai tata cara membayar pajak, disimak baik-baik ya</p>
+    </div>
+</div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-  </body>
-</html>
+</div>
+{{-- end of search --}}
 
-
+@endsection

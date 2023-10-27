@@ -19,12 +19,12 @@ return new class extends Migration
             $table->string('deskripsi_konten');
             $table->string('isi_konten');
             $table->string('cover_konten');
-            $table->string('video_foto_konten');
-            $table->bigInteger('jumlah_like');
-            $table->bigInteger('jumlah_komentar');
-            $table->bigInteger('jumlah_share');
-            $table->enum('jenis_konten', ['video', 'podcast','berita']);
-            $table->timestamp('tanggal_upload')->useCurrent(); // Kolom "tanggal_upload" yang menyimpan tanggal dan waktu upload
+            $table->string('judul_konten');
+            $table->string('url_konten');
+            $table->longText('deskripsi_konten');
+            $table->unsignedInteger('tipe_konten_id');
+            $table->unsignedBigInteger('diupload_oleh'); // Kolom user_id, tipe data unsigned bigint
+            $table->foreign('diupload_oleh')->references('id')->on('users'); // Kunci asing ke tabel users
             $table->timestamps(); // Kolom "created_at" dan "updated_at"
 
 

@@ -2,10 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 use Illuminate\Database\Eloquent\Model;
 
 class Share_konten extends Model
 {
-    use HasFactory;
+  protected $table = 'share_kontens';
+
+  protected $fillable = [
+    'konten_id',
+    'dibagikan_oleh',
+  ];
 }

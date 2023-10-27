@@ -21,4 +21,14 @@ class Konten extends Model
         'tipe_konten_id',
         'diupload_oleh',
     ];
+
+    public function KomentarKonten() {
+        return $this->hasMany(Komentar_konten::class, 'konten_id', 'id');
+    }
+    public function LikeKonten() {
+        return $this->hasMany(Like_konten::class, 'konten_id', 'id');
+    }
+    public function ShareKonten() {
+        return $this->hasMany(Share_konten::class, 'konten_id', 'id');
+    }
 }

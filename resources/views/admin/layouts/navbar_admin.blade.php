@@ -82,7 +82,8 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
+        {{-- <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar"> --}}
+        <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar" style="background-image: linear-gradient(to bottom, #144272, #2b5c9b); background-repeat: no-repeat;">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="admin">
@@ -120,11 +121,12 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Pilih Aksi:</h6>
                         <a class="collapse-item" href="#">Tontonan</a>
-                        <a class="collapse-item" href="#">Tambah Tontonan</a>
+                        
                         <a class="collapse-item" href="#">Podcast</a>
-                        <a class="collapse-item" href="#">Tambah Podcast</a>
+                        {{-- <a class="collapse-item" href="#">Tambah Podcast</a> --}}
                         <a class="collapse-item" href="#">Berita</a>
-                        <a class="collapse-item" href="#">Tambah Berita</a>
+                        {{-- <a class="collapse-item" href="#">Tambah Berita</a> --}}
+                        <a class="collapse-item" href="#">Tambah konten</a>
                         {{-- <a class="collapse-item" href="{{ url('/admin/tambah/perangkat') }}">Tambah Perangkat Desa</a> --}}
                     </div>
                 </div>

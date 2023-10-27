@@ -33,10 +33,6 @@ Route::middleware(['auth', 'status:pengguna'])->group(function () {
     //semua route dalam grup ini hanya bisa diakses siswa
 });
 
-route::group(['middleware' => 'auth'],function(){
-    
-    
-});
 
 
 

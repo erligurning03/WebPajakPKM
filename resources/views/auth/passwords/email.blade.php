@@ -6,11 +6,6 @@
       <input type="checkbox" id="check">
       <div class="login form">
         <header>Reset Password</header>
-        @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-         @endif
         <div class="welcome">
           <p>Masukkan Email untuk reset password</p>
         </div>
@@ -28,7 +23,11 @@
                 @enderror
 
         <input type="submit" class="button" value="{{ __('Send Password Reset Link') }}">
-
+        @if (session('status'))
+        <div class="alert alert-success" role="alert">
+            {{ session('status') }}
+        </div>
+@endif
     </form>
     </div>
     </div>

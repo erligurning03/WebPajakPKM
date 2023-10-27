@@ -21,6 +21,8 @@ class Konten_seeder extends Seeder
                 'deskripsi_konten'=>'ini deskripsi konten',
                 'tipe_konten_id'=>1,
                 'diupload_oleh'=>1,
+                'created_at'=>now(),
+                'updated_at'=>now(),
             ]);
             // DB::commit();
             // dd($konten);

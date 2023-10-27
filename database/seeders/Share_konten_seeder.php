@@ -13,6 +13,8 @@ class Share_konten_seeder extends Seeder
         $share_konten = DB::table('share_kontens')->insertGetId([
             'konten_id'=>1,
             'dibagikan_oleh'=>1,
+            'created_at'=>now(),
+            'updated_at'=>now(),
         ]);
     }
 }

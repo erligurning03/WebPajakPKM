@@ -18,6 +18,8 @@ class Komentar_konten_seeder extends Seeder
             'konten_id'=>1,
             'dikomentari_oleh'=>2,
             'isi_komentar'=> 'ini adalah isi komentar',
+            'created_at'=>now(),
+            'updated_at'=>now(),
         ]);
     }
 }

@@ -14,7 +14,7 @@
         </div>
         <form method="POST" action="{{ route('login') }}">
             @csrf
-            
+
         <input id="email" placeholder="Masukkan Email" type="email" class="form-control @error('email') is-invalid @enderror"name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                 @error('email')
                 <span class="invalid-feedback" role="alert">
@@ -31,9 +31,9 @@
                 <strong>{{ $message }}</strong>
             </span>
             @enderror
-    
-        
-        <a href="{{ route('lupa-password') }}">Lupa password?</a>
+
+
+        <a href="{{ route('password.request') }}">Lupa password?</a>
         <input type="submit" class="button" value="{{ __('Login') }}">
         <div class="signup">
             <span ">Belum Punya Akun?

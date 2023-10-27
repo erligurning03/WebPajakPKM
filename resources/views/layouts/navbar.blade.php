@@ -30,6 +30,10 @@
             <li><a href="{{ url('qna') }}">Q&A</a></li>
             <li><a href="{{ url('layanan') }}">Layanan</a></li>
             <li><a href="{{ url('profil') }}">Profil</a></li>
+            <li><form action="{{ route('logout') }}" method="POST">
+              @csrf
+              <button type="submit" class="btn btn-primary">Logout</button>
+          </form></li>
         </ul>
         <ul class="mobile-list">
             <li><a href="{{ url('beranda') }}"><i class="fa-solid fa-house"></i></a></li>

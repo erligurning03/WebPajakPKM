@@ -14,6 +14,8 @@ class Like_konten_seeder extends Seeder
         $like_konten = DB::table('like_kontens')->insertGetId([
             'konten_id'=>1,
             'disukai_oleh'=>1,
+            'created_at'=>now(),
+            'updated_at'=>now(),
         ]);
     }
 }

@@ -72,6 +72,27 @@
             outline: none !important;
             box-shadow: none !important;
         }
+        
+        .dropdown {
+        position: relative;
+        display: inline-block;
+        }
+        
+        .dropdown-content {
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        padding: 12px 16px;
+        z-index: 1;
+        float: left;
+        display: none;
+        right: 0.75rem;
+        }
+        
+        .dropdown:hover .dropdown-content {
+        display: block;
+        }
     </style>
     @yield('css')
 </head>
@@ -361,36 +382,29 @@
                         <div class="topbar-divider d-none d-sm-block"></div>
 
                         <!-- Nav Item - User Information -->
-                        {{-- @php
-                        $user = \App\Models\User::where('nik', Auth::user()->nik)->first();
-                        @endphp --}}
+                        @php
+                        $user = \App\Models\User::where('name', Auth::user()->name)->first();
+                        @endphp
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">username</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ $user->name }}</span>
                                 <div class="profile-picturee">
-                                    <img src="#" alt="Foto Profil" style="border-radius: 50%; object-fit: contain; width:40px; height: 40px; border: 1px solid black; ">
+                                    <img src="{{  asset('img/foto_profile/admin.jpg') }}" alt="Foto Profil" style="border-radius: 50%; object-fit: contain; width:40px; height: 40px; border: 1px solid black; ">
                                 </div>
                             </a>
                             <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                            <div class="dropdown-content">
+                                  <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Activity Log
-                                </a>
-                                <div class="dropdown-divider"></div>
+                                <div class="dropdown-divider dropdown-menu dropdown-menu-right shadow animated--grow-in"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
                             </div>
+                             
                         </li>
 
                     </ul>
@@ -439,7 +453,7 @@
                 </div>
             </div>
 
-            <!-- notifikasi 3 detik alert -->
+            <<!-- notifikasi 3 detik alert -->
             <script>
                 // Mencari elemen notifikasi
                 const notification = document.querySelector('.alert');
@@ -453,29 +467,29 @@
                 }
             </script>
 
-            <!-- Bootstrap core JavaScript-->
-            <script src=" {{ asset('admin_assets/assets/vendor/jquery/jquery.min.js')}}"></script>
-            <script src="{{ asset('admin_assets/vendor/assets/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<!-- Bootstrap core JavaScript-->
+<script src=" {{ asset('admin_assets/assets/vendor/jquery/jquery.min.js')}}"></script>
+<script src="{{ asset('admin_assets/vendor/assets/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
-            <!-- Core plugin JavaScript-->
-            <script src="{{ asset('admin_assets/assets/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+<!-- Core plugin JavaScript-->
+<script src="{{ asset('admin_assets/assets/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 
-            <!-- Custom scripts for all pages-->
-            <script src="{{ asset('admin_assets/assets/js/sb-admin-2.min.js')}}"></script>
+<!-- Custom scripts for all pages-->
+<script src="{{ asset('admin_assets/assets/js/sb-admin-2.min.js')}}"></script>
 
-            <!-- Page level plugins -->
-            <script src="{{ asset('admin_assets/assets/vendor/chart.js/Chart.min.js') }}"></script>
+<!-- Page level plugins -->
+<script src="{{ asset('admin_assets/assets/vendor/chart.js/Chart.min.js') }}"></script>
 
-            <!-- Page level custom scripts -->
-            <script src="{{ asset('admin_assets/assets/js/demo/chart-area-demo.js') }}"></script>
-            <script src="{{ asset('admin_assets/assets/js/demo/chart-pie-demo.js') }}"></script>
-            <script src="https://kit.fontawesome.com/a87d4ae636.js" crossorigin="anonymous"></script>
+<!-- Page level custom scripts -->
+<script src="{{ asset('admin_assets/assets/js/demo/chart-area-demo.js') }}"></script>
+<script src="{{ asset('admin_assets/assets/js/demo/chart-pie-demo.js') }}"></script>
+<script src="https://kit.fontawesome.com/a87d4ae636.js" crossorigin="anonymous"></script>
 
-            <!-- Chat GPT Recommendation Why the drop down doesn't work ini yang bikin modal jalan bro-->
-            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<!-- Chat GPT Recommendation Why the drop down doesn't work ini yang bikin modal jalan bro-->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 
 

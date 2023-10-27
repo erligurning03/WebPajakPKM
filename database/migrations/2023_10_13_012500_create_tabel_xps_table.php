@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tabel_xps', function (Blueprint $table) {
-            
+
             $table->unsignedBigInteger('user_id'); // Kolom user_id, tipe data unsigned bigint
-            $table->foreign('user_id')->references('id')->on('tabel_users'); // Kunci asing ke tabel users
+            $table->foreign('user_id')->references('id')->on('users'); // Kunci asing ke tabel users
             $table->integer('jlh_skor_xp');
         });
     }

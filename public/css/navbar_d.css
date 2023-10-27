@@ -1,0 +1,84 @@
+.hr:not([size]) {
+    height: 2px;
+    background-color: black;
+    height: 2px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+  }
+  .hr {
+    margin: 1rem 0;
+  }
+  .profile-picturee {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+    }
+    
+  
+  body {
+      padding-top: 70px;
+    }
+  
+    .navbar-light {
+      background-color: #fff;
+    }
+  
+    .dark-mode .navbar-light {
+      background-color: #000;
+    }
+    
+    .logoo {
+      background-color: #fff;
+    }
+  
+    .dark-mode .n.logoo {
+      background-color: #000;
+    }
+  
+    .navbar-light .navbar-nav .nav-link {
+      color: #000;
+      font-size: 16px;
+      text-align: center;
+    }
+  
+    .dark-mode .navbar-light .navbar-nav .nav-link {
+      color: #fff;
+      font-size: 16px;
+      text-align: center;
+  
+    }
+    .dark-mode .navbar-light .form-check-label {
+      color: #fff;
+    }
+    .body {
+      background-color: #fff;
+    }
+  
+    .dark-mode .body {
+      background-color: #000;
+    }
+    .container {
+      background-color: #fff;
+    }
+  
+    .dark-mode .container {
+      background-color: #000;
+    }
+  
+    .belakang {
+      background-color: #fff;
+    }
+  
+    .dark-mode .belakang {
+      background-color: #000;
+    }
+  
+    .text-center {
+      color: #000;
+    }
+  
+    .dark-mode .text-center {
+      color: #fff;
+    }
+    
+    

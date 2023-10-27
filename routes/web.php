@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LupaPasswordController;
+use Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,41 @@ use App\Http\Controllers\LupaPasswordController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Auth::routes();
+Route::middleware(['auth'])->group(function () {
+    Route::get('/login', function () {return view('auth.login');});
+
+    //semua route dalam grup ini hanya bisa diakses siswa - siswa
+});
+
+Route::middleware(['auth', 'status:admin'])->group(function () {
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+    //semua route dalam grup ini hanya bisa diakses oleh operator
+});
+
+Route::middleware(['auth', 'status:pengguna'])->group(function () {
+    Route::get('/index', [App\Http\Controllers\IndexController::class, 'index'])->name('index');
+
+    //semua route dalam grup ini hanya bisa diakses siswa
+});
+
+
+
+
+
+
+
+Auth::routes();
+Route::get('/', function () {return view('auth.login');});
+Route::get('/daftar', function () {return view('auth.login');});
+Route::get('/lupa-password', [LupaPasswordController::class, 'index'])->name('lupa-password');
+
+Route::get('/masuk', function () {
+
+    return view('login');
+});
 
 Route::get('/', function () {
 
@@ -41,11 +77,6 @@ Route::get('/beranda', function () {
     return view('beranda/beranda');
 });
 
-Route::get('/list_tontonan', function () {
-
-    return view('beranda/list_tontonan');
-});
-
 Route::get('/podcast', function () {
 
     return view('beranda/podcast');
@@ -64,7 +95,6 @@ Route::get('/berita', function(){
 
     return view('berita.semuaberita');
 });
-
 Route::get('/berita', function () {
 
     return view('beranda/berita');
@@ -109,16 +139,5 @@ Route::get('/admin/tontonan', function () {
 
     return view('admin/beranda/tambah_tontonan');
 });
-
-
-
-
-
-
-Auth::routes();
-Route::get('/', function () {return view('auth.login');});
-Route::get('/daftar', function () {return view('auth.login');});
-Route::get('/lupa-password', [LupaPasswordController::class, 'index'])->name('lupa-password');
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 

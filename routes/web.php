@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\KuisController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LupaPasswordController;
 
@@ -44,10 +45,10 @@ Route::get('/', function () {return view('auth.login');});
 Route::get('/daftar', function () {return view('auth.login');});
 Route::get('/lupa-password', [LupaPasswordController::class, 'index'])->name('lupa-password');
 
-Route::get('/masuk', function () {
+Route::get('/kuis', [KuisController::class, 'tampilLevel']);
+Route::get('/kuis/{id}', [KuisController::class, 'tampilSoal']);
+Route::post('/kuis/{id}/proseskuis', [KuisController::class, 'prosesKuis']);
 
-    return view('login');
-});
 
 Route::get('/', function () {
 
@@ -106,16 +107,11 @@ Route::get('/list_berita', function () {
 //ini route semua kuis
 Route::get('/kuis', function () {
 
-    return view('kuis/kuis');
-});
 
 //ini route semua QNA
 Route::get('/qna', function () {
-
     return view('qna/qna');
 });
-
-//ini route halaman layanan
 Route::get('/layanan', function () {
 
     return view('layanan/layanan');
@@ -139,4 +135,8 @@ Route::get('/admin/tontonan', function () {
     return view('admin/beranda/tambah_tontonan');
 });
 
+Route::get('/admin/tambahkuis', function () {
 
+    return view('admin/beranda/tambah_kuis');
+});
+Route::post('admin/tambahkuis/post', [KuisController::class, 'createKuis']);

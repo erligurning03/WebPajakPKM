@@ -11,8 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('level_kuis', function (Blueprint $table) {
+        Schema::create('kuis_level', function (Blueprint $table) {
             $table->id();
+            $table->string('nama_kuis');
+            $table->integer('waktu_kuis');
             $table->timestamps();
         });
     }
@@ -22,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('level_kuis');
+        Schema::dropIfExists('kuis_level');
     }
 };

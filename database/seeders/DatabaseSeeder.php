@@ -21,11 +21,13 @@ class DatabaseSeeder extends Seeder
         $this->call(Komentar_konten_seeder::class);
         $this->call(Like_konten_seeder::class);
         $this->call(Share_konten_seeder::class);
+        $this->call(KuisSeeder::class);
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
     }
 }

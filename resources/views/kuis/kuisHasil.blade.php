@@ -11,8 +11,8 @@
         </div>
 
         <div class="card mt-4" style="">
-            <form action="/kuis/{{ $id }}/proseskuis" method="post" enctype="multipart/form-data">
-                @csrf
+            {{-- <form action="/kuis/{{ $id }}/proseskuis" method="post" enctype="multipart/form-data">
+                @csrf --}}
                 @foreach ($tampil as $data)
                     <div class="card-body">
                         <div class="card-title">{{ $data->no_soal }}. {{ $data->isi_soal }}</div>
@@ -30,7 +30,7 @@
                     </div>
                 @endforeach
                     <h3>anda benar {{$score}}</h3>
-            </form>
+            {{-- </form> --}}
         </div>
     </div>
 </div>

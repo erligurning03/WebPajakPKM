@@ -124,4 +124,8 @@ Route::get('/admin/tontonan', function () {
     return view('admin/beranda/tambah_tontonan');
 });
 
+Route::get('/admin/tambahkuis', function () {
 
+    return view('admin/beranda/tambah_kuis');
+});
+Route::post('admin/tambahkuis/post', [KuisController::class, 'createKuis']);

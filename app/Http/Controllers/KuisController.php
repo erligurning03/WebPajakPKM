@@ -21,7 +21,7 @@ class KuisController extends Controller
     public function tampilSoal($id)
     {
         $tampil = KuisSoal::with('kuisJawaban')->where('id_kuis', $id)->get();
-        return view('kuis.kuisSoal', compact('tampil' ,'id'));
+        return view('kuis.kuisSoal', compact('tampil', 'id'));
     }
 
 
@@ -51,7 +51,7 @@ class KuisController extends Controller
             $explanations[$questionNumber] = $question->pembahasan_soal;
         }
 
-        return view('kuis.kuisHasil', compact('tampil','id'), [
+        return view('kuis.kuisHasil', compact('tampil', 'id'), [
             'score' => $score,
             'correctAnswers' => $correctAnswers,
             'explanations' => $explanations,
@@ -59,36 +59,43 @@ class KuisController extends Controller
     }
 
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function createLevel(array $kuislevel)
+    public function createKuis(Request $request)
     {
-        return KuisLevel::create([
-            'nama_kuis' => $kuislevel['nama_kuis'],
-            'waktu_kuis' => $kuislevel['waktu_kuis'],
+        // Validate and save the Kuis Level
+        $kuisLevel = KuisLevel::create([
+            'nama_kuis' => $request->input('nama_kuis'),
+            'waktu_kuis' => $request->input('waktu_kuis'),
         ]);
+
+        // Validate and save the Kuis Soal
+        $questionsData = $request->input('questions'); // An array of questions data
+
+        foreach ($questionsData as $questionData) {
+            $kuisSoal = new KuisSoal([
+                'no_soal' => $questionData['no_soal'],
+                'isi_soal' => $questionData['isi_soal'],
+                'jawaban_soal' => $questionData['jawaban_soal'],
+                'pembahasan_soal' => $questionData['pembahasan_soal'],
+            ]);
+
+            $kuisLevel->kuisSoal()->save($kuisSoal);
+
+            // Validate and save Kuis Jawaban for each question
+            $answersData = $questionData['answers']; // An array of answers data
+
+            foreach ($answersData as $answerData) {
+                $kuisJawaban = new KuisJawaban([
+                    'opsi_jawaban' => $answerData['opsi_jawaban'],
+                    'isi_jawaban' => $answerData['isi_jawaban'],
+                ]);
+
+                $kuisSoal->kuisJawaban()->save($kuisJawaban);
+            }
+        }
+
+        // Redirect or return a response as needed
     }
 
-    public function createSoal(array $kuissoal)
-    {
-        return KuisSoal::create([
-            'no_soal' => $kuissoal['no_soal'],
-            'isi_soal' => $kuissoal['isi_soal'],
-            'jawaban_soal' => $kuissoal['jawaban_soal'],
-            'pembahasan_soal' => $kuissoal['pembahasan_soal'],
-            'id_kuis' => $kuissoal['id_kuis'],
-        ]);
-    }
-
-    public function createJawaban(array $kuisjawaban)
-    {
-        return KuisJawaban::create([
-            'id_soal' => $kuisjawaban['id_soal'],
-            'opsi_jawaban' => $kuisjawaban['opsi_jawaban'],
-            'isi_jawaban' => $kuisjawaban['isi_jawaban'],
-        ]);
-    }
 
     /**
      * Store a newly created resource in storage.

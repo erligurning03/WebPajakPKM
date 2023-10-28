@@ -97,3 +97,13 @@ a {
     transition: transform 0.2s ease-in-out;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
 }
+
+video{
+    display:block;
+    width:100%;
+}
+
+/* .form-control input{
+    display:block;
+    width:50%;
+} */

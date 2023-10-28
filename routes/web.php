@@ -16,18 +16,23 @@ use App\Http\Controllers\LupaPasswordController;
 */
 
 Auth::routes();
-
-route::group(['middleware' => 'auth'],function(){
+Route::middleware(['auth'])->group(function () {
     Route::get('/login', function () {return view('auth.login');});
+
+    //semua route dalam grup ini hanya bisa diakses siswa
 });
 
-Route::group(['middleware' => 'auth', 'cekstatus'=>'admin'], function(){
+Route::middleware(['auth', 'status:admin'])->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+    //semua route dalam grup ini hanya bisa diakses oleh operator
 });
-Route::group(['middleware' => 'auth', 'cekstatus'=>'user'], function(){
+
+Route::middleware(['auth', 'status:pengguna'])->group(function () {
     Route::get('/index', [App\Http\Controllers\IndexController::class, 'index'])->name('index');
 
 });
+
 
 
 
@@ -41,6 +46,7 @@ Route::get('/lupa-password', [LupaPasswordController::class, 'index'])->name('lu
 Route::get('/kuis', [KuisController::class, 'tampilLevel']);
 Route::get('/kuis/{id}', [KuisController::class, 'tampilSoal']);
 Route::post('/kuis/{id}/proseskuis', [KuisController::class, 'prosesKuis']);
+
 
 Route::get('/', function () {
 
@@ -57,10 +63,12 @@ Route::get('/test', function () {
     return view('loginhomepage');
 });
 
-Route::get('/navbar', function () {
+// Route::get('/navbar', function () {
 
-    return view('navbar/navbar');
-});
+//     return view('navbar/navbar');
+// });
+
+//ini route beranda
 
 Route::get('/beranda', function () {
 
@@ -76,21 +84,36 @@ Route::get('/tontonan', function () {
     return view('beranda/tontonan');
 });
 
+Route::get('/berita', function () {
+
+    return view('beranda/berita');
+});
+Route::get('/list_berita', function () {
+
+    return view('beranda/list_berita');
+});
+
+//ini route semua kuis
 
 
+
+//ini route semua QNA
 Route::get('/qna', function () {
     return view('qna/qna');
 });
-
 Route::get('/layanan', function () {
 
     return view('layanan/layanan');
 });
 
+//ini route profile
+
 Route::get('/profil', function () {
 
     return view('profil/profil');
 });
+
+//ini route semua halaman admin
 Route::get('/admin', function () {
 
     return view('admin/layouts/navbar_admin');

@@ -23,10 +23,16 @@
                         <label for="tahun">Filter berdasarkan :</label>
                         <select name="tahun" id="tahun" class="form-control">
                             <option value="">-- Pilih Tahun --</option>
+                            // nanti disini untuk di filter agar sesuai dengan filterisasi yang dibuat
                             {{-- @foreach ($periode as $data)
-                            {{-- <option value="{{ $data->id }}">{{ $data->periode_mulai }}/{{$data->periode_akhir}}</option> --}}
-                            {{--<option value="#"></option>
+                            <option value="{{ $data->id }}">{{ $data->periode_mulai }}/{{$data->periode_akhir}}</option>
+                            <option value="#"></option>
                             @endforeach --}}
+
+                            //Opsional sebelum dihubungkan ke database
+                            <option value="1">2020/2022</option>
+                            <option value="1">2020/2022</option>
+                            <option value="#"></option>
                         </select>
                     </div>
                     <div class="d-grid gap-2 d-md-block mt-2" data-bs-toggle="modal">
@@ -44,7 +50,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="/tambah_perangkat_desa" method="POST" enctype="multipart/form-data">
+                        <form action="#" method="POST" enctype="multipart/form-data">
                             {{-- pergi ke web.php untuk carik route ini yang bertipe post. actionnya ini adalah yang diketikkan route getnya termasuk tanda slashnya '/'--}}
                             @csrf
                             <div class="mb-3">
@@ -56,7 +62,7 @@
                                 <input type="text" class="form-control" id="jabatan" aria-describedby="emailHelp" name="jabatan">
                             </div>
                             <div class="mb-3">
-                                <label for="exampleInputPassword1" class="form-label">input gambar</label>
+                                <label for="exampleInputPassword1" class="form-label">Input Photo</label>
                                 <input type="file" class="form-control" id="foto" name="foto">
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
@@ -105,14 +111,15 @@
                             {{-- @foreach ($perangkat_desa as $result => $data ) --}}
                             <tr>
                                 <th scope="row">{{$no++}}</th>
-                                <td>nama</td>
-                                <td>Jabatan</td>
-                                <td>periode</td>
+                                <td>Lorem Ipsum</td>
+                                <td>Merupakan lorem ipsum</td>
                                 {{-- <td>{{ $data->foto}}</td> --}}
                                 <td>
                                     <img src="#" alt="" style="object-fit: contain; width:200px; height: 200px; border: 2px solid black;">
                                     {{-- panggil gambar dengan cara ini udah benar --}}
                                 </td>
+                                <td>200</td>
+                                <td>190 Share</td>
                                 <td style="display: flex; justify-content: flex-end;">
                                     <!-- <button type="button" style="width:100px; margin-right: 10px; background-color: #609966; color: white; font-weight:bold;" class="btn" data-toggle="modal" data-target=""><i class="fa-solid fa-circle-info"></i>  Detail</button> -->
                                     <button type="button" style="width:100px; margin-right: 10px; background-color: orange; color: white; font-weight:bold;" class="btn" data-toggle="modal" data-target="#"><i class="fa-solid fa-pen-to-square"></i>  Edit</button>

@@ -21,7 +21,9 @@ class KuisController extends Controller
     public function tampilSoal($id)
     {
         $tampil = KuisSoal::with('kuisJawaban')->where('id_kuis', $id)->get();
-        return view('kuis.kuisSoal', compact('tampil', 'id'));
+        $level = KuisLevel::SELECT('nama_kuis', 'waktu_kuis')->where('id', $id)->get();
+        // dd($level);
+        return view('kuis.kuisSoal', compact('tampil', 'id', 'level'));
     }
 
 

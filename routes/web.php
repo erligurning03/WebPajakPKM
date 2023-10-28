@@ -23,13 +23,20 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::middleware(['auth', 'status:admin'])->group(function () {
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+     //ini route semua halaman admin
+
+    //  Route::get('/admin', function () {return view('admin/layouts/navbar_admin');});
+     Route::get('/admin/tontonan', function () {return view('admin/beranda/tambah_tontonan');});
+     Route::get('/admin/tambahkuis', function () { return view('admin/beranda/tambah_kuis');});
+     Route::post('admin/tambahkuis/post', [KuisController::class, 'createKuis']);
     //semua route dalam grup ini hanya bisa diakses oleh operator
 });
 
 Route::middleware(['auth', 'status:pengguna'])->group(function () {
     Route::get('/index', [App\Http\Controllers\IndexController::class, 'index'])->name('index');
+
 
     //semua route dalam grup ini hanya bisa diakses siswa
 });
@@ -105,7 +112,6 @@ Route::get('/list_berita', function () {
 });
 
 //ini route semua kuis
-Route::get('/kuis', function () {
 
 
 //ini route semua QNA
@@ -123,20 +129,3 @@ Route::get('/profil', function () {
 
     return view('profil/profil');
 });
-
-//ini route semua halaman admin
-Route::get('/admin', function () {
-
-    return view('admin/layouts/navbar_admin');
-});
-
-Route::get('/admin/tontonan', function () {
-
-    return view('admin/beranda/tambah_tontonan');
-});
-
-Route::get('/admin/tambahkuis', function () {
-
-    return view('admin/beranda/tambah_kuis');
-});
-Route::post('admin/tambahkuis/post', [KuisController::class, 'createKuis']);

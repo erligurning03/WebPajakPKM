@@ -12,22 +12,133 @@ class Konten_seeder extends Seeder
 
     public function run(): void
     {
-        // DB::beginTransaction();
-        // try {
-            $konten = DB::table('kontens')->insertGetId([
-                'cover_konten'=>'ini cover konten',
-                'judul_konten'=>'ini judul konten',
-                'url_konten'=>'ini url konten',
-                'deskripsi_konten'=>'ini deskripsi konten',
+        DB::statement('SET FOREIGN_KEY_CHECKS=0');
+        DB::table('kontens')->truncate();
+        DB::table('kontens')->insert([
+            [
+                'id' => '1',
+                'cover_konten'=>'ini cover berita 1',
+                'judul_konten'=>'ini judul berita 1',
+                'url_konten'=>'ini url berita 1',
+                'deskripsi_konten'=> 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, aspernatur?
+                Distinctio nisi sequi sint quia aliquam provident commodi consectetur corporis.',
+                'tipe_konten_id'=>'1',
+                'diupload_oleh'=>1,
+                'created_at'=>now(),
+                'updated_at'=>now(),
+            ],
+            [
+                'id' => '2',
+                'cover_konten'=>'ini cover berita 2',
+                'judul_konten'=>'ini judul berita 2',
+                'url_konten'=>'ini url berita 2',
+                'deskripsi_konten'=> 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis temporibus saepe dolore, repellendus facere assumenda.
+                Harum nostrum modi quaerat, atque id eaque voluptates, totam quis, doloremque veritatis facere voluptatum possimus!',
                 'tipe_konten_id'=>1,
                 'diupload_oleh'=>1,
                 'created_at'=>now(),
                 'updated_at'=>now(),
-            ]);
-            // DB::commit();
-            // dd($konten);
-        // } catch (\Throwable $th) {
-        //     DB::rollBack();
-        // }
+            ],
+            [
+                'id' => '3',
+                'cover_konten'=>'ini cover berita 3',
+                'judul_konten'=>'ini judul berita 3',
+                'url_konten'=>'ini url berita 3',
+                'deskripsi_konten'=> 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis temporibus saepe dolore, repellendus facere assumenda.
+                Harum nostrum modi quaerat, atque id eaque voluptates, totam quis, doloremque veritatis facere voluptatum possimus!',
+                'tipe_konten_id'=>1,
+                'diupload_oleh'=>1,
+                'created_at'=>now(),
+                'updated_at'=>now(),
+            ],
+            [
+                'id' => '4',
+                'cover_konten'=>'ini cover podcast 1',
+                'judul_konten'=>'ini judul podcast 1',
+                'url_konten'=>'ini url podcast 1',
+                'deskripsi_konten'=> 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis temporibus saepe dolore, repellendus facere assumenda.
+                Harum nostrum modi quaerat, atque id eaque voluptates, totam quis, doloremque veritatis facere voluptatum possimus!',
+                'tipe_konten_id'=>2,
+                'diupload_oleh'=>1,
+                'created_at'=>now(),
+                'updated_at'=>now(),
+            ],
+            [
+                'id' => '5',
+                'cover_konten'=>'ini cover podcast 2',
+                'judul_konten'=>'ini judul podcast 2',
+                'url_konten'=>'ini url podcast 2',
+                'deskripsi_konten'=> 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis temporibus saepe dolore, repellendus facere assumenda.
+                Harum nostrum modi quaerat, atque id eaque voluptates, totam quis, doloremque veritatis facere voluptatum possimus!',
+                'tipe_konten_id'=>2,
+                'diupload_oleh'=>1,
+                'created_at'=>now(),
+                'updated_at'=>now(),
+            ],
+            [
+                'id' => '6',
+                'cover_konten'=>'ini cover podcast 3',
+                'judul_konten'=>'ini judul podcast 3',
+                'url_konten'=>'ini url podcast 2',
+                'deskripsi_konten'=> 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis temporibus saepe dolore, repellendus facere assumenda.
+                Harum nostrum modi quaerat, atque id eaque voluptates, totam quis, doloremque veritatis facere voluptatum possimus!',
+                'tipe_konten_id'=>2,
+                'diupload_oleh'=>1,
+                'created_at'=>now(),
+                'updated_at'=>now(),
+            ],
+            [
+                'id' => '7',
+                'cover_konten'=>'ini cover tontonan 1',
+                'judul_konten'=>'ini judul tontonan 1',
+                'url_konten'=>'ini url tontonan 1',
+                'deskripsi_konten'=> 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis temporibus saepe dolore, repellendus facere assumenda.
+                Harum nostrum modi quaerat, atque id eaque voluptates, totam quis, doloremque veritatis facere voluptatum possimus!',
+                'tipe_konten_id'=>3,
+                'diupload_oleh'=>1,
+                'created_at'=>now(),
+                'updated_at'=>now(),
+            ],
+            [
+                'id' => '8',
+                'cover_konten'=>'ini cover tontonan 2',
+                'judul_konten'=>'ini judul tontonan 2',
+                'url_konten'=>'ini url tontonan 2',
+                'deskripsi_konten'=> 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis temporibus saepe dolore, repellendus facere assumenda.
+                Harum nostrum modi quaerat, atque id eaque voluptates, totam quis, doloremque veritatis facere voluptatum possimus!',
+                'tipe_konten_id'=>3,
+                'diupload_oleh'=>1,
+                'created_at'=>now(),
+                'updated_at'=>now(),
+            ],
+            [
+                'id' => '9',
+                'cover_konten'=>'ini cover tontonan 3',
+                'judul_konten'=>'ini judul tontonan 3',
+                'url_konten'=>'ini url tontonan 3',
+                'deskripsi_konten'=> 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis temporibus saepe dolore, repellendus facere assumenda.
+                Harum nostrum modi quaerat, atque id eaque voluptates, totam quis, doloremque veritatis facere voluptatum possimus!',
+                'tipe_konten_id'=>3,
+                'diupload_oleh'=>1,
+                'created_at'=>now(),
+                'updated_at'=>now(),
+            ],
+            [
+                'id' => '10',
+                'cover_konten'=>'ini cover tontonan 4',
+                'judul_konten'=>'ini judul tontonan 3',
+                'url_konten'=>'ini url tontonan 3',
+                'deskripsi_konten'=> 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis temporibus saepe dolore, repellendus facere assumenda.
+                Harum nostrum modi quaerat, atque id eaque voluptates, totam quis, doloremque veritatis facere voluptatum possimus!',
+                'tipe_konten_id'=>1,
+                'diupload_oleh'=>1,
+                'created_at'=>now(),
+                'updated_at'=>now(),
+            ],
+        ]);
+    }
+    public function down(): void
+    {
+        Schema::dropIfExists('kontens');
     }
 }

@@ -2,8 +2,11 @@
 @section('container')
 
 <div class="row">
-    <button type="button" class="btn btn-warning" style="text-align: center; width:110px; height:35px;";><i class="fa-solid fa-arrow-left"></i> Kembali</button>
-    <h1><b>Judul Berita </b></h1>
+    <form action="/index/berita">
+        <button type="submit" class="btn btn-warning" style="text-align: center; width:110px; height:35px;";><i class="fa-solid fa-arrow-left"></i> Kembali</button>
+        </form>
+    @foreach ($listKonten as $konten)
+    <h1><b>{{ Str::title($konten->judul_konten) }}</b></h1>
     <h6>16/9/2023, 12.00 WIB</h6>
     <div class="col-md-12">
         <div class="embed-responsive embed-responsive-16by9">
@@ -13,7 +16,7 @@
         <div class="row">
           <div class="col-6 col-md-6" style="text-align:left">
             <i class="far fa-heart fa-xl love-icon action-icon"></i>
-            <i class="fas fa-heart fa-xl love-icon action-icon text-danger"></i>            
+            <i class="fas fa-heart fa-xl love-icon action-icon text-danger"></i>
             <b>100</b>
           </div>
           <div class="col-6 col-md-6" style="text-align: right">
@@ -23,12 +26,11 @@
           </div>
         </div>
         <div class="isi-konten">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non quasi ad maiores hic dicta aliquam odit minima tempora iusto sequi saepe praesentium, ducimus tempore explicabo, fugit iste, alias repellat nam.</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto obcaecati molestiae aspernatur unde, omnis deleniti iste rem commodi architecto nihil cumque delectus inventore quos explicabo officiis perferendis doloremque maxime. Qui!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste amet quidem cum ratione voluptates magni aliquam! Facilis ad, quasi quaerat doloribus doloremque itaque veritatis totam at nam corporis eveniet perferendis!</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, labore velit neque, facere facilis non dolores corrupti consectetur suscipit fugit numquam! Itaque doloribus nostrum libero sequi fugit debitis eaque veritatis.</p>
+            <p> {{$konten->deskripsi_konten}} </p>
         </div>
     </div>
+    @endforeach
+
 </div>
 
 

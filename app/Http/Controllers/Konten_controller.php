@@ -13,14 +13,79 @@ class Konten_controller extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+
+    //berita
+    public function indexB()
     {
         $listKonten = Konten::with('KomentarKonten')
+            ->where('tipe_konten_id', '1')
             ->with('LikeKonten')
             ->with('ShareKonten')
             ->orderBy('created_at', 'DESC')
             ->get();
-        dd($listKonten->toArray());
+        // dd($listKonten->toArray());
+        return view('beranda.list_berita', compact('listKonten'));
+    }
+    public function showB($id)
+    {
+        $listKonten = Konten::with('KomentarKonten')
+            ->where('tipe_konten_id', '1')
+            ->where('id', $id)
+            ->with('LikeKonten')
+            ->with('ShareKonten')
+            ->orderBy('created_at', 'DESC')
+            ->get();
+        // dd($listKonten->toArray());
+        return view('beranda.berita', compact('listKonten', 'id'));
+    }
+
+    //Podcast
+    public function indexP()
+    {
+        $listKonten = Konten::with('KomentarKonten')
+            ->where('tipe_konten_id', '2')
+            ->with('LikeKonten')
+            ->with('ShareKonten')
+            ->orderBy('created_at', 'DESC')
+            ->get();
+        // dd($listKonten->toArray());
+        return view('beranda.list_podcast', compact('listKonten'));
+    }
+    public function showP($id)
+    {
+        $listKonten = Konten::with('KomentarKonten')
+            ->where('tipe_konten_id', '2')
+            ->where('id', $id)
+            ->with('LikeKonten')
+            ->with('ShareKonten')
+            ->orderBy('created_at', 'DESC')
+            ->get();
+        // dd($listKonten->toArray());
+        return view('beranda.podcast', compact('listKonten', 'id'));
+    }
+    //Tontonan
+    public function indexT()
+    {
+        $listKonten = Konten::with('KomentarKonten')
+            ->where('tipe_konten_id', '3')
+            ->with('LikeKonten')
+            ->with('ShareKonten')
+            ->orderBy('created_at', 'DESC')
+            ->get();
+        // dd($listKonten->toArray());
+        return view('beranda.list_tontonan', compact('listKonten'));
+    }
+    public function showT($id)
+    {
+        $listKonten = Konten::with('KomentarKonten')
+            ->where('tipe_konten_id', '3')
+            ->where('id', $id)
+            ->with('LikeKonten')
+            ->with('ShareKonten')
+            ->orderBy('created_at', 'DESC')
+            ->get();
+        // dd($listKonten->toArray());
+        return view('beranda.tontonan', compact('listKonten', 'id'));
     }
 
     /**

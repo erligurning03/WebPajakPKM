@@ -3,6 +3,7 @@
 use App\Http\Controllers\KuisController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LupaPasswordController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +18,7 @@ use App\Http\Controllers\LupaPasswordController;
 
 Auth::routes();
 Route::middleware(['auth'])->group(function () {
-    Route::get('/login', function () {return view('auth.login');});
+    Route::get('/', function () {return view('auth.login');});
 
     //semua route dalam grup ini hanya bisa diakses siswa - siswa
 });
@@ -36,41 +37,22 @@ Route::middleware(['auth', 'status:admin'])->group(function () {
 
 Route::middleware(['auth', 'status:pengguna'])->group(function () {
     Route::get('/index', [App\Http\Controllers\IndexController::class, 'index'])->name('index');
-
+    //berita
+    Route::get('/index/berita', [App\Http\Controllers\Konten_controller::class, 'indexB'])->name('berita');
+    Route::get('/index/berita/{id}',[App\Http\Controllers\Konten_controller::class, 'showB']);
+    //podcast
+    Route::get('/index/podcast', [App\Http\Controllers\Konten_controller::class, 'indexP'])->name('podcast');
+    Route::get('/index/podcast/{id}',[App\Http\Controllers\Konten_controller::class, 'showP']);
+    //tontonan
+    Route::get('/index/tontonan', [App\Http\Controllers\Konten_controller::class, 'indexT'])->name('tontonan');
+    Route::get('/index/tontonan/{id}',[App\Http\Controllers\Konten_controller::class, 'showT']);
 
     //semua route dalam grup ini hanya bisa diakses siswa
 });
 
-
-
-
-
-
-
-Auth::routes();
-Route::get('/', function () {return view('auth.login');});
-Route::get('/daftar', function () {return view('auth.login');});
-Route::get('/lupa-password', [LupaPasswordController::class, 'index'])->name('lupa-password');
-
 Route::get('/kuis', [KuisController::class, 'tampilLevel']);
 Route::get('/kuis/{id}', [KuisController::class, 'tampilSoal']);
 Route::post('/kuis/{id}/proseskuis', [KuisController::class, 'prosesKuis']);
-
-
-Route::get('/', function () {
-
-    return view('auth/login');
-});
-
-Route::get('/logins', function () {
-
-    return view('login');
-});
-
-Route::get('/test', function () {
-
-    return view('loginhomepage');
-});
 
 // Route::get('/navbar', function () {
 

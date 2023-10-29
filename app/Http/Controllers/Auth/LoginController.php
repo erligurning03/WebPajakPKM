@@ -26,7 +26,6 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
         protected function redirectTo(){
             if(Auth()->user()->status=='admin'){
                 return route('home');
@@ -59,7 +58,7 @@ class LoginController extends Controller
                 return redirect()->route('index');
             }
         }else{
-            return redirect()->route('login')->with('error', 'email adn password are wrong');
+            return redirect()->route('login')->with('error', 'email and password are wrong');
         }
     }
 }

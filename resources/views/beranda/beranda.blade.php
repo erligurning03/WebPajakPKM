@@ -89,102 +89,66 @@
     {{-- baris video pembelajaran rujak --}}
     <div class="row">
         <h1><b>Tontonan RUJAK</b></h1>
+        @foreach ($listKonten->where('tipe_konten_id', 3)->take(3) as $konten)
         <div class="col-md-4">
+            <a href="/index/tontonan/{{$konten->id}}" style="color: black">
             <div class="card mb-3">
-            <img src="{{asset('img/cover_konten/cover_pengertian_pajak.jpeg')}}" class="card-img-top  img-fluid" alt="...">
+            <img src="{{asset('img/podcast1.jpg')}}" width="200" height="200" class="card-img-top  img-fluid" alt="...">
             <div class="card-body text-center">
-                <h5 class="card-title"><a href="{{ url('tontonan') }}" style="color: black">Apa itu pajak ?</a></h5>
+                <h5 class="card-title">{{Str::title($konten->judul_konten)}}</h5>
                 {{-- <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> --}}
             </div>
             </div>
+            </a>
         </div>
-        <div class="col-md-4">
-            <div class="card mb-3">
-            <img src="{{asset('img/podcast1.jpg')}}" class="card-img-top  img-fluid" alt="...">
-            <div class="card-body text-center">
-                <h5 class="card-title">jenis-jenis pajak</h5>
-                {{-- <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> --}}
-            </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card mb-3">
-            <img src="{{asset('img/podcast3.jpg')}}" class="card-img-top  img-fluid" alt="...">
-            <div class="card-body text-center">
-                <h5 class="card-title">dirjen pajak ?</h5>
-                {{-- <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> --}}
-            </div>
-            </div>
-        </div>
-        <button type="button" class="btn btn-warning">Semua Tontonan    <i class="fa-solid fa-arrow-right"></i></button>
+        @endforeach
+        <form action="/index/tontonan">
+            <button type="submit" class="btn btn-warning" style="width: 100%">Semua Tontonan &nbsp;<i class="fa-solid fa-arrow-right"></i></button>
+            </form>
     </div>
 
 {{-- podcast rujak --}}
   <div class="row">
     <h1><b>Podcast RUJAK</b></h1>
+    @foreach ($listKonten->where('tipe_konten_id', 2)->take(3) as $konten)
     <div class="col-md-4">
+    <a href="/index/podcast/{{$konten->id}}" style="color: black">
       <div class="card mb-3">
-        <img src="{{asset('img/podcast2.jpg')}}" class="card-img-top rounded-circle img-fluid" alt="...">
+        <img src="{{asset('img/podcast1.jpg')}}" class="card-img-top img-fluid" alt="...">
         <div class="card-body text-center">
-          <h5 class="card-title">Apa itu pajak ?</h5>
+          <h5 class="card-title">{{Str::title($konten->judul_konten)}}</h5>
           {{-- <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> --}}
         </div>
       </div>
+    </a>
     </div>
-    <div class="col-md-4">
-      <div class="card mb-3">
-        <img src="{{asset('img/podcast1.jpg')}}" class="card-img-top rounded-circle img-fluid" alt="...">
-        <div class="card-body text-center">
-          <h5 class="card-title">jenis-jenis pajak</h5>
-          {{-- <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> --}}
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card mb-3">
-        <img src="{{asset('img/podcast3.jpg')}}" class="card-img-top rounded-circle img-fluid" alt="...">
-        <div class="card-body text-center">
-          <h5 class="card-title">dirjen pajak ?</h5>
-          {{-- <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> --}}
-        </div>
-      </div>
-    </div>
-    <button type="button" class="btn btn-warning">Semua Podcast   <i class="fa-solid fa-arrow-right"></i></button>
+    @endforeach
+    <form action="/index/podcast">
+        <button type="submit" class="btn btn-warning" style="width: 100%">Semua Podcast &nbsp;<i class="fa-solid fa-arrow-right"></i></button>
+        </form>
   </div>
   {{-- berita rujak --}}
   <div class="row">
     <h1><b>Berita RUJAK</b></h1>
+    @foreach ($listKonten->where('tipe_konten_id', 1)->take(3) as $konten)
     <div class="col-md-4">
-      <div class="card mb-3">
-        <img src="{{asset('img/podcast2.jpg')}}" class="card-img-top  img-fluid" alt="...">
-        <div class="card-body text-center">
-          <h5 class="card-title">Apa itu pajak ?</h5>
-          {{-- <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> --}}
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card mb-3">
-        <img src="{{asset('img/podcast1.jpg')}}" class="card-img-top  img-fluid" alt="...">
-        <div class="card-body text-center">
-          <h5 class="card-title">jenis-jenis pajak</h5>
-          {{-- <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> --}}
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
+        <a href="/index/berita/{{$konten->id}}" style="color: black">
       <div class="card mb-3">
         <img src="{{asset('img/podcast3.jpg')}}" class="card-img-top  img-fluid" alt="...">
         <div class="card-body text-center">
-          <h5 class="card-title">dirjen pajak ?</h5>
+          <h5 class="card-title">{{Str::title($konten->judul_konten)}}</h5>
           {{-- <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> --}}
         </div>
       </div>
+    </a>
     </div>
-    <button type="button" class="btn btn-warning">Semua Berita   <i class="fa-solid fa-arrow-right"></i></button>
+    @endforeach
+    <form action="/index/berita">
+    <button type="submit" class="btn btn-warning" style="width: 100%">Semua Berita &nbsp;<i class="fa-solid fa-arrow-right"></i></button>
+    </form>
   </div>
 
 
-      
+
 
       @endsection

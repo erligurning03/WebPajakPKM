@@ -4,6 +4,7 @@ use App\Http\Controllers\KuisController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LupaPasswordController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,8 +20,8 @@ use Illuminate\Support\Facades\Auth;
 Auth::routes();
 Route::middleware(['auth'])->group(function () {
     Route::get('/', function () {return view('auth.login');});
-
-    //semua route dalam grup ini hanya bisa diakses siswa - siswa
+    Route::get('logout', [LoginController::class,'logout']);
+    //route dasar tanpa cek status
 });
 
 Route::middleware(['auth', 'status:admin'])->group(function () {

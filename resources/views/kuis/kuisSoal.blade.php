@@ -3,21 +3,23 @@
 
 <div class="container text-left">
     <div class="row justify-content-left">
-        <div class="col-6 border border-5 bg-warning">
-            <h2><a href="#"><strong>LEVEL</strong></a></h2>
-        </div>
-        <div class="col-6 border border-5 bg-warning">
-            <h2><a href=""><strong>PEMENANG</strong></a></h2>
-        </div>
 
         <div class="card mt-4" style="">
             @foreach ($level as $data1)
-            <div class="card-head"><h4>{{$data1->nama_kuis}}</h4></div>
-            @endforeach
-            <div id="timer">
-                <span id="minutes">00</span>:<span id="seconds">00</span>
+            <div class="d-flex justify-content-center">
+                <div class="row">
+                    <h3>{{$data1->nama_kuis}}</h3>
+                </div>
+
             </div>
-            <form action="/kuis/{{ $id }}/proseskuis" method="post" enctype="multipart/form-data">
+            <div class="d-flex justify-content-center">
+                <div id="timer" class="row">
+                    <h4><span id="minutes">00</span>:<span id="seconds">00</span></h4>
+                </div>
+            </div>
+            @endforeach
+
+            <form id="kuis-form" action="/kuis/{{ $id }}/proseskuis" method="post" enctype="multipart/form-data">
                 @csrf
                 @foreach ($tampil as $data)
                 <div class="card-body">
@@ -32,11 +34,11 @@
                     @endforeach
                 </div>
                 @endforeach
-                <button type="submit">Submit</button>
+                <button class="btn btn-primary" type="submit">Submit</button>
                 @foreach ($level as $data1)
                 <script>
                     // Set the timer duration (in seconds)
-                    const timerDuration = {{ $data1->waktu_kuis }}*60; // 10 minutes (adjust as needed)
+                    const timerDuration = {{$data1->waktu_kuis}}*60; // 10 minutes (adjust as needed)
 
                     // Function to start the timer
                     function startTimer(duration, display) {
@@ -53,7 +55,7 @@
                             if (--timer < 0) {
                                 clearInterval(countdown);
                                 // Optionally, you can submit the form when the timer expires
-                                // document.querySelector('form').submit();
+                                document.getElementById('kuis-form').submit();
                             }
                         }, 1000);
                     }

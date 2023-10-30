@@ -38,6 +38,7 @@ Route::middleware(['auth', 'status:admin'])->group(function () {
 
 Route::middleware(['auth', 'status:pengguna'])->group(function () {
     Route::get('/index', [App\Http\Controllers\IndexController::class, 'index'])->name('index');
+    Route::get('/profil', [App\Http\Controllers\IndexController::class, 'editp'])->name('profil');
     //berita
     Route::get('/index/berita', [App\Http\Controllers\Konten_controller::class, 'indexB'])->name('berita');
     Route::get('/index/berita/{id}',[App\Http\Controllers\Konten_controller::class, 'showB']);
@@ -106,9 +107,3 @@ Route::get('/layanan', function () {
     return view('layanan/layanan');
 });
 
-//ini route profile
-
-Route::get('/profil', function () {
-
-    return view('profil/profil');
-});

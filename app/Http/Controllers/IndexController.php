@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Konten;
 // use App\Models\TipeKonten;
-// use App\Models\User;
+use App\Models\User;
 // use Error;
 use Illuminate\Http\Request;
 
@@ -22,7 +22,10 @@ class IndexController extends Controller
         // dd($listKonten->toArray());
         return view('beranda.beranda', compact('listKonten'));
     }
-
+    public function editp(Request $request)
+    {
+        return view('profil.profil');
+    }
     /**
      * Show the form for creating a new resource.
      */

@@ -15,4 +15,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('konten', Konten_controller::class);
+// Route::resource('konten', Konten_controller::class);

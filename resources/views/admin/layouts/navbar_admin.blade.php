@@ -72,12 +72,12 @@
             outline: none !important;
             box-shadow: none !important;
         }
-        
+
         .dropdown {
         position: relative;
         display: inline-block;
         }
-        
+
         .dropdown-content {
         position: absolute;
         background-color: #f9f9f9;
@@ -89,7 +89,7 @@
         display: none;
         right: 0.75rem;
         }
-        
+
         .dropdown:hover .dropdown-content {
         display: block;
         }
@@ -121,7 +121,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="{{ url('dashboard-admin') }}">
+                <a class="nav-link" href="{{ route('home') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -140,14 +140,9 @@
                 </a>
                 <div id="collapsePerangkatDesa" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Pilih Aksi:</h6>
-                        <a class="collapse-item" href="#">Tontonan</a>
-                        
-                        <a class="collapse-item" href="#">Podcast</a>
-                        {{-- <a class="collapse-item" href="#">Tambah Podcast</a> --}}
-                        <a class="collapse-item" href="#">Berita</a>
-                        {{-- <a class="collapse-item" href="#">Tambah Berita</a> --}}
-                        <a class="collapse-item" href="#">Tambah konten</a>
+                        <h6 class="collapse-header">CRUD konten:</h6>
+                        <a class="collapse-item" href="{{ route('konten.index') }}">List Konten</a>
+                        <a class="collapse-item" href="{{ route('konten.create') }}">Tambah konten</a>
                         {{-- <a class="collapse-item" href="{{ url('/admin/tambah/perangkat') }}">Tambah Perangkat Desa</a> --}}
                     </div>
                 </div>
@@ -165,12 +160,12 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Pilih Aksi:</h6>
                         <a class="collapse-item" href="#">Level Dasar</a>
-                        <a class="collapse-item" href="#">Tambah Pertanyaan Dasar</a> 
-                        <a class="collapse-item" href="#">Level Menengah</a> 
+                        <a class="collapse-item" href="#">Tambah Pertanyaan Dasar</a>
+                        <a class="collapse-item" href="#">Level Menengah</a>
                         <a class="collapse-item" href="#">Tambah Pertanyaan Menengah</a>
-                        <a class="collapse-item" href="#">Level Ahli</a> 
+                        <a class="collapse-item" href="#">Level Ahli</a>
                         <a class="collapse-item" href="#">Tambah Pertanyaan Ahli</a>
-                        <a class="collapse-item" href="#">Pemenang</a> 
+                        <a class="collapse-item" href="#">Pemenang</a>
                     </div>
                 </div>
             </li>
@@ -404,7 +399,7 @@
                                     Logout
                                 </a>
                             </div>
-                             
+
                         </li>
 
                     </ul>

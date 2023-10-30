@@ -22,6 +22,10 @@ class Konten extends Model
         'diupload_oleh',
     ];
 
+    public function TipeKonten() {
+        return $this->hasOne(TipeKonten::class,'id','tipe_konten_id');
+    }
+
     public function KomentarKonten() {
         return $this->hasMany(Komentar_konten::class, 'konten_id', 'id');
     }

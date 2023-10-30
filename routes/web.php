@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LupaPasswordController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Konten_controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,11 +29,13 @@ Route::middleware(['auth', 'status:admin'])->group(function () {
     Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
      //ini route semua halaman admin
-
+    Route::resource('konten',Konten_controller::class);
+        // Route::get('','index')->name('konten');
+        // Route::create('','konten.create')->name('konten.create');
     //  Route::get('/admin', function () {return view('admin/layouts/navbar_admin');});
-     Route::get('/admin/tontonan', function () {return view('admin/beranda/tambah_tontonan');});
-     Route::get('/admin/tambahkuis', function () { return view('admin/beranda/tambah_kuis');});
-     Route::post('admin/tambahkuis/post', [KuisController::class, 'createKuis']);
+    //  Route::get('/admin/tontonan', function () {return view('admin/beranda/tambah_tontonan');});
+    //  Route::get('/admin/tambahkuis', function () { return view('admin/beranda/tambah_kuis');});
+    //  Route::post('admin/tambahkuis/post', [KuisController::class, 'createKuis']);
     //semua route dalam grup ini hanya bisa diakses oleh operator
 });
 

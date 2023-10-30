@@ -2,13 +2,7 @@
 @section('container')
 
 <div class="container text-left">
-    <div class="row justify-content-left">
-        <div class="col-6 border border-5 bg-warning">
-            <h2><a href="#"><strong>LEVEL</strong></a></h2>
-        </div>
-        <div class="col-6 border border-5 bg-warning">
-            <h2><a href=""><strong>PEMENANG</strong></a></h2>
-        </div>
+    <div class="row justify-content-left">  
 
         <div class="card mt-4" style="">
             {{-- <form action="/kuis/{{ $id }}/proseskuis" method="post" enctype="multipart/form-data">

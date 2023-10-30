@@ -41,6 +41,7 @@ Route::middleware(['auth', 'status:admin'])->group(function () {
 
 Route::middleware(['auth', 'status:pengguna'])->group(function () {
     Route::get('/index', [App\Http\Controllers\IndexController::class, 'index'])->name('index');
+    Route::get('/profil', [App\Http\Controllers\IndexController::class, 'editp'])->name('profil');
     //berita
     Route::get('/index/berita', [App\Http\Controllers\Konten_controller::class, 'indexB'])->name('berita');
     Route::get('/index/berita/{id}',[App\Http\Controllers\Konten_controller::class, 'showB']);
@@ -98,20 +99,19 @@ Route::get('/list_berita', function () {
 });
 
 //ini route semua kuis
+// Show the edit form
+Route::get('/kuisAdmin/{id}/edit', [KuisController::class, 'edit']);
 
+// Handle form submission
+Route::put('/kuisAdmin/{id}',[KuisController::class, 'update'])->name('kuis.update');
 
 //ini route semua QNA
 Route::get('/qna', function () {
-    return view('qna/qna');
+
+    return view('qna/qna2');
 });
 Route::get('/layanan', function () {
 
     return view('layanan/layanan');
 });
 
-//ini route profile
-
-Route::get('/profil', function () {
-
-    return view('profil/profil');
-});

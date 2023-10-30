@@ -7,9 +7,10 @@
         <button type="submit" class="btn btn-warning" style="text-align: center; width:110px; height:35px;";><i class="fa-solid fa-arrow-left"></i> Kembali</button>
         </form>
     <h1><b>Podcast RUJAK</b></h1>
+    {{-- button search --}}
     <div class="input-group mb-4 mt-5">
-      <span class="input-group-text" id="basic-addon1" style="cursor: pointer;" onclick="#"><i class="bi bi-search"></i></span>
-      <input type="text" class="form-control" placeholder="Mau nonton apa hari ini ?" aria-label="Cari" aria-describedby="basic-addon1" id="search-input" style="width:60px;">
+      <span class="input-group-text border border-dark" id="basic-addon1" style="cursor: pointer;" onclick="#"><i class="bi bi-search"></i></span>
+      <input type="text" class="form-control border border-dark" placeholder="Mau nonton apa hari ini ?" aria-label="Cari" aria-describedby="basic-addon1" id="search-input" style="width:4%;">
     </div>
     @foreach ($listKonten as $konten)
     <div class="col-sm-4 col-md-4 ">

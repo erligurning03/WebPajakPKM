@@ -100,7 +100,8 @@ Route::get('/list_berita', function () {
 
 //ini route semua QNA
 Route::get('/qna', function () {
-    return view('qna/qna');
+
+    return view('qna/qna2');
 });
 Route::get('/layanan', function () {
 

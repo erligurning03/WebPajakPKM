@@ -40,6 +40,7 @@
         display: block;
         }
     </style>
+    @yield('css')
   </head>
   <body>
     <nav class="navbarbro fixed-top" style="margin: auto">

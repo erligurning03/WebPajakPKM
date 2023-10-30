@@ -96,7 +96,11 @@ Route::get('/list_berita', function () {
 });
 
 //ini route semua kuis
+// Show the edit form
+Route::get('/kuisAdmin/{id}/edit', [KuisController::class, 'edit']);
 
+// Handle form submission
+Route::put('/kuisAdmin/{id}',[KuisController::class, 'update'])->name('kuis.update');
 
 //ini route semua QNA
 Route::get('/qna', function () {

@@ -19,9 +19,9 @@ class KuisSeeder extends Seeder
     public function run(): void
     {
         $kuislevels = [
-            ['nama_kuis' => 'Kuis level dasar', 'waktu_kuis' => 5],
-            ['nama_kuis' => 'Kuis level menengah', 'waktu_kuis' => 10],
-            ['nama_kuis' => 'Kuis level ahli', 'waktu_kuis' => 15],
+            ['nama_kuis' => 'KUIS LEVEL DASAR', 'waktu_kuis' => 20],
+            ['nama_kuis' => 'KUIS LEVEL MENENGAH', 'waktu_kuis' => 25],
+            ['nama_kuis' => 'KUIS LEVEL AHLI', 'waktu_kuis' => 30],
         ];
 
         foreach ($kuislevels as $kuislevel) {
@@ -29,40 +29,76 @@ class KuisSeeder extends Seeder
         }
 
         $kuissoals = [
-            ['no_soal' => 1, 'isi_soal' => 'isi soal pertama', 'jawaban_soal' => 'A', 'pembahasan_soal' => 'penbahasan soal pertama', 'id_kuis' => 1],
-            ['no_soal' => 2, 'isi_soal' => 'isi soal kedua', 'jawaban_soal' => 'B', 'pembahasan_soal' => 'penbahasan soal kedua', 'id_kuis' => 1],
-            ['no_soal' => 3, 'isi_soal' => 'isi soal ketiga', 'jawaban_soal' => 'C', 'pembahasan_soal' => 'penbahasan soal ketiga', 'id_kuis' => 1],
-            ['no_soal' => 4, 'isi_soal' => 'isi soal keempat', 'jawaban_soal' => 'D', 'pembahasan_soal' => 'penbahasan soal keempat', 'id_kuis' => 1],
+            ['no_soal' => 1, 'isi_soal' => 'isi soal pertama', 'jawaban_soal' => 'A', 'pembahasan_soal' => 'pembahasan soal pertama', 'id_kuis' => 1],
+            ['no_soal' => 2, 'isi_soal' => 'isi soal kedua', 'jawaban_soal' => 'B', 'pembahasan_soal' => 'pembahasan soal kedua', 'id_kuis' => 1],
+            ['no_soal' => 3, 'isi_soal' => 'isi soal ketiga', 'jawaban_soal' => 'C', 'pembahasan_soal' => 'pembahasan soal ketiga', 'id_kuis' => 1],
+            ['no_soal' => 4, 'isi_soal' => 'isi soal keempat', 'jawaban_soal' => 'D', 'pembahasan_soal' => 'pembahasan soal keempat', 'id_kuis' => 1],
+            ['no_soal' => 5, 'isi_soal' => 'isi soal kelima', 'jawaban_soal' => 'A', 'pembahasan_soal' => 'pembahasan soal kelima', 'id_kuis' => 1],
+            ['no_soal' => 6, 'isi_soal' => 'isi soal keenam', 'jawaban_soal' => 'B', 'pembahasan_soal' => 'pembahasan soal keenam', 'id_kuis' => 1],
+            ['no_soal' => 7, 'isi_soal' => 'isi soal ketujuh', 'jawaban_soal' => 'C', 'pembahasan_soal' => 'pembahasan soal ketujuh', 'id_kuis' => 1],
+            ['no_soal' => 8, 'isi_soal' => 'isi soal kedelapan', 'jawaban_soal' => 'D', 'pembahasan_soal' => 'pembahasan soal kedelapan', 'id_kuis' => 1],
+            ['no_soal' => 9, 'isi_soal' => 'isi soal kesembilan', 'jawaban_soal' => 'A', 'pembahasan_soal' => 'pembahasan soal kesembilan', 'id_kuis' => 1],
+            ['no_soal' => 10, 'isi_soal' => 'isi soal kesempuluh', 'jawaban_soal' => 'B', 'pembahasan_soal' => 'pembahasan soal kesempuluh', 'id_kuis' => 1],
+
+            ['no_soal' => 1, 'isi_soal' => 'isi soal pertama', 'jawaban_soal' => 'A', 'pembahasan_soal' => 'pembahasan soal pertama', 'id_kuis' => 2],
+            ['no_soal' => 2, 'isi_soal' => 'isi soal kedua', 'jawaban_soal' => 'B', 'pembahasan_soal' => 'pembahasan soal kedua', 'id_kuis' => 2],
+            ['no_soal' => 3, 'isi_soal' => 'isi soal ketiga', 'jawaban_soal' => 'C', 'pembahasan_soal' => 'pembahasan soal ketiga', 'id_kuis' => 2],
+            ['no_soal' => 4, 'isi_soal' => 'isi soal keempat', 'jawaban_soal' => 'D', 'pembahasan_soal' => 'pembahasan soal keempat', 'id_kuis' => 2],
+            ['no_soal' => 5, 'isi_soal' => 'isi soal kelima', 'jawaban_soal' => 'A', 'pembahasan_soal' => 'pembahasan soal kelima', 'id_kuis' => 2],
+            ['no_soal' => 6, 'isi_soal' => 'isi soal keenam', 'jawaban_soal' => 'B', 'pembahasan_soal' => 'pembahasan soal keenam', 'id_kuis' => 2],
+            ['no_soal' => 7, 'isi_soal' => 'isi soal ketujuh', 'jawaban_soal' => 'C', 'pembahasan_soal' => 'pembahasan soal ketujuh', 'id_kuis' => 2],
+            ['no_soal' => 8, 'isi_soal' => 'isi soal kedelapan', 'jawaban_soal' => 'D', 'pembahasan_soal' => 'pembahasan soal kedelapan', 'id_kuis' => 2],
+            ['no_soal' => 9, 'isi_soal' => 'isi soal kesembilan', 'jawaban_soal' => 'A', 'pembahasan_soal' => 'pembahasan soal kesembilan', 'id_kuis' => 2],
+            ['no_soal' => 10, 'isi_soal' => 'isi soal kesempuluh', 'jawaban_soal' => 'B', 'pembahasan_soal' => 'pembahasan soal kesempuluh', 'id_kuis' => 2],
+
+            ['no_soal' => 1, 'isi_soal' => 'isi soal pertama', 'jawaban_soal' => 'A', 'pembahasan_soal' => 'pembahasan soal pertama', 'id_kuis' => 3],
+            ['no_soal' => 2, 'isi_soal' => 'isi soal kedua', 'jawaban_soal' => 'B', 'pembahasan_soal' => 'pembahasan soal kedua', 'id_kuis' => 3],
+            ['no_soal' => 3, 'isi_soal' => 'isi soal ketiga', 'jawaban_soal' => 'C', 'pembahasan_soal' => 'pembahasan soal ketiga', 'id_kuis' => 3],
+            ['no_soal' => 4, 'isi_soal' => 'isi soal keempat', 'jawaban_soal' => 'D', 'pembahasan_soal' => 'pembahasan soal keempat', 'id_kuis' => 3],
+            ['no_soal' => 5, 'isi_soal' => 'isi soal kelima', 'jawaban_soal' => 'A', 'pembahasan_soal' => 'pembahasan soal kelima', 'id_kuis' => 3],
+            ['no_soal' => 6, 'isi_soal' => 'isi soal keenam', 'jawaban_soal' => 'B', 'pembahasan_soal' => 'pembahasan soal keenam', 'id_kuis' => 3],
+            ['no_soal' => 7, 'isi_soal' => 'isi soal ketujuh', 'jawaban_soal' => 'C', 'pembahasan_soal' => 'pembahasan soal ketujuh', 'id_kuis' => 3],
+            ['no_soal' => 8, 'isi_soal' => 'isi soal kedelapan', 'jawaban_soal' => 'D', 'pembahasan_soal' => 'pembahasan soal kedelapan', 'id_kuis' => 3],
+            ['no_soal' => 9, 'isi_soal' => 'isi soal kesembilan', 'jawaban_soal' => 'A', 'pembahasan_soal' => 'pembahasan soal kesembilan', 'id_kuis' => 3],
+            ['no_soal' => 10, 'isi_soal' => 'isi soal kesempuluh', 'jawaban_soal' => 'B', 'pembahasan_soal' => 'pembahasan soal kesempuluh', 'id_kuis' => 3],
+
         ];
 
         foreach ($kuissoals as $kuissoal) {
             KuisSoal::create($kuissoal);
         }
 
-        $kuisjawabans = [
-            ['id_soal' => 1, 'opsi_jawaban' => 'A', 'isi_jawaban' => 'jawaban A'],
-            ['id_soal' => 1, 'opsi_jawaban' => 'B', 'isi_jawaban' => 'jawaban B'],
-            ['id_soal' => 1, 'opsi_jawaban' => 'C', 'isi_jawaban' => 'jawaban C'],
-            ['id_soal' => 1, 'opsi_jawaban' => 'D', 'isi_jawaban' => 'jawaban D'],
+        $kuisJawabans = [];
 
-            ['id_soal' => 2, 'opsi_jawaban' => 'A', 'isi_jawaban' => 'jawaban A'],
-            ['id_soal' => 2, 'opsi_jawaban' => 'B', 'isi_jawaban' => 'jawaban B'],
-            ['id_soal' => 2, 'opsi_jawaban' => 'C', 'isi_jawaban' => 'jawaban C'],
-            ['id_soal' => 2, 'opsi_jawaban' => 'D', 'isi_jawaban' => 'jawaban D'],
+        for ($i = 1; $i <= 30; $i++) {
+            // For each $i, create four rows for options A, B, C, and D
+            $kuisJawabans[] = [
+                'id_soal' => $i,
+                'opsi_jawaban' => 'A',
+                'isi_jawaban' => 'jawaban A',
+            ];
 
-            ['id_soal' => 3, 'opsi_jawaban' => 'A', 'isi_jawaban' => 'jawaban A'],
-            ['id_soal' => 3, 'opsi_jawaban' => 'B', 'isi_jawaban' => 'jawaban B'],
-            ['id_soal' => 3, 'opsi_jawaban' => 'C', 'isi_jawaban' => 'jawaban C'],
-            ['id_soal' => 3, 'opsi_jawaban' => 'D', 'isi_jawaban' => 'jawaban D'],
+            $kuisJawabans[] = [
+                'id_soal' => $i,
+                'opsi_jawaban' => 'B',
+                'isi_jawaban' => 'jawaban B',
+            ];
 
-            ['id_soal' => 4, 'opsi_jawaban' => 'A', 'isi_jawaban' => 'jawaban A'],
-            ['id_soal' => 4, 'opsi_jawaban' => 'B', 'isi_jawaban' => 'jawaban B'],
-            ['id_soal' => 4, 'opsi_jawaban' => 'C', 'isi_jawaban' => 'jawaban C'],
-            ['id_soal' => 4, 'opsi_jawaban' => 'D', 'isi_jawaban' => 'jawaban D'],
-        ];
+            $kuisJawabans[] = [
+                'id_soal' => $i,
+                'opsi_jawaban' => 'C',
+                'isi_jawaban' => 'jawaban C',
+            ];
 
-        foreach ($kuisjawabans as $kuisjawaban) {
-            KuisJawaban::create($kuisjawaban);
+            $kuisJawabans[] = [
+                'id_soal' => $i,
+                'opsi_jawaban' => 'D',
+                'isi_jawaban' => 'jawaban D',
+            ];
+        }
+
+        foreach ($kuisJawabans as $kuisJawaban) {
+            KuisJawaban::create($kuisJawaban);
         }
     }
     // DB::table('kuis_level')->insert([

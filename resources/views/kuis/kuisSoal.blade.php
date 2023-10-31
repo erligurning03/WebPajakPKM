@@ -23,7 +23,7 @@
                 @csrf
                 @foreach ($tampil as $data)
                 <div class="card-body">
-                    <div class="card-title">{{ $data->no_soal }}. {{ $data->isi_soal }}</div>
+                    <h5><div class="">{{ $data->no_soal }}. {{ $data->isi_soal }}</div></h5>
                     @foreach ($data->kuisJawaban as $Jawaban)
                     <div class="card-body">
                         <label>

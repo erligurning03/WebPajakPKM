@@ -5,13 +5,10 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Tambah Kuis</h1>
+    <h1 class="h3 mb-2 text-gray-800">Ubah Kuis</h1>
 
     <!-- DataTales Example -->
-    <div class="card shadow mb-4 p-5">
-        <div class="card-header py-3">
-            <h4 class="m-0 font-weight-bold text-primary">Edit Kuis</h4>
-        </div>
+    <div class="card shadow mb-4 p-3">
 
         <form method="POST" action="{{ route('kuis.update', $id) }}">
             @csrf

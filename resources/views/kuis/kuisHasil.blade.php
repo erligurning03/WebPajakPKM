@@ -2,14 +2,14 @@
 @section('container')
 
 <div class="container text-left">
-    <div class="row justify-content-left">  
+    <div class="row justify-content-left">
 
         <div class="card mt-4" style="">
             {{-- <form action="/kuis/{{ $id }}/proseskuis" method="post" enctype="multipart/form-data">
                 @csrf --}}
                 @foreach ($tampil as $data)
                     <div class="card-body">
-                        <div class="card-title">{{ $data->no_soal }}. {{ $data->isi_soal }}</div>
+                        <h5><div class="">{{ $data->no_soal }}. {{ $data->isi_soal }}</div></h5>
                         @foreach ($data->kuisJawaban as $Jawaban)
                             <div class="card-body">
                                 <label>

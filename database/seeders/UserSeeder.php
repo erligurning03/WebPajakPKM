@@ -14,9 +14,9 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        \DB::statement('SET FOREIGN_KEY_CHECKS=0');
-        \DB::table('users')->truncate();
-        \DB::table('users')->insert([
+        DB::statement('SET FOREIGN_KEY_CHECKS=0');
+        DB::table('users')->truncate();
+        DB::table('users')->insert([
             [
                 'id' => '1',
                 'name' => 'Admin',
@@ -38,4 +38,3 @@ class UserSeeder extends Seeder
         Schema::dropIfExists('users');
     }
 }
-    

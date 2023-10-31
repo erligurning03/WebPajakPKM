@@ -3,6 +3,9 @@
 use App\Http\Controllers\KuisController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LupaPasswordController;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Konten_controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,60 +20,44 @@ use App\Http\Controllers\LupaPasswordController;
 
 Auth::routes();
 Route::middleware(['auth'])->group(function () {
-    Route::get('/login', function () {return view('auth.login');});
-
-    //semua route dalam grup ini hanya bisa diakses siswa - siswa
+    Route::get('/', function () {return view('auth.login');});
+    Route::get('logout', [LoginController::class,'logout']);
+    //route dasar tanpa cek status
 });
 
 Route::middleware(['auth', 'status:admin'])->group(function () {
     Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
      //ini route semua halaman admin
-
+    Route::resource('konten',Konten_controller::class);
+        // Route::get('','index')->name('konten');
+        // Route::create('','konten.create')->name('konten.create');
     //  Route::get('/admin', function () {return view('admin/layouts/navbar_admin');});
-     Route::get('/admin/tontonan', function () {return view('admin/beranda/tambah_tontonan');});
-     Route::get('/admin/tambahkuis', function () { return view('admin/beranda/tambah_kuis');});
-     Route::post('admin/tambahkuis/post', [KuisController::class, 'createKuis']);
+    //  Route::get('/admin/tontonan', function () {return view('admin/beranda/tambah_tontonan');});
+    //  Route::get('/admin/tambahkuis', function () { return view('admin/beranda/tambah_kuis');});
+    //  Route::post('admin/tambahkuis/post', [KuisController::class, 'createKuis']);
     //semua route dalam grup ini hanya bisa diakses oleh operator
 });
 
 Route::middleware(['auth', 'status:pengguna'])->group(function () {
     Route::get('/index', [App\Http\Controllers\IndexController::class, 'index'])->name('index');
-
+    Route::get('/profil', [App\Http\Controllers\IndexController::class, 'editp'])->name('profil');
+    //berita
+    Route::get('/index/berita', [App\Http\Controllers\Konten_controller::class, 'indexB'])->name('berita');
+    Route::get('/index/berita/{id}',[App\Http\Controllers\Konten_controller::class, 'showB']);
+    //podcast
+    Route::get('/index/podcast', [App\Http\Controllers\Konten_controller::class, 'indexP'])->name('podcast');
+    Route::get('/index/podcast/{id}',[App\Http\Controllers\Konten_controller::class, 'showP']);
+    //tontonan
+    Route::get('/index/tontonan', [App\Http\Controllers\Konten_controller::class, 'indexT'])->name('tontonan');
+    Route::get('/index/tontonan/{id}',[App\Http\Controllers\Konten_controller::class, 'showT']);
 
     //semua route dalam grup ini hanya bisa diakses siswa
 });
 
-
-
-
-
-
-
-Auth::routes();
-Route::get('/', function () {return view('auth.login');});
-Route::get('/daftar', function () {return view('auth.login');});
-Route::get('/lupa-password', [LupaPasswordController::class, 'index'])->name('lupa-password');
-
 Route::get('/kuis', [KuisController::class, 'tampilLevel']);
 Route::get('/kuis/{id}', [KuisController::class, 'tampilSoal']);
 Route::post('/kuis/{id}/proseskuis', [KuisController::class, 'prosesKuis']);
-
-
-Route::get('/', function () {
-
-    return view('auth/login');
-});
-
-Route::get('/logins', function () {
-
-    return view('login');
-});
-
-Route::get('/test', function () {
-
-    return view('loginhomepage');
-});
 
 // Route::get('/navbar', function () {
 
@@ -120,16 +107,11 @@ Route::put('/kuisAdmin/{id}',[KuisController::class, 'update'])->name('kuis.upda
 
 //ini route semua QNA
 Route::get('/qna', function () {
-    return view('qna/qna');
+
+    return view('qna/qna2');
 });
 Route::get('/layanan', function () {
 
     return view('layanan/layanan');
 });
 
-//ini route profile
-
-Route::get('/profil', function () {
-
-    return view('profil/profil');
-});

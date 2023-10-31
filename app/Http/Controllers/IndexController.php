@@ -1,7 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Konten;
+// use App\Models\TipeKonten;
+use App\Models\User;
+// use Error;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
@@ -11,9 +14,18 @@ class IndexController extends Controller
      */
     public function index()
     {
-        return view('beranda.beranda');
+        $listKonten = Konten::with('KomentarKonten')
+            ->with('LikeKonten')
+            ->with('ShareKonten')
+            ->orderBy('id', 'DESC')
+            ->get();
+        // dd($listKonten->toArray());
+        return view('beranda.beranda', compact('listKonten'));
     }
-
+    public function editp(Request $request)
+    {
+        return view('profil.profil');
+    }
     /**
      * Show the form for creating a new resource.
      */

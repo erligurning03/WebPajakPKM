@@ -22,9 +22,12 @@
       </div>
     </div>
   </div> --}}
+  <form action="/index/tontonan">
+    <button type="submit" class="btn btn-warning" style="text-align: center; width:110px; height:35px;";><i class="fa-solid fa-arrow-left"></i> Kembali</button>
+    </form>
   <div class="row">
+    @foreach ($listKonten as $konten)
     <div class="col-md-12">
-      <button type="button" class="btn btn-warning" style="text-align: center; width:110px; height:35px;";><i class="fa-solid fa-arrow-left"></i> Kembali</button>
         <div class="embed-responsive embed-responsive-16by9 mt-3">
           <img src="{{asset('img/podcast2.jpg')}}" class="card-img-top img-fluid" alt="..."  style="border: 5px solid rgb(70, 70, 70); display:block; ">
             {{-- <video class="embed-responsive-item" width= "50%"controls>
@@ -45,7 +48,7 @@
         <div class="row">
           <div class="col-6 col-md-6" style="text-align:left">
             <i class="far fa-heart fa-xl love-icon action-icon"></i>
-            <i class="fas fa-heart fa-xl love-icon action-icon text-danger"></i>            
+            <i class="fas fa-heart fa-xl love-icon action-icon text-danger"></i>
             <b>100</b>
           </div>
           <div class="col-6 col-md-6" style="text-align: right">
@@ -55,9 +58,10 @@
           </div>
         </div>
 
-        <h2>Tatacata bayar pajak ?</h2>
-        <p>ada penjelasan dari bapak jendral pajak nih mengenai tata cara membayar pajak, disimak baik-baik ya</p>
+        <h2>{{ Str::title($konten->judul_konten) }}</h2>
+        <p>{{$konten->deskripsi_konten}}</p>
     </div>
+    @endforeach
 </div>
 
 </div>

@@ -10,7 +10,7 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Tontonan Rujak</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Konten Rujak</h6>
         </div>
 
         <!-- Filter -->
@@ -96,6 +96,7 @@
                         <thead>
                             <tr>
                                 <th scope="col">No.</th>
+                                <th>Tipe Konten</th>
                                 <th>Judul</th>
                                 <th>Deskripsi</th>
                                 <th>Foto</th>
@@ -108,18 +109,29 @@
                         </thead>
                         <tbody>
                             <?php $no = 1; ?>
-                            {{-- @foreach ($perangkat_desa as $result => $data ) --}}
+                            @foreach ($listKonten as $data)
                             <tr>
                                 <th scope="row">{{$no++}}</th>
-                                <td>Lorem Ipsum</td>
-                                <td>Merupakan lorem ipsum</td>
+                                <td>{{ $data -> TipeKonten -> tipe_konten }}</td>
+                                <td>{{ $data -> judul_konten }}</td>
+                                <td>{{ $data -> deskripsi_konten}}</td>
                                 {{-- <td>{{ $data->foto}}</td> --}}
                                 <td>
-                                    <img src="#" alt="" style="object-fit: contain; width:200px; height: 200px; border: 2px solid black;">
-                                    {{-- panggil gambar dengan cara ini udah benar --}}
+                                    @switch($data -> TipeKonten -> tipe_konten)
+                                        @case('tontonan')
+                                            <video width="300" height="200" controls>
+                                                <source src="{{ $data -> url_konten}}" type='video/mp4'>
+                                            </video>
+                                            @break
+                                        @case(2)
+
+                                            @break
+                                        @default
+
+                                    @endswitch
                                 </td>
-                                <td>200</td>
-                                <td>190 Share</td>
+                                <td>{{count($data->LikeKonten)}}</td>
+                                <td>{{count($data->ShareKonten)}}</td>
                                 <td style="display: flex; justify-content: flex-end;">
                                     <!-- <button type="button" style="width:100px; margin-right: 10px; background-color: #609966; color: white; font-weight:bold;" class="btn" data-toggle="modal" data-target=""><i class="fa-solid fa-circle-info"></i>  Detail</button> -->
                                     <button type="button" style="width:100px; margin-right: 10px; background-color: orange; color: white; font-weight:bold;" class="btn" data-toggle="modal" data-target="#"><i class="fa-solid fa-pen-to-square"></i>  Edit</button>
@@ -205,7 +217,7 @@
                                     </div>
                                 </div>
                             </div>
-                            {{-- @endforeach --}}
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -260,7 +272,7 @@
 <footer class="sticky-footer bg-white">
     <div class="container my-auto">
         <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Website Desa Nagori NagoriTongah 2023</span>
+            <span>Copyright &copy; Website Rujak 2023</span>
         </div>
     </div>
 </footer>

@@ -44,6 +44,7 @@ class KuisController extends Controller
             $questionNumber = $question->no_soal;
             $correctAnswer = $question->jawaban_soal;
             $userAnswer = $userAnswers[$question->id];
+            $level = KuisLevel::SELECT('nama_kuis', 'waktu_kuis')->where('id', $id)->get();
 
             if ($userAnswer === $correctAnswer) {
                 $score++;
@@ -53,7 +54,7 @@ class KuisController extends Controller
             $explanations[$questionNumber] = $question->pembahasan_soal;
         }
 
-        return view('kuis.kuisHasil', compact('tampil', 'id'), [
+        return view('kuis.kuisHasil', compact('tampil', 'id','level'), [
             'score' => $score,
             'correctAnswers' => $correctAnswers,
             'explanations' => $explanations,

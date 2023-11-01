@@ -36,7 +36,7 @@
         <a href="{{ route('password.request') }}">Lupa password?</a>
         <input type="submit" class="button" value="{{ __('Login') }}">
         <div class="signup">
-            <span ">Belum Punya Akun?
+            <span>Belum Punya Akun?
                 <label for="check"><a href="/register">Daftar</a></label>
             </span>
         </div>

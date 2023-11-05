@@ -24,6 +24,9 @@
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
     <!-- icon bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css" rel="stylesheet">
+
+    <script src="https://cdn.tiny.cloud/1/skn5d7tfh0j3z5py3pp7vv86xlb3ew171p6rw7oui9nm82y6/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
     <style>
         .table-wrapper {
             overflow-x: auto;

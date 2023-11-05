@@ -35,7 +35,7 @@
 <div class="container mt-1">
     <div class="row justify-content-center">
 
-        <div class="card-body mt-2">
+        <div class="card-body mt-0">
             <div class="card mt-5" style="">
                 @foreach ($level as $data1)
                 <div class="card-head mt-2">
@@ -60,15 +60,21 @@
                             <label>
                                 {{-- <input type="radio" name="answers[{{ $data->id }}]"
                                     value="{{ $Jawaban->opsi_jawaban }}"> --}}
+                                @if($Jawaban->opsi_jawaban == $correctAnswers[$data->no_soal])
+                                <span style="color: red;"> {{ $Jawaban->opsi_jawaban }}. {{ $Jawaban->isi_jawaban }}</span>
+                                @else
                                 {{ $Jawaban->opsi_jawaban }}. {{ $Jawaban->isi_jawaban }}
+                                @endif
+
                             </label>
 
                         </div><br>
                         @endforeach
                         <div class="bord">
                             <h6>
-                                Jawabannya ialah {{ $correctAnswers[$data->no_soal] }}. {{ $explanations[$data->no_soal]
-                                }}
+                                Jawabannya ialah {{ $correctAnswers[$data->no_soal] }}. <br>
+                                Penjelasan : <br>
+                                {!! $explanations[$data->no_soal] !!}
                             </h6>
                         </div>
                     </div>

@@ -32,10 +32,11 @@
     }
 </style>
 
+
 <div class="container mt-5">
     <div class="row justify-content-center">
 
-        <div class="card mt-5" style="">
+        <div class="card mt-0" style="">
             @foreach ($level as $data1)
             <div class="card-head mt-2">
                 <div class="d-flex justify-content-center mt-2">

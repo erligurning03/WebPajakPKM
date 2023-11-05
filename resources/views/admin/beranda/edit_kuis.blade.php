@@ -1,6 +1,15 @@
 @extends('admin.layouts.navbar_admin')
 @section('container')
 
+<script>
+    tinymce.init({ 
+      selector: 'textarea',
+      plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+      toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+      min_height: 70,
+    });
+  </script>
+
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -155,4 +164,6 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
 @endsection

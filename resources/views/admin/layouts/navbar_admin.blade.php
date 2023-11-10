@@ -24,6 +24,7 @@
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
     <!-- icon bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <style>
         .table-wrapper {
             overflow-x: auto;
@@ -476,6 +477,7 @@
 <script src="{{ asset('admin_assets/assets/vendor/chart.js/Chart.min.js') }}"></script>
 
 <!-- Page level custom scripts -->
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 <script src="{{ asset('admin_assets/assets/js/demo/chart-area-demo.js') }}"></script>
 <script src="{{ asset('admin_assets/assets/js/demo/chart-pie-demo.js') }}"></script>
 <script src="https://kit.fontawesome.com/a87d4ae636.js" crossorigin="anonymous"></script>
@@ -485,7 +487,23 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script>
+    $('.quill-editor').each(function(i, el) {
+        var el = $(this), id = 'quilleditor-' + i, val = el.val(), editor_height = 200;
+        var div = $('<div/>').attr('id', id).css('height', editor_height + 'px').html(val);
+        el.addClass('d-none');
+        el.parent().append(div);
 
+        var quill = new Quill('#' + id, {
+            modules: { toolbar: true },
+            theme: 'snow'
+        });
+        quill.on('text-change', function() {
+            var getContents = quill.getContents();
+            el.val(JSON.stringify(getContents.ops[0].insert));
+        });
+    });
+</script>
 
 
 </body>

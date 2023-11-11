@@ -6,6 +6,7 @@ use App\Http\Controllers\LupaPasswordController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Konten_controller;
+use App\Models\TipeKonten;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,19 +41,16 @@ Route::middleware(['auth', 'status:admin'])->group(function () {
 });
 
 Route::middleware(['auth', 'status:pengguna'])->group(function () {
-    Route::get('/index', [App\Http\Controllers\IndexController::class, 'index'])->name('index');
-    Route::get('/profil', [App\Http\Controllers\IndexController::class, 'editp'])->name('profil');
-    //berita
-    Route::get('/index/berita', [App\Http\Controllers\Konten_controller::class, 'indexB'])->name('berita');
-    Route::get('/index/berita/{id}',[App\Http\Controllers\Konten_controller::class, 'showB']);
-    //podcast
-    Route::get('/index/podcast', [App\Http\Controllers\Konten_controller::class, 'indexP'])->name('podcast');
-    Route::get('/index/podcast/{id}',[App\Http\Controllers\Konten_controller::class, 'showP']);
-    //tontonan
-    Route::get('/index/tontonan', [App\Http\Controllers\Konten_controller::class, 'indexT'])->name('tontonan');
-    Route::get('/index/tontonan/{id}',[App\Http\Controllers\Konten_controller::class, 'showT']);
+    Route::prefix('index')->group(function() {
+        Route::get('/', [App\Http\Controllers\IndexController::class, 'index'])->name('index');
+        Route::get('/profil', [App\Http\Controllers\IndexController::class, 'editp'])->name('profil');
 
-    //semua route dalam grup ini hanya bisa diakses siswa
+        $tipeKontenList = TipeKonten::all();
+        foreach ($tipeKontenList as $key => $value) {
+            Route::get($value->tipe_konten, [App\Http\Controllers\Konten_controller::class, 'index'.ucwords($value->tipe_konten)])->name($value->tipe_konten);
+            Route::get($value->tipe_konten.'/{id}',[App\Http\Controllers\Konten_controller::class, 'show'.ucwords($value->tipe_konten)]);
+        }
+    });
 });
 
 Route::get('/kuis', [KuisController::class, 'tampilLevel']);

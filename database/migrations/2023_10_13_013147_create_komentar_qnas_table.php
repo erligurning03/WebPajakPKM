@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id'); // Kolom user_id, tipe data unsigned bigint
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('isi_komentar');
+            $table->timestamps();
         });
     }
 

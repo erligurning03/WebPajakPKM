@@ -22,6 +22,9 @@ class DatabaseSeeder extends Seeder
         $this->call(Like_konten_seeder::class);
         $this->call(Share_konten_seeder::class);
         $this->call(KuisSeeder::class);
+        $this->call(QnasSeeder::class);
+        $this->call(KomentarQnaSeeder::class);
+        $this->call(LikeQnaSeeder::class);
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([

@@ -41,28 +41,35 @@
   {{-- end of trending dan terbaru --}}
 
     {{-- card pertanyaan 1--}}
-    {{-- @foreach ($questions as $question) --}}
+    @foreach ($qnas->sortByDesc('created_at') as $qna)
     <div class="card mt-5">
         <div class="card-header">
             <img src="{{asset('img/podcast2.jpg')}}" alt="Foto Profil" style="border-radius: 50%; object-fit: contain; width:45px; height: 45px; border: 1px solid black; ">
-            <span>martin</span>
-            {{-- <span class="float-right">{{ $question->created_at->format('Y-m-d H:i:s') }}</span> --}}
-            <span class="float-right">| 5 hari lalu</span>
+            {{-- <span>{{$qna->users->name}}</span> --}}
+            {{-- <span class="float-right">{{ $qna->tanggal_upload->format('Y-m-d H:i:s') }}</span> --}}
+            {{-- <span class="float-right">• {{ $qna->created_at->diffForHumans() }}</span> --}}
         </div>
         <div class="card-body">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, illum magnam dolores quo aliquid delectu</p>
+          <p>{{$qna->isi_pertanyaan}}</p>
         </div>
         <div class="card-footer">
           <i class="fa-regular fa-comment"></i>
-          <i class="far fa-heart fa-xl love-icon action-icon"></i>
-          <i class="fas fa-heart fa-xl love-icon action-icon text-danger"></i>            
-          <b>100</b>
+          <b>{{$qna->jumlah_komentar}}</b>
+          <a href="#">
+            {{-- @if($qna->isLikeByUser()) --}}
+              <i class="fas fa-heart fa-xl love-icon action-icon text-danger"></i>  
+            {{-- @else --}}
+              <i class="far fa-heart fa-xl love-icon action-icon"></i> 
+            {{-- @endif --}}
+          </a>
+       
+          <b>{{$qna->jumlah_like}}</b>
           <i class="fa-solid fa-share-from-square"></i>
-          <b>78</b>
+          <b>{{$qna->jumlah_share}}</b>
         </div>
     </div>
     {{-- end of card pertanyaan --}}
-    {{-- @endforeach --}}
+    @endforeach
 
     {{-- card pertanyaan selebihnya --}}
     <div class="card mt-5">
@@ -84,26 +91,6 @@
         <b>78</b>
       </div>
     </div>
-
-  <div class="card mt-5">
-    <div class="card-header">
-        <img src="{{asset('img/podcast2.jpg')}}" alt="Foto Profil" style="border-radius: 50%; object-fit: contain; width:45px; height: 45px; border: 1px solid black; ">
-        <span>megantropus</span>
-        {{-- <span class="float-right">{{ $question->created_at->format('Y-m-d H:i:s') }}</span> --}}
-        <span class="float-right">| 3 hari lalu</span>
-    </div>
-    <div class="card-body">
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, illum magnam dolores quo aliquid delectu</p>
-    </div>
-    <div class="card-footer">
-      <i class="fa-regular fa-comment"></i>
-      <i class="far fa-heart fa-xl love-icon action-icon"></i>
-      <i class="fas fa-heart fa-xl love-icon action-icon text-danger"></i>            
-      <b>100</b>
-      <i class="fa-solid fa-share-from-square"></i>
-      <b>78</b>
-    </div>
-  </div>
 {{-- end of card pertanyaan --}}
 
 <!-- Modal Tambahkan pertanyaan -->
@@ -116,12 +103,13 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="#"></button>
       </div>
       <div class="modal-body">
-        <form id="postForm" method="POST" action="#" enctype="multipart/form-data">
+        {{-- actionnya berisi route dari web.php route ngapain dicontroller --}}
+        <form id="pertanyaan" method="POST" action="/qna-baru" enctype="multipart/form-data">
           @csrf
           <div class="mb-3">
             <p style="color:red;  font-size: 12px;">pertanyaan tidak boleh mengandung unsur sara dan pornografi</p>
-            <label for="judul" class="form-label">Input Pertanyaan</label>
-            <input type="text" class="form-control" id="judul" name="judul" placeholder="Judul pertanyaan" required>
+            <label for="pertanyaan" class="form-label">Input Pertanyaan</label>
+            <input type="text" class="form-control" id="pertanyaan" name="pertanyaan" placeholder="isi pertanyaan" required>
           </div>
           <hr class="modal-divider">
           <div class="modal-footer">

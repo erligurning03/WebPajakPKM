@@ -170,7 +170,7 @@ class Konten_controller extends Controller
         $findKonten = Konten::with('KomentarKonten')
             ->with('LikeKonten')
             ->with('ShareKonten')
-            ->where('id', $id)
+            ->where('id')
             ->orderBy('created_at', 'DESC')
             ->first();
         dd($findKonten->toArray());

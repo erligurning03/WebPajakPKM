@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Konten_controller;
 use App\Models\TipeKonten;
+use App\Http\Controllers\QnaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -108,13 +109,22 @@ Route::get('/kuisAdmin/{id}/edit', [KuisController::class, 'edit']);
 // Handle form submission
 Route::put('/kuisAdmin/{id}',[KuisController::class, 'update'])->name('kuis.update');
 
-//ini route semua QNA
-Route::get('/qna', function () {
+//ini route semua QNA user
+// Route::get('/qna', function () {
 
-    return view('qna/qna2');
-});
+//     return view('qna/qna2');
+// });
+
+Route::get('/qna',[QnaController::class,'index']);
+Route::post('/qna-baru',[QnaController::class, 'store']);
+
+
 Route::get('/layanan', function () {
 
     return view('layanan/layanan');
 });
 
+Route::get('/profil_awal', function () {
+
+    return view('profil/profil_awal');
+});

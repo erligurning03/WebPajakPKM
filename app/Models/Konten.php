@@ -22,6 +22,10 @@ class Konten extends Model
         'diupload_oleh',
     ];
 
+    public function UploadedBy() {
+        return $this->hasOne(User::class,'id','diupload_oleh');
+    }
+
     public function TipeKonten() {
         return $this->hasOne(TipeKonten::class,'id','tipe_konten_id');
     }

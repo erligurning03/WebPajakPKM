@@ -1,7 +1,7 @@
 @extends('layouts.navbar')
 @section('container')
   <div class="container">
-    <form action="/index">
+    <form action="/">
         <button type="submit" class="btn btn-warning" style="text-align: center; width:110px; height:35px;";><i class="fa-solid fa-arrow-left"></i> Kembali</button>
         </form>
         <h1><b><br>Update Profile</b></h1>

@@ -18,7 +18,7 @@ class LoginController extends Controller
     | to conveniently provide its functionality to your applications.
     |
     */
-
+    
     use AuthenticatesUsers;
 
     /**
@@ -28,7 +28,7 @@ class LoginController extends Controller
      */
         protected function redirectTo(){
             if(Auth()->user()->status=='admin'){
-                return route('home');
+                return route('admin');
             }
             elseif(Auth()->user()->status=='pengguna'){
                 return route('index');
@@ -44,6 +44,8 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+
     public function login(Request $request){
         $input = $request->all();
         $this->validate($request,[

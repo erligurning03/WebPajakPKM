@@ -21,30 +21,21 @@ use App\Models\TipeKonten;
 
 Auth::routes();
 Route::middleware(['auth'])->group(function () {
-    Route::get('/', function () {return view('auth.login');});
     Route::get('logout', [LoginController::class,'logout']);
     //route dasar tanpa cek status
 });
 
 Route::middleware(['auth', 'status:admin'])->group(function () {
     Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-     //ini route semua halaman admin
     Route::resource('konten',Konten_controller::class);
-        // Route::get('','index')->name('konten');
-        // Route::create('','konten.create')->name('konten.create');
-    //  Route::get('/admin', function () {return view('admin/layouts/navbar_admin');});
-    //  Route::get('/admin/tontonan', function () {return view('admin/beranda/tambah_tontonan');});
-    //  Route::get('/admin/tambahkuis', function () { return view('admin/beranda/tambah_kuis');});
-    //  Route::post('admin/tambahkuis/post', [KuisController::class, 'createKuis']);
-    //semua route dalam grup ini hanya bisa diakses oleh operator
+    Route::get('/kuisAdmin/{id}/edit', [KuisController::class, 'edit']);
+    Route::put('/kuisAdmin/{id}',[KuisController::class, 'update'])->name('kuis.update');
+    //ini route semua halaman admin
 });
 
 Route::middleware(['auth', 'status:pengguna'])->group(function () {
-    Route::prefix('index')->group(function() {
+    Route::prefix('/')->group(function() {
         Route::get('/', [App\Http\Controllers\IndexController::class, 'index'])->name('index');
-        Route::get('/profil', [App\Http\Controllers\IndexController::class, 'editp'])->name('profil');
-
         $tipeKontenList = TipeKonten::all();
         foreach ($tipeKontenList as $key => $value) {
             Route::get($value->tipe_konten, [App\Http\Controllers\Konten_controller::class, 'index'.ucwords($value->tipe_konten)])->name($value->tipe_konten);
@@ -54,8 +45,6 @@ Route::middleware(['auth', 'status:pengguna'])->group(function () {
     Route::get('/profil', [App\Http\Controllers\IndexController::class, 'editp'])->name('profil');
     Route::patch('profile/update', [App\Http\Controllers\IndexController::class, 'updatep'])->name('profil.update');
     Route::post('profile/update-password', [App\Http\Controllers\IndexController::class, 'updatePw'])->name('profile.updatePw');
-
-
 });
 
 Route::get('/kuis', [KuisController::class, 'tampilLevel']);
@@ -103,10 +92,7 @@ Route::get('/list_berita', function () {
 
 //ini route semua kuis
 // Show the edit form
-Route::get('/kuisAdmin/{id}/edit', [KuisController::class, 'edit']);
 
-// Handle form submission
-Route::put('/kuisAdmin/{id}',[KuisController::class, 'update'])->name('kuis.update');
 
 //ini route semua QNA
 Route::get('/qna', function () {

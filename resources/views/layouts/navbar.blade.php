@@ -56,7 +56,7 @@
             @endphp
             <li class="nav-item dropdown no-arrow">
             <a class="nav-link" style="color: white" href="" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                {{ $user->name }}</a>
+                                {{ substr($user->name,0,8) }}</a>
                             <!-- Dropdown - User Information -->
             <div class="dropdown-content">
                 <a class="dropdown-item" href="{{ route('profil') }}">

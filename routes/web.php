@@ -42,6 +42,8 @@ Route::middleware(['auth', 'status:admin'])->group(function () {
 Route::middleware(['auth', 'status:pengguna'])->group(function () {
     Route::get('/index', [App\Http\Controllers\IndexController::class, 'index'])->name('index');
     Route::get('/profil', [App\Http\Controllers\IndexController::class, 'editp'])->name('profil');
+    Route::patch('profile/update', [App\Http\Controllers\IndexController::class, 'updatep'])->name('profil.update');
+    Route::post('profile/update-password', [App\Http\Controllers\IndexController::class, 'updatePw'])->name('profile.updatePw');
     //berita
     Route::get('/index/berita', [App\Http\Controllers\Konten_controller::class, 'indexB'])->name('berita');
     Route::get('/index/berita/{id}',[App\Http\Controllers\Konten_controller::class, 'showB']);

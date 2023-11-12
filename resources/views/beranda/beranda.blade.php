@@ -12,27 +12,21 @@
                 <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
               </div>
               <div class="carousel-inner">
+                @foreach ($listKonten->where('tipe_konten_id', 1)->take(1) as $konten)
                 <div class="carousel-item active" data-bs-interval="2000">
-                  <img src="{{asset('img/img2.png')}}" class="d-block w-100 img-fluid" alt="..." >
+                  <img src="{{$konten->url_konten}}" class="d-block w-100 img-fluid" alt="..." >
                   <div class="carousel-caption d-none d-md-block">
-                    <h5>First slide label</h5>
-                    <p>Some representative placeholder content for the first slide.</p>
-                  </div>
+                    <h5>{{Str::title($konten->judul_konten)}}</h5>
                 </div>
+                @endforeach
+                @foreach ($listKonten->where('tipe_konten_id', 1)->slice(1,2) as $konten)
                 <div class="carousel-item" data-bs-interval="2000">
-                  <img src="{{asset('img/img5.png')}}" class="d-block w-100 img-fluid" alt="img1">
+                  <img src="{{$konten->url_konten}}" class="d-block w-100 img-fluid" alt="img1">
                   <div class="carousel-caption d-none d-md-block">
-                    <h5>Second slide label</h5>
-                    <p>Some representative placeholder content for the second slide.</p>
+                    <h5>{{Str::title($konten->judul_konten)}}</h5>
                   </div>
                 </div>
-                <div class="carousel-item" data-bs-interval="2000">
-                  <img src="{{asset('img/img3.jpg')}}" class="d-block w-100 img-fluid" alt="..." >
-                  <div class="carousel-caption d-none d-md-block">
-                    <h5>Third slide label</h5>
-                    <p>Some representative placeholder content for the third slide.</p>
-                  </div>
-                </div>
+                @endforeach
               </div>
               <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -93,7 +87,7 @@
         <div class="col-md-4">
             <a href="/index/tontonan/{{$konten->id}}" style="color: black">
             <div class="card mb-3">
-            <img src="{{asset('img/podcast1.jpg')}}" width="200" height="200" class="card-img-top  img-fluid" alt="...">
+            <img src="{{$konten->cover_konten,3}}" width="200" height="200" class="card-img-top  img-fluid" alt="...">
             <div class="card-body text-center">
                 <h5 class="card-title">{{Str::title($konten->judul_konten)}}</h5>
                 {{-- <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> --}}
@@ -114,7 +108,7 @@
     <div class="col-md-4">
     <a href="{{ URL::to('index/podcast/'.$konten->id) }} " style="color: black">
       <div class="card mb-3">
-        <img src="{{asset('img/podcast1.jpg')}}" class="card-img-top img-fluid" alt="...">
+        <img src="{{$konten->cover_konten,2}}" class="card-img-top img-fluid" alt="...">
         <div class="card-body text-center">
           <h5 class="card-title">{{Str::title($konten->judul_konten)}}</h5>
           {{-- <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> --}}
@@ -134,7 +128,7 @@
     <div class="col-md-4">
         <a href="/index/berita/{{$konten->id}}" style="color: black">
       <div class="card mb-3">
-        <img src="{{asset('img/podcast3.jpg')}}" class="card-img-top  img-fluid" alt="...">
+        <img src="{{$konten->cover_konten,1}}" class="card-img-top  img-fluid" alt="...">
         <div class="card-body text-center">
           <h5 class="card-title">{{Str::title($konten->judul_konten)}}</h5>
           {{-- <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> --}}

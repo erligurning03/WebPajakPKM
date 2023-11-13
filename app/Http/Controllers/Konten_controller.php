@@ -84,7 +84,7 @@ class Konten_controller extends Controller
             ->orderBy('created_at', 'DESC')
             ->get();
         // dd($listKonten->toArray());
-        return view('admin/beranda.list_konten', compact('listKonten'));
+        return view('beranda.list_tontonan', compact('listKonten'));
     }
     public function showTontonan($id)
     {
@@ -142,10 +142,10 @@ class Konten_controller extends Controller
             ]
         );
 
+
         if (!$this->isGoogleDrivePath($validateRequest['cover_konten'])) {
             return back()->withInput();
         }
-
         if (!$this->isGoogleDrivePath($validateRequest['url_konten'])) {
             return back()->withInput();
         }
@@ -153,9 +153,9 @@ class Konten_controller extends Controller
         $validateRequest['cover_konten'] = $this->getIdFormGoogleDriveUrl($validateRequest['cover_konten']);
         $validateRequest['url_konten'] = $this->getIdFormGoogleDriveUrl($validateRequest['url_konten']);
         $validateRequest['tipe_konten_id'] = $validateRequest['tipe_konten'];
+
         unset($validateRequest['tipe_konten']);
         $validateRequest['diupload_oleh'] = auth()->user()->id;
-
         Konten::create($validateRequest);
 
         return redirect()->route('konten.index');

@@ -36,7 +36,7 @@ Route::middleware(['auth', 'status:admin'])->group(function () {
 });
 
 Route::middleware(['auth', 'status:pengguna'])->group(function () {
-    Route::prefix('/')->group(function () {
+    Route::prefix('index')->group(function () {
         Route::get('/', [App\Http\Controllers\IndexController::class, 'index'])->name('index');
         $isTableTipeKontenListExist = Schema::hasTable('tipe_konten');
         if ($isTableTipeKontenListExist) {

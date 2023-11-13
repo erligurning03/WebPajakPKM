@@ -112,30 +112,32 @@
                             @foreach ($listKonten as $data)
                             <tr>
                                 <th scope="row">{{$no++}}</th>
-                                <td>{{ $data -> TipeKonten -> tipe_konten }}</td>
-                                <td>{{ $data -> judul_konten }}</td>
-                                <td>{{ $data -> deskripsi_konten}}</td>
-                                {{-- <td>{{ $data->foto}}</td> --}}
+                                <td>{{ $data->TipeKonten->tipe_konten }}</td>
+                                <td>{{ $data->judul_konten }}</td>
+                                <td>{{ $data->deskripsi_konten}}</td>
                                 <td>
-                                    @switch($data -> TipeKonten -> tipe_konten)
+                                    @switch($data->TipeKonten->tipe_konten)
                                         @case('tontonan')
                                             <video width="300" height="200" controls>
-                                                <source src="{{ $data -> url_konten}}" type='video/mp4'>
+                                                <source src="{{ $data->url_konten}}" type='video/mp4'>
                                             </video>
                                             @break
-                                        @case(2)
-
+                                        @case('podcast')
+                                            <audio width="300" height="200" controls>
+                                                <source src="{{ $data->url_konten}}" type='audio/mpeg'>
+                                            </audio>
                                             @break
                                         @default
-
+                                            <img src="{{ $data->url_konten}}" alt="{{ $data->judul_konten }}" width="300" height="200">
                                     @endswitch
                                 </td>
                                 <td>{{count($data->LikeKonten)}}</td>
                                 <td>{{count($data->ShareKonten)}}</td>
                                 <td style="display: flex; justify-content: flex-end;">
                                     <!-- <button type="button" style="width:100px; margin-right: 10px; background-color: #609966; color: white; font-weight:bold;" class="btn" data-toggle="modal" data-target=""><i class="fa-solid fa-circle-info"></i>  Detail</button> -->
-                                    <button type="button" style="width:100px; margin-right: 10px; background-color: orange; color: white; font-weight:bold;" class="btn" data-toggle="modal" data-target="#"><i class="fa-solid fa-pen-to-square"></i>  Edit</button>
-                                    <form action="#" method="POST">
+                                    <a href='{{ URL::to('konten/'.$data->id.'/edit') }}' type="button" style="width:100px; margin-right: 10px; background-color: orange; color: white; font-weight:bold;" class="btn"> Edit </a>
+                                    {{-- <button type="button" style="width:100px; margin-right: 10px; background-color: orange; color: white; font-weight:bold;" class="btn"><i class="fa-solid fa-pen-to-square"></i>  Edit</button> --}}
+                                    <form action="{{ URL::to('konten/'.$data->id) }}" method="POST">
                                         {{-- <form action="/perangkat_desa/{{$data->id}}" method="POST"> --}}
                                         {{-- <form action="{{ route('.destroy', $data->id) }}" method="POST"> --}}
                                         @csrf

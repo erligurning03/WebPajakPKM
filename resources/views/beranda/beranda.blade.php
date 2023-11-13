@@ -112,7 +112,7 @@
     <h1><b>Podcast RUJAK</b></h1>
     @foreach ($listKonten->where('tipe_konten_id', 2)->take(3) as $konten)
     <div class="col-md-4">
-    <a href="/index/podcast/{{$konten->id}}" style="color: black">
+    <a href="{{ URL::to('index/podcast/'.$konten->id) }} " style="color: black">
       <div class="card mb-3">
         <img src="{{asset('img/podcast1.jpg')}}" class="card-img-top img-fluid" alt="...">
         <div class="card-body text-center">

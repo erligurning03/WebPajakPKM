@@ -25,86 +25,92 @@ class Konten_controller extends Controller
         // $tipeKontenList=TipeKonten::all();
         return view('admin/beranda/list_konten', compact('listKonten'));
     }
-    // //berita
-    // public function indexB()
-    // {
-    //     $listKonten = Konten::with('KomentarKonten')
-    //         ->where('tipe_konten_id', '1')
-    //         ->with('LikeKonten')
-    //         ->with('ShareKonten')
-    //         ->orderBy('created_at', 'DESC')
-    //         ->get();
-    //     // dd($listKonten->toArray());
-    //     return view('beranda.list_berita', compact('listKonten'));
-    // }
-    // public function showB($id)
-    // {
-    //     $listKonten = Konten::with('KomentarKonten')
-    //         ->where('tipe_konten_id', '1')
-    //         ->where('id', $id)
-    //         ->with('LikeKonten')
-    //         ->with('ShareKonten')
-    //         ->orderBy('created_at', 'DESC')
-    //         ->get();
-    //     // dd($listKonten->toArray());
-    //     return view('beranda.berita', compact('listKonten', 'id'));
-    // }
+    //berita
+    public function indexBerita()
+    {
+        $listKonten = Konten::with('KomentarKonten')
+            ->where('tipe_konten_id', '1')
+            ->with('LikeKonten')
+            ->with('ShareKonten')
+            ->orderBy('created_at', 'DESC')
+            ->get();
+        // dd($listKonten->toArray());
+        return view('beranda.list_berita', compact('listKonten'));
+    }
+    public function showBerita($id)
+    {
+        $listKonten = Konten::with('KomentarKonten')
+            ->where('tipe_konten_id', '1')
+            ->where('id', $id)
+            ->with('LikeKonten')
+            ->with('ShareKonten')
+            ->orderBy('created_at', 'DESC')
+            ->get();
+        // dd($listKonten->toArray());
+        return view('beranda.berita', compact('listKonten', 'id'));
+    }
 
     // //Podcast
-    // public function indexP()
-    // {
-    //     $listKonten = Konten::with('KomentarKonten')
-    //         ->where('tipe_konten_id', '2')
-    //         ->with('LikeKonten')
-    //         ->with('ShareKonten')
-    //         ->orderBy('created_at', 'DESC')
-    //         ->get();
-    //     // dd($listKonten->toArray());
-    //     return view('beranda.list_podcast', compact('listKonten'));
-    // }
-    // public function showP($id)
-    // {
-    //     $listKonten = Konten::with('KomentarKonten')
-    //         ->where('tipe_konten_id', '2')
-    //         ->where('id', $id)
-    //         ->with('LikeKonten')
-    //         ->with('ShareKonten')
-    //         ->orderBy('created_at', 'DESC')
-    //         ->get();
-    //     // dd($listKonten->toArray());
-    //     return view('beranda.podcast', compact('listKonten', 'id'));
-    // }
+    public function indexPodcast()
+    {
+        $listKonten = Konten::with('KomentarKonten')
+            ->where('tipe_konten_id', '2')
+            ->with('LikeKonten')
+            ->with('ShareKonten')
+            ->orderBy('created_at', 'DESC')
+            ->get();
+        // dd($listKonten->toArray());
+        return view('beranda.list_podcast', compact('listKonten'));
+    }
+    public function showPodcast($id)
+    {
+        $listKonten = Konten::with('KomentarKonten')
+            ->where('tipe_konten_id', '2')
+            ->where('id', $id)
+            ->with('LikeKonten')
+            ->with('ShareKonten')
+            ->orderBy('created_at', 'DESC')
+            ->get();
+        // dd($listKonten->toArray());
+        return view('beranda.podcast', compact('listKonten', 'id'));
+    }
     // //Tontonan
-    // public function indexT()
-    // {
-    //     $listKonten = Konten::with('KomentarKonten')
-    //         ->where('tipe_konten_id', '3')
-    //         ->with('LikeKonten')
-    //         ->with('ShareKonten')
-    //         ->orderBy('created_at', 'DESC')
-    //         ->get();
-    //     // dd($listKonten->toArray());
-    //     return view('admin/beranda.list_konten', compact('listKonten'));
-    // }
-    // public function showT($id)
-    // {
-    //     $listKonten = Konten::with('KomentarKonten')
-    //         ->where('tipe_konten_id', '3')
-    //         ->where('id', $id)
-    //         ->with('LikeKonten')
-    //         ->with('ShareKonten')
-    //         ->orderBy('created_at', 'DESC')
-    //         ->get();
-    //     // dd($listKonten->toArray());
-    //     return view('beranda.tontonan', compact('listKonten', 'id'));
-    // }
+    public function indexTontonan()
+    {
+        $listKonten = Konten::with('KomentarKonten')
+            ->where('tipe_konten_id', '3')
+            ->with('LikeKonten')
+            ->with('ShareKonten')
+            ->orderBy('created_at', 'DESC')
+            ->get();
+        // dd($listKonten->toArray());
+        return view('admin/beranda.list_konten', compact('listKonten'));
+    }
+    public function showTontonan($id)
+    {
+        $listKonten = Konten::with('KomentarKonten')
+            ->where('tipe_konten_id', '3')
+            ->where('id', $id)
+            ->with('LikeKonten')
+            ->with('ShareKonten')
+            ->orderBy('created_at', 'DESC')
+            ->get();
+        // dd($listKonten->toArray());
+        return view('beranda.tontonan', compact('listKonten', 'id'));
+    }
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        return view('admin.beranda.tambah_konten');
+        $datas = [
+            'titlePage' => 'Tambah Data Konten',
+            'jenisKonten' => TipeKonten::all(),
+            'userKonten' => User::all()
+        ];
+
+        return view('admin.beranda.tambah_konten',$datas);
         // dd('ini adalah tampilan create function');
     }
 
@@ -124,30 +130,43 @@ class Konten_controller extends Controller
                 'judul_konten' => 'required',
                 'url_konten' => 'required',
                 'deskripsi_konten' => 'required',
-                'tipe_konten_id' => 'required|in:' . join(',', $tipeKontenList->toArray()),
-                'diupload_oleh' => 'required||in:' . join(',', $userList->toArray()),
+                'tipe_konten' => 'required|in:' . join(',', $tipeKontenList->toArray())
             ],
             [
                 'cover_konten.required' => 'Cover Konten Wajib Diisi',
                 'judul_konten.required' => 'Judul Konten Wajib Diisi',
                 'url_konten.required' => 'URL Konten Wajib Diisi',
                 'deskripsi_konten.required' => 'Deskripsi Konten Wajib Diisi',
-                'tipe_konten_id.required' => 'Tipe Konten Wajib Diisi',
-                'tipe_konten_id.in' => 'Tipe Konten tidak valid',
-                'diupload_oleh.required' => 'Diupload Oleh Wajib Diisi',
-                'diupload_oleh.in' => 'Diupload Oleh tidak valid'
+                'tipe_konten.required' => 'Tipe Konten Wajib Diisi',
+                'tipe_konten.in' => 'Tipe Konten tidak valid',
             ]
         );
 
+        if (!$this->isGoogleDrivePath($validateRequest['cover_konten'])) {
+            return back()->withInput();
+        }
+
+        if (!$this->isGoogleDrivePath($validateRequest['url_konten'])) {
+            return back()->withInput();
+        }
+
+        $validateRequest['cover_konten'] = $this->getIdFormGoogleDriveUrl($validateRequest['cover_konten']);
+        $validateRequest['url_konten'] = $this->getIdFormGoogleDriveUrl($validateRequest['url_konten']);
+        $validateRequest['tipe_konten_id'] = $validateRequest['tipe_konten'];
+        unset($validateRequest['tipe_konten']);
+        $validateRequest['diupload_oleh'] = auth()->user()->id;
+
         Konten::create($validateRequest);
-        // return redirect('')->route('konten.create');
+
+        return redirect()->route('konten.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Konten $konten)
     {
+        dd($konten->toArray());
         $findKonten = Konten::with('KomentarKonten')
             ->with('LikeKonten')
             ->with('ShareKonten')
@@ -162,7 +181,15 @@ class Konten_controller extends Controller
      */
     public function edit(string $id)
     {
-        dd('Ini edit function');
+        $datas = [
+            'titlePage' => 'Ubah Data Konten',
+            'jenisKonten' => TipeKonten::all(),
+            'userKonten' => User::all()
+        ];
+
+        $datas['dataKonten'] = Konten::where('id',$id)->first();
+
+        return view('admin.beranda.edit_konten',$datas);
     }
 
     /**
@@ -217,5 +244,21 @@ class Konten_controller extends Controller
     {
         $findKonten = Konten::find($id);
         $findKonten->delete();
+        return redirect('konten')->with('success','konten has been deleted');
+    }
+
+    public function getIdFormGoogleDriveUrl($path) {
+        $id = explode('/',$path)[5];
+        $urlPathGDrive = "https://drive.google.com/uc?id=";
+
+        return $urlPathGDrive.$id;
+    }
+
+    public function isGoogleDrivePath($path) {
+        if (isset(explode('/',$path)[5])) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

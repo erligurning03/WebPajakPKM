@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Komentar_konten;
 use App\Models\Konten;
+use App\Models\Like_konten;
 use App\Models\TipeKonten;
 use App\Models\User;
 use Error;
@@ -16,11 +18,11 @@ class Konten_controller extends Controller
     public function index()
     {
         $listKonten = Konten::with('KomentarKonten')
-        ->with('TipeKonten')
-        ->with('LikeKonten')
-        ->with('ShareKonten')
-        ->orderBy('created_at', 'DESC')
-        ->get();
+            ->with('TipeKonten')
+            ->with('LikeKonten')
+            ->with('ShareKonten')
+            ->orderBy('created_at', 'DESC')
+            ->get();
         // dd($listKonten->toArray());
         // $tipeKontenList=TipeKonten::all();
         return view('admin/beranda/list_konten', compact('listKonten'));
@@ -46,8 +48,69 @@ class Konten_controller extends Controller
             ->with('ShareKonten')
             ->orderBy('created_at', 'DESC')
             ->get();
+
+        $komentar = Komentar_konten::with('userKomen')
+            ->where('konten_id', $id)
+            ->get();
+
+        $sessionId = auth()->id();
+        $liked = Like_konten::where('konten_id', $id)
+            ->where('disukai_oleh', $sessionId)
+            ->exists();
+        // dd($liked);
+        // dd($sessionId);
+
+
         // dd($listKonten->toArray());
-        return view('beranda.berita', compact('listKonten', 'id'));
+        return view('beranda.berita', compact('listKonten', 'komentar', 'liked', 'id'));
+    }
+
+    public function dislikeBerita($id)
+    {
+        // Find the model instance based on the given criteria
+        $Like = Like_konten::where('konten_id', $id)
+            ->where('disukai_oleh', auth()->id())
+            ->first();
+
+        // Check if the model exists before attempting to delete
+        if ($Like) {
+            // Delete the model
+            $Like->delete();
+        }
+
+        return redirect("/index/berita/{$id}");
+    }
+
+    public function likeBerita($id)
+    {
+
+        $Like = new Like_konten([
+            'konten_id' => $id,
+            'disukai_oleh' => auth()->id(),
+        ]);
+
+        $Like-> save();
+        return redirect("/index/berita/{$id}");
+    }
+
+
+
+    public function komenBerita(Request $request, $id)
+    {
+        // dd($request->input('isi_komentar'));
+        $sessionId = auth()->id();
+        // dd($sessionId);
+        // Create a new Komentar instance
+        $komentar = new Komentar_konten([
+            'konten_id' => $id,
+            'dikomentari_oleh' => $sessionId,
+            'isi_komentar' => $request->input('isi_komentar'),
+        ]);
+        // dd($komentar);
+
+        // Save the Komentar to the database
+        $komentar->save();
+        return redirect("/index/berita/{$id}")->with('success', 'komentar berhasil ditambahkan');
     }
 
     // //Podcast
@@ -110,7 +173,7 @@ class Konten_controller extends Controller
             'userKonten' => User::all()
         ];
 
-        return view('admin.beranda.tambah_konten',$datas);
+        return view('admin.beranda.tambah_konten', $datas);
         // dd('ini adalah tampilan create function');
     }
 
@@ -187,9 +250,9 @@ class Konten_controller extends Controller
             'userKonten' => User::all()
         ];
 
-        $datas['dataKonten'] = Konten::where('id',$id)->first();
+        $datas['dataKonten'] = Konten::where('id', $id)->first();
 
-        return view('admin.beranda.edit_konten',$datas);
+        return view('admin.beranda.edit_konten', $datas);
     }
 
     /**
@@ -245,18 +308,20 @@ class Konten_controller extends Controller
     {
         $findKonten = Konten::find($id);
         $findKonten->delete();
-        return redirect('konten')->with('success','konten has been deleted');
+        return redirect('konten')->with('success', 'konten has been deleted');
     }
 
-    public function getIdFormGoogleDriveUrl($path) {
-        $id = explode('/',$path)[5];
+    public function getIdFormGoogleDriveUrl($path)
+    {
+        $id = explode('/', $path)[5];
         $urlPathGDrive = "https://drive.google.com/uc?id=";
 
-        return $urlPathGDrive.$id;
+        return $urlPathGDrive . $id;
     }
 
-    public function isGoogleDrivePath($path) {
-        if (isset(explode('/',$path)[5])) {
+    public function isGoogleDrivePath($path)
+    {
+        if (isset(explode('/', $path)[5])) {
             return true;
         } else {
             return false;

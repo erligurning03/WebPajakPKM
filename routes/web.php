@@ -46,11 +46,15 @@ Route::middleware(['auth', 'status:pengguna'])->group(function () {
                 Route::get($value->tipe_konten . '/{id}', [App\Http\Controllers\Konten_controller::class, 'show' . ucwords($value->tipe_konten)]);
             }
         }
+        Route::post('berita/{id}/proses', [Konten_controller::class, 'komenBerita']);
+        Route::get('berita/{id}/like', [Konten_controller::class, 'likeBerita']);
+        Route::get('berita/{id}/dislike', [Konten_controller::class, 'dislikeBerita']);
     });
     Route::get('/profil', [App\Http\Controllers\IndexController::class, 'editp'])->name('profil');
     Route::patch('profile/update', [App\Http\Controllers\IndexController::class, 'updatep'])->name('profil.update');
     Route::post('profile/update-password', [App\Http\Controllers\IndexController::class, 'updatePw'])->name('profile.updatePw');
 });
+
 
 Route::get('/kuis', [KuisController::class, 'tampilLevel']);
 Route::get('/kuis/{id}', [KuisController::class, 'tampilSoal']);
@@ -98,6 +102,8 @@ Route::get('/list_berita', function () {
 //ini route semua kuis
 // Show the edit form
 
+// Handle form submission
+
 
 //ini route semua QNA user
 // Route::get('/qna', function () {
@@ -112,9 +118,4 @@ Route::post('/qna-baru', [QnaController::class, 'store']);
 Route::get('/layanan', function () {
 
     return view('layanan/layanan');
-});
-
-Route::get('/profil_awal', function () {
-
-    return view('profil/profil_awal');
 });

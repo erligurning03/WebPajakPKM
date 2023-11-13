@@ -31,7 +31,7 @@ class Konten extends Model
     }
 
     public function KomentarKonten() {
-        return $this->hasMany(Komentar_konten::class, 'konten_id', 'id');
+        return $this->hasMany(Komentar_konten::class, 'konten_id');
     }
     public function LikeKonten() {
         return $this->hasMany(Like_konten::class, 'konten_id', 'id');

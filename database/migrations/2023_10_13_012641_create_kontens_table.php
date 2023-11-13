@@ -19,7 +19,7 @@ return new class extends Migration
             $table->longText('deskripsi_konten');
             $table->unsignedInteger('tipe_konten_id');
             $table->unsignedBigInteger('diupload_oleh'); // Kolom user_id, tipe data unsigned bigint
-            $table->foreign('diupload_oleh')->references('id')->on('users'); // Kunci asing ke tabel users
+            $table->foreign('diupload_oleh')->references('id')->on('users')->onDelete('cascade'); // Kunci asing ke tabel users
             $table->timestamps(); // Kolom "created_at" dan "updated_at"
         });
     }

@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('like_kontens', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('konten_id'); // Kolom user_id, tipe data unsigned bigint
-            $table->foreign('konten_id')->references('id')->on('kontens');
+            $table->foreign('konten_id')->references('id')->on('kontens')->onDelete('cascade');
             $table->unsignedBigInteger('disukai_oleh'); // Kolom user_id, tipe data unsigned bigint
-            $table->foreign('disukai_oleh')->references('id')->on('users');
+            $table->foreign('disukai_oleh')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -87,7 +87,7 @@
         <div class="col-md-4">
             <a href="/index/tontonan/{{$konten->id}}" style="color: black">
             <div class="card mb-3">
-            <img src="{{$konten->cover_konten,3}}" width="200" height="200" class="card-img-top  img-fluid" alt="...">
+            <img src="{{$konten->cover_konten}}" width="200" height="200" class="card-img-top  img-fluid" alt="...">
             <div class="card-body text-center">
                 <h5 class="card-title">{{Str::title($konten->judul_konten)}}</h5>
                 {{-- <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> --}}

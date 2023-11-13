@@ -30,7 +30,7 @@
     <div class="col-md-12">
         <div class="embed-responsive embed-responsive-16by9 mt-3">
             <video class="embed-responsive-item" width= "50%"controls>
-                <source src="{{ asset('video/dumping.MP4') }}" type="video/mp4">
+                <source src="{{ $konten->url_konten }}" type="video/mp4">
             </video>
         </div>
         <hr size="5px" width="100%" align="center">

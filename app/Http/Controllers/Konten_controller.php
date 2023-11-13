@@ -287,6 +287,16 @@ class Konten_controller extends Controller
 
             $validateRequest['diupload_oleh'] = auth()->user()->id;
 
+            if (!$this->isGoogleDrivePath($validateRequest['cover_konten'])) {
+                return back()->withInput();
+            }
+            if (!$this->isGoogleDrivePath($validateRequest['url_konten'])) {
+                return back()->withInput();
+            }
+
+            $validateRequest['cover_konten'] = $this->getIdFormGoogleDriveUrl($validateRequest['cover_konten']);
+            $validateRequest['url_konten'] = $this->getIdFormGoogleDriveUrl($validateRequest['url_konten']);
+
             $findKonten->cover_konten = $validateRequest['cover_konten'];
             $findKonten->judul_konten = $validateRequest['judul_konten'];
             $findKonten->url_konten = $validateRequest['url_konten'];

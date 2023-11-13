@@ -2,20 +2,19 @@
 
 namespace Database\Seeders;
 
+use App\Http\Controllers\Konten_controller;
 use App\Models\Konten;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Schema;
 
 class Konten_seeder extends Seeder
 {
 
     public function run(): void
     {
-        DB::statement('SET FOREIGN_KEY_CHECKS=0');
-        DB::table('kontens')->truncate();
-        DB::table('kontens')->insert([
+        $dataMigrate = [
             [
                 //id_tipe_konten 1 itu berita
                 //id_tipe_konten 2 itu podcast
@@ -96,11 +95,10 @@ class Konten_seeder extends Seeder
             ],
             [
                 'id' => '7',
-                'cover_konten'=>'ini cover tontonan 1',
-                'judul_konten'=>'ini judul tontonan 1',
-                'url_konten'=>'ini url tontonan 1',
-                'deskripsi_konten'=> 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis temporibus saepe dolore, repellendus facere assumenda.
-                Harum nostrum modi quaerat, atque id eaque voluptates, totam quis, doloremque veritatis facere voluptatum possimus!',
+                'cover_konten'=>'https://drive.google.com/file/d/1cuzwA876fkaFQxD0BquDMaLHheMgo4ON/view?usp=sharing',
+                'judul_konten'=>'Bagaimana Cara Melapor Pajak',
+                'url_konten'=>'https://drive.google.com/file/d/1n1EzNOZE9Uq-Frn7J90TxIQ6ePI_xEmH/view?usp=sharing',
+                'deskripsi_konten'=> 'Video diatas menjelaskan tentang bagaimana cara melapor pajak',
                 'tipe_konten_id'=>3,
                 'diupload_oleh'=>1,
                 'created_at'=>now(),
@@ -142,7 +140,18 @@ class Konten_seeder extends Seeder
                 'created_at'=>now(),
                 'updated_at'=>now(),
             ],
-        ]);
+        ];
+
+        $dataMigrate = collect($dataMigrate)->map(function($item) {
+            $controller = new Konten_controller();
+            $item['cover_konten'] = $controller->isGoogleDrivePath($item['cover_konten']) ? $controller->getIdFormGoogleDriveUrl($item['cover_konten']) : $item['cover_konten'];
+            $item['url_konten'] = $controller->isGoogleDrivePath($item['url_konten']) ? $controller->getIdFormGoogleDriveUrl($item['url_konten']) : $item['url_konten'];
+            return $item;
+        })->toArray();
+
+        DB::statement('SET FOREIGN_KEY_CHECKS=0');
+        DB::table('kontens')->truncate();
+        DB::table('kontens')->insert($dataMigrate);
     }
     public function down(): void
     {

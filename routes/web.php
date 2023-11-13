@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Schema;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+Route::permanentRedirect('/','login');
 Auth::routes();
 Route::middleware(['auth'])->group(function () {
     Route::get('logout', [LoginController::class, 'logout']);

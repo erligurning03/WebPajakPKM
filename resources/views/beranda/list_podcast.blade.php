@@ -16,7 +16,7 @@
     <div class="col-sm-4 col-md-4 ">
         <a href="/index/podcast/{{$konten->id}}" style="color: black">
       <div class="card mb-3">
-        <img src="{{asset('img/podcast2.jpg')}}" class="card-img-top rounded-circle img-fluid" alt="...">
+        <img src="{{$konten->cover_konten}}" class="card-img-top rounded-circle img-fluid" alt="...">
         <div class="card-body text-center">
           <h5 class="card-title">{{ Str::title($konten->judul_konten)}}</h5>
           {{-- <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> --}}

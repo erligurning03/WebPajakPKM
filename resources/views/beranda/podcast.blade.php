@@ -29,7 +29,7 @@
     @foreach ($listKonten as $konten)
     <div class="col-md-12">
         <div class="embed-responsive embed-responsive-16by9 mt-3">
-          <img src="{{$konten->url_konten,'id'}}" class="card-img-top img-fluid" alt="..."  style="border: 5px solid rgb(70, 70, 70); display:block; ">
+          <img src="{{$konten->cover_konten}}" class="card-img-top img-fluid" alt="..."  style="border: 5px solid rgb(70, 70, 70); display:block; ">
             {{-- <video class="embed-responsive-item" width= "50%"controls>
                 <source src="{{ asset('video/dumping.MP4') }}" type="video/mp4">
             </video> --}}

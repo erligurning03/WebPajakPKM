@@ -7,6 +7,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
+
 class Konten_seeder extends Seeder
 {
 
@@ -16,6 +17,12 @@ class Konten_seeder extends Seeder
         DB::table('kontens')->truncate();
         DB::table('kontens')->insert([
             [
+                //id_tipe_konten 1 itu berita
+                //id_tipe_konten 2 itu podcast
+                //id_tipe_konten 3 itu tontonan
+                //link folder gdrive isi konten(https://drive.google.com/drive/folders/18fc1xxBVnXx_3N_tU-fjPtDxOXUieFwW?usp=sharing)
+                //link folder gdrive cover konten (https://drive.google.com/drive/folders/1c3uiWZo0EQI8XamvrwZgqnAO7QKE5tNT?usp=sharing)
+                //cara buat seeder untuk cover sama isi konten, copy link tiap gambar,video,mp3 yang ada dalam folder ke field cover konten sama isi konten
                 'id' => '1',
                 'cover_konten'=>'ini cover berita 1',
                 'judul_konten'=>'ini judul berita 1',

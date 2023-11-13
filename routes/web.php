@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Konten_controller;
 use App\Models\TipeKonten;
 use App\Http\Controllers\QnaController;
+use Illuminate\Support\Facades\Schema;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,25 +23,28 @@ use App\Http\Controllers\QnaController;
 
 Auth::routes();
 Route::middleware(['auth'])->group(function () {
-    Route::get('logout', [LoginController::class,'logout']);
+    Route::get('logout', [LoginController::class, 'logout']);
     //route dasar tanpa cek status
 });
 
 Route::middleware(['auth', 'status:admin'])->group(function () {
     Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    Route::resource('konten',Konten_controller::class);
+    Route::resource('konten', Konten_controller::class);
     Route::get('/kuisAdmin/{id}/edit', [KuisController::class, 'edit']);
-    Route::put('/kuisAdmin/{id}',[KuisController::class, 'update'])->name('kuis.update');
+    Route::put('/kuisAdmin/{id}', [KuisController::class, 'update'])->name('kuis.update');
     //ini route semua halaman admin
 });
 
 Route::middleware(['auth', 'status:pengguna'])->group(function () {
-    Route::prefix('/')->group(function() {
+    Route::prefix('/')->group(function () {
         Route::get('/', [App\Http\Controllers\IndexController::class, 'index'])->name('index');
-        $tipeKontenList = TipeKonten::all();
-        foreach ($tipeKontenList as $key => $value) {
-            Route::get($value->tipe_konten, [App\Http\Controllers\Konten_controller::class, 'index'.ucwords($value->tipe_konten)])->name($value->tipe_konten);
-            Route::get($value->tipe_konten.'/{id}',[App\Http\Controllers\Konten_controller::class, 'show'.ucwords($value->tipe_konten)]);
+        $isTableTipeKontenListExist = Schema::hasTable('tipe_konten');
+        if ($isTableTipeKontenListExist) {
+            $tipeKontenList = TipeKonten::all();
+            foreach ($tipeKontenList as $key => $value) {
+                Route::get($value->tipe_konten, [App\Http\Controllers\Konten_controller::class, 'index' . ucwords($value->tipe_konten)])->name($value->tipe_konten);
+                Route::get($value->tipe_konten . '/{id}', [App\Http\Controllers\Konten_controller::class, 'show' . ucwords($value->tipe_konten)]);
+            }
         }
     });
     Route::get('/profil', [App\Http\Controllers\IndexController::class, 'editp'])->name('profil');
@@ -78,7 +82,7 @@ Route::get('/tontonan', function () {
 });
 
 
-Route::get('/berita', function(){
+Route::get('/berita', function () {
 
     return view('berita.semuaberita');
 });
@@ -101,8 +105,8 @@ Route::get('/list_berita', function () {
 //     return view('qna/qna2');
 // });
 
-Route::get('/qna',[QnaController::class,'index']);
-Route::post('/qna-baru',[QnaController::class, 'store']);
+Route::get('/qna', [QnaController::class, 'index']);
+Route::post('/qna-baru', [QnaController::class, 'store']);
 
 
 Route::get('/layanan', function () {

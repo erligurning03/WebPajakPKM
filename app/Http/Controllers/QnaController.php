@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Komentar_qna;
 use App\Models\Like_qna;
 use App\Models\Qna;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,13 +19,16 @@ class QnaController extends Controller
         // dd('qnas');
         // return view('qna.qna2', compact('qnas'));
 
-        $qnas = Qna::all();
+        $qnas = Qna::with('like_qna')->with('komentar')->get();
+        // dd($qnas);
+        $users = User::all();
         $createdDates = $qnas->map(function ($qna) {
             return Carbon::parse($qna->created_at);
         });
-        $komentar_qnas = Komentar_qna::all();
+        // $komentar_qnas = Komentar_qna::with('qna')
+        // ->where();
         $like_qnas = Like_qna::all();
-        return view('qna.qna2', compact('qnas', 'createdDates', 'komentar_qnas', 'like_qnas'));
+        return view('qna.qna2', compact('qnas', 'users', 'createdDates'));
     }
 
     // public function toggleLike($postId)
@@ -61,17 +65,25 @@ class QnaController extends Controller
 
     public function store(Request $request){
         // dd('submit');
-        DB::table('qnas')->insert([
-            'user_id' => Auth::user()->id,
+        // DB::table('qnas')->insert([
+        //     'user_id' => Auth::user()->id,
+        //     'isi_pertanyaan'=> $request->pertanyaan,
+        //     'jumlah_like'=>0,
+        //     'jumlah_komentar'=>0,
+        //     'jumlah_share'=>0,
+
+        // ]);
+        $insertQna = new Qna([
+            'user_id' => Auth()->id(),
             'isi_pertanyaan'=> $request->pertanyaan,
             'jumlah_like'=>0,
             'jumlah_komentar'=>0,
             'jumlah_share'=>0,
-            // 'tanggal_upload'=>now(),
-            // 'created_at'=>now(),
-            // 'updated_at'=>now(),
         ]);
-        // dd('summit');
+        $insertQna -> save();
+        return redirect()->back()->with('success', 'pertanyaan berhasil ditambahkan.');
+
+        // dd('user_id');
 
         // $request->validate([
         //     'isi_pertanyaan' => 'required',
@@ -85,7 +97,8 @@ class QnaController extends Controller
         // $qnas->jumlah_komentar = 0;
         // $qnas->jumlah_share =0;
         // $qnas->save();
-        return redirect()->back()->with('success', 'pertanyaan berhasil ditambahkan.');
+        
+        //return redirect()->back()->with('success', 'pertanyaan berhasil ditambahkan.');
         // session()->flash("post_success", "Post berhasil ditambahkan.");
         //return redirect()->back();
     }

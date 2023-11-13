@@ -20,9 +20,12 @@ use Illuminate\Support\Facades\Schema;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::permanentRedirect('/','login');
+
 Auth::routes();
 Route::middleware(['auth'])->group(function () {
+    // Route::permanentRedirect('/','login');
+    // Route::get('login', [LoginController::class, 'login']);
+    // Route::get('/masuk', [App\Http\Controllers\Auth\LoginController::class, 'masukLogin'])->name('masuk');
     Route::get('logout', [LoginController::class, 'logout']);
     //route dasar tanpa cek status
 });

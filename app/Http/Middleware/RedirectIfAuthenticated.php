@@ -21,7 +21,21 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
+                // Mengambil informasi pengguna yang diotentikasi
+                $user = Auth::guard($guard)->user();
+
+                // Menyimpan level pengguna ke dalam variabel
+                $userLevel = $user->status; // Gantilah 'level' sesuai dengan atribut yang menyimpan level pengguna
+
+                // Melakukan pengecekan level admin atau user
+                if ($userLevel == 'admin') {
+                    return redirect('/admin'); // Gantilah '/admin-home' sesuai dengan rute admin
+                } elseif ($userLevel == 'pengguna') {
+                    return redirect('index'); // Gantilah '/user-home' sesuai dengan rute user
+                } else {
+                    // Jika tidak ada level, redirect ke halaman login
+                    return redirect('login'); // Gantilah '/login' sesuai dengan rute login
+                }
             }
         }
 

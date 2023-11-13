@@ -28,14 +28,13 @@ class LoginController extends Controller
      *
      * @var string
      */
-        protected function redirectTo(){
-            if(Auth()->user()->status=='admin'){
-                return route('admin');
-            }
-            elseif(Auth()->user()->status=='pengguna'){
-                return route('index');
-            }
+    protected function redirectTo() {
+        if (Auth::user()->status == 'admin') {
+            return route('/admin');
+        } elseif (Auth::user()->status == 'pengguna') {
+            return route('index');
         }
+    }
 
     /**
      * Create a new controller instance.
@@ -56,7 +55,7 @@ class LoginController extends Controller
         ]);
         if(auth()->attempt(array('email'=>$input['email'], 'password'=>$input['password']))){
             if(auth()->user()->status=='admin'){
-                return redirect()->route('home');
+                return redirect()->route('/admin');
             }
             elseif(auth()->user()->status=='pengguna'){
                 return redirect()->route('index');

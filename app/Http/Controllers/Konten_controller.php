@@ -134,11 +134,67 @@ class Konten_controller extends Controller
             ->with('ShareKonten')
             ->orderBy('created_at', 'DESC')
             ->get();
+
+        $komentar = Komentar_konten::with('userKomen')
+            ->where('konten_id', $id)
+            ->get();
+
+        $sessionId = auth()->id();
+        $liked = Like_konten::where('konten_id', $id)
+            ->where('disukai_oleh', $sessionId)
+            ->exists();
         // dd($listKonten->toArray());
-        return view('beranda.podcast', compact('listKonten', 'id'));
+        return view('beranda.podcast', compact('listKonten', 'komentar', 'liked', 'id'));
+    }
+    public function dislikePodcast($id)
+    {
+        // Find the model instance based on the given criteria
+        $Like = Like_konten::where('konten_id', $id)
+            ->where('disukai_oleh', auth()->id())
+            ->first();
+
+        // Check if the model exists before attempting to delete
+        if ($Like) {
+            // Delete the model
+            $Like->delete();
+        }
+
+        return redirect("/index/podcast/{$id}");
+    }
+
+    public function likePodcast($id)
+    {
+
+        $Like = new Like_konten([
+            'konten_id' => $id,
+            'disukai_oleh' => auth()->id(),
+        ]);
+
+        $Like-> save();
+        return redirect("/index/podcast/{$id}");
+    }
+
+
+
+    public function komenPodcast(Request $request, $id)
+    {
+        // dd($request->input('isi_komentar'));
+        $sessionId = auth()->id();
+        // dd($sessionId);
+        // Create a new Komentar instance
+        $komentar = new Komentar_konten([
+            'konten_id' => $id,
+            'dikomentari_oleh' => $sessionId,
+            'isi_komentar' => $request->input('isi_komentar'),
+        ]);
+        // dd($komentar);
+
+        // Save the Komentar to the database
+        $komentar->save();
+        return redirect("/index/podcast/{$id}")->with('success', 'komentar berhasil ditambahkan');
     }
     // //Tontonan
-    public function indexTontonan()
+    public function indexTontonan(Request $request)
     {
         $listKonten = Konten::with('KomentarKonten')
             ->where('tipe_konten_id', '3')
@@ -148,7 +204,10 @@ class Konten_controller extends Controller
             ->get();
         // dd($listKonten->toArray());
         return view('beranda.list_tontonan', compact('listKonten'));
+
     }
+
+
     public function showTontonan($id)
     {
         $listKonten = Konten::with('KomentarKonten')
@@ -158,8 +217,17 @@ class Konten_controller extends Controller
             ->with('ShareKonten')
             ->orderBy('created_at', 'DESC')
             ->get();
+
+        $komentar = Komentar_konten::with('userKomen')
+            ->where('konten_id', $id)
+            ->get();
+
+        $sessionId = auth()->id();
+        $liked = Like_konten::where('konten_id', $id)
+            ->where('disukai_oleh', $sessionId)
+            ->exists();
         // dd($listKonten->toArray());
-        return view('beranda.tontonan', compact('listKonten', 'id'));
+        return view('beranda.tontonan', compact('listKonten', 'komentar', 'liked', 'id'));
     }
 
     /**

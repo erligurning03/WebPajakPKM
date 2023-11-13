@@ -24,7 +24,7 @@ class Konten_seeder extends Seeder
                 //cara buat seeder untuk cover sama isi konten, copy link tiap gambar,video,mp3 yang ada dalam folder ke field cover konten sama isi konten
                 'id' => '1',
                 'cover_konten'=>'https://drive.google.com/file/d/1DB70khhaGw4XnLqpgAVS7_IYV89yXXns/view?usp=sharing',
-                'judul_konten'=>'OPINI:Pajak dan Pemilu',
+                'judul_konten'=>'OPINI : Pajak dan Pemilu',
                 'url_konten'=>'https://drive.google.com/file/d/1DB70khhaGw4XnLqpgAVS7_IYV89yXXns/view?usp=sharing',
                 'deskripsi_konten'=> 'Bagi sebagian masyarakat, isu perpajakan mungkin terdengar kompleks, tetapi di balik kompleksitasnya tersirat berbagai harapan tentang keadilan, transparansi, dan keberlanjutan ekonomi. Isu perpajakan bukan hanya sekadar diskusi mengenai cara mengumpulkan pendapatan negara, lebih daripada itu ia merupakan refleksi dari integritas pemerintah, tak terkecuali para capres yang berlomba untuk mendapatkan dukungan masyarakat.
                 Banyak persoalan perpajakan yang harus dihadapi oleh pemimpin bangsa yang akan terpilih pada Pemilu 2024. Persoalan mengenai rendahnya rasio pajak, rendahnya tax awareness, serta jauhnya nilai-nilai tax equity mutlak jadi pekerjaan rumah yang kudu mereka hadapi',
@@ -36,7 +36,7 @@ class Konten_seeder extends Seeder
             [
                 'id' => '2',
                 'cover_konten'=>'https://drive.google.com/file/d/1DB70khhaGw4XnLqpgAVS7_IYV89yXXns/view?usp=sharing',
-                'judul_konten'=>'OPINI:Pajak dan Pemilu',
+                'judul_konten'=>'OPINI : Pajak dan Pemilu',
                 'url_konten'=>'https://drive.google.com/file/d/1DB70khhaGw4XnLqpgAVS7_IYV89yXXns/view?usp=sharing',
                 'deskripsi_konten'=> 'Bagi sebagian masyarakat, isu perpajakan mungkin terdengar kompleks, tetapi di balik kompleksitasnya tersirat berbagai harapan tentang keadilan, transparansi, dan keberlanjutan ekonomi. Isu perpajakan bukan hanya sekadar diskusi mengenai cara mengumpulkan pendapatan negara, lebih daripada itu ia merupakan refleksi dari integritas pemerintah, tak terkecuali para capres yang berlomba untuk mendapatkan dukungan masyarakat.
                 Banyak persoalan perpajakan yang harus dihadapi oleh pemimpin bangsa yang akan terpilih pada Pemilu 2024. Persoalan mengenai rendahnya rasio pajak, rendahnya tax awareness, serta jauhnya nilai-nilai tax equity mutlak jadi pekerjaan rumah yang kudu mereka hadapi',
@@ -48,7 +48,7 @@ class Konten_seeder extends Seeder
             [
                 'id' => '3',
                 'cover_konten'=>'https://drive.google.com/file/d/1DB70khhaGw4XnLqpgAVS7_IYV89yXXns/view?usp=sharing',
-                'judul_konten'=>'OPINI:Pajak dan Pemilu',
+                'judul_konten'=>'OPINI : Pajak dan Pemilu',
                 'url_konten'=>'https://drive.google.com/file/d/1DB70khhaGw4XnLqpgAVS7_IYV89yXXns/view?usp=sharing',
                 'deskripsi_konten'=> 'Bagi sebagian masyarakat, isu perpajakan mungkin terdengar kompleks, tetapi di balik kompleksitasnya tersirat berbagai harapan tentang keadilan, transparansi, dan keberlanjutan ekonomi. Isu perpajakan bukan hanya sekadar diskusi mengenai cara mengumpulkan pendapatan negara, lebih daripada itu ia merupakan refleksi dari integritas pemerintah, tak terkecuali para capres yang berlomba untuk mendapatkan dukungan masyarakat.
                 Banyak persoalan perpajakan yang harus dihadapi oleh pemimpin bangsa yang akan terpilih pada Pemilu 2024. Persoalan mengenai rendahnya rasio pajak, rendahnya tax awareness, serta jauhnya nilai-nilai tax equity mutlak jadi pekerjaan rumah yang kudu mereka hadapi',

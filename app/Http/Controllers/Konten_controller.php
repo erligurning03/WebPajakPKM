@@ -57,12 +57,13 @@ class Konten_controller extends Controller
         $liked = Like_konten::where('konten_id', $id)
             ->where('disukai_oleh', $sessionId)
             ->exists();
+        $likeCount = $liked->count();
         // dd($liked);
         // dd($sessionId);
 
 
         // dd($listKonten->toArray());
-        return view('beranda.berita', compact('listKonten', 'komentar', 'liked', 'id'));
+        return view('beranda.berita', compact('listKonten', 'komentar', 'liked', 'likeCount','id'));
     }
 
     public function dislikeBerita($id)

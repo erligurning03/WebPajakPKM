@@ -58,6 +58,7 @@
         </div>
         <div class="card-footer">
           <i class="fa-regular fa-comment"></i>
+          <i class="far fa-comment fa-xl action-icon" data-bs-toggle="modal" data-bs-target="#modalKomentar{{ $qna->id }}" data-post-id="{{ $qna->id }}"></i>
           <b>{{$qna->jumlah_komentar}}</b>
           <a href="#">
             {{-- @if($qna->isLikeByUser()) --}}
@@ -125,9 +126,13 @@
   </div>
 </div>
 {{-- enf of pertanyaan --}}
+
+
+</div>
 <!-- Modal Komentar -->
 <!-- Modal -->
-{{-- <div class="modal fade" id="modalKomentar{{ $post->id }}" tabindex="-1" aria-labelledby="modalKomentarLabel{{ $post->id }}" aria-hidden="true"> --}}
+@foreach($qnas as $qna)
+<div class="modal fade" id="modalKomentar{{ $qna->id }}" tabindex="-1" aria-labelledby="modalKomentarLabel{{ $qna->id }}" aria-hidden="true">
 <div class="modal fade" id="modalKomentar" tabindex="-1" aria-labelledby="modalKomentarLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
@@ -136,33 +141,39 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body" style="max-height: 50vh; overflow-y: auto;">
-        {{-- @if ($post->komentarPosts && count($post->komentarPosts) > 0) --}}
+        @if ($qna->komentar && count($qna->komentar) > 0)
         <div class="comments-section">
-          {{-- @foreach($post->komentarPosts->where('id_post', $post->id)->sortByDesc('created_at') as $comment) --}}
+          @foreach($qna->komentar->where('id_qna', $qna->id)->sortByDesc('created_at') as $comment)
           <div class="mb-3">
             <div class="d-flex align-items-start">
               {{-- <img src="{{ asset('img/foto_profile/'.$comment->user->foto_profil) }}" alt="Foto Profil" style="border-radius: 50%; object-fit: contain; width:45px; height: 45px; border: 1px solid black;"> --}}
               <img src="{{asset('img/podcast2.jpg')}}" alt="Foto Profil" style="border-radius: 50%; object-fit: contain; width:45px; height: 45px; border: 1px solid black;">
               <div class="ms-2">
-                <b><span>paulus</span></b>
-                <span class="ms-2 text-muted">5 detik yang lalu</span>
-                <p style="margin-top: 5px;">saya juga ga tau, mungkin bisa baca buku dulu</p>
+                <b><span>{{$comment->user->name}}</span></b>
+                {{-- <span class="ms-2 text-muted">{{ $comment->created_at->diffForHumans() }}</span> --}}
+                <span class="ms-2 text-muted">5 detik lalu</span>
+                <p style="margin-top: 5px;">{{ $comment->isi_komentar }}</p>
               </div>
-              {{-- @if(Auth::check())
-              @if ($comment->user->nik == Auth::user()->nik) --}}
+              @if(Auth::check())
+              @if ($comment->user->id == Auth::user()->id)
               <div class="ms-auto mt-2">
                 {{-- <button type="button" class="btn btn-danger btn-sm ms-auto" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $comment->id }}"> --}}
                   <button type="button" class="btn btn-danger btn-sm ms-auto" data-bs-toggle="modal" data-bs-target="#deleteModal">
                   <i class="far fa-trash-alt"></i>
                 </button>
               </div>
+              @endif
+              @else
+              @endif
             </div>
           </div>
+          @endforeach
         </div>
-
-        <p>No comments available.</p>
+        @else
+          <p>No comments available.</p>
+        @endif
       </div>
-      {{-- @if(Auth::check()) --}}
+      @if(Auth::check())
       <div class="modal-footer">
         <form action="#" method="POST" class="w-100">
           @csrf
@@ -173,12 +184,16 @@
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
       </div>
+      @else
+      @endif
     </div>
   </div>
 </div>
 
-{{-- @if(Auth::check()) --}}
-<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+@if(Auth::check())
+@foreach($qna->komentar as $comment)
+@if ($comment->user->id == Auth::user()->id)
+<div class="modal fade" id="deleteModal{{ $comment->id }}" tabindex="-1" aria-labelledby="deleteModalLabel{{ $comment->id }}" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
@@ -199,14 +214,109 @@
     </div>
   </div>
 </div>
+@endif
+@endforeach
+@else
+@endif
+@endforeach
 {{-- end of all about komentar --}}
 
+{{-- <!-- Modal Komentar -->
+<!-- Modal -->
+@foreach($qna as $qna)
+<div class="modal fade" id="modalKomentar{{ $qna->id }}" tabindex="-1" aria-labelledby="modalKomentarLabel{{ $qna->id }}" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalKomentarLabel{{ $qnas->id }}">Add Comment</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" style="max-height: 50vh; overflow-y: auto;">
+        @if ($qnas->komentar && count($qnas->komentar) > 0)
+        <div class="comments-section">
+          @foreach($qnas->komentar->where('id', $qnas->id)->sortByDesc('created_at') as $comment)
+          <div class="mb-3">
+            <div class="d-flex align-items-start">
+              <img src="{{ asset('img/foto_profile/'.$comment->user->foto_profil) }}" alt="Foto Profil" style="border-radius: 50%; object-fit: contain; width:45px; height: 45px; border: 1px solid black;">
+              <div class="ms-2">
+                <b><span>{{ $comment->user->nama_lengkap }}</span></b>
+                <span class="ms-2 text-muted">{{ $comment->created_at->diffForHumans() }}</span>
+                <p style="margin-top: 5px;">{{ $comment->isi_komentar }}</p>
+              </div>
+              {{-- @if(Auth::check()) --}}
+             {{--}} @if(auth())
+              @if ($comment->user->id == Auth::user()->id)
+              <div class="ms-auto mt-2">
+                <button type="button" class="btn btn-danger btn-sm ms-auto" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $comment->id }}">
+                  <i class="far fa-trash-alt"></i>
+                </button>
+              </div>
+              @endif
+              @else
+              @endif
+            </div>
+          </div>
+          @endforeach
+        </div>
+        @else
+        <p>No comments available.</p>
+        @endif
+      </div>
+      @if(Auth::check())
+      <div class="modal-footer">
+        <form action="{{ route('add.comment') }}#post-{{ $qnas->id }}" method="POST" class="w-100">
+          @csrf
+          <input type="hidden" name="id_post" value="{{ $qnas->id }}">
+          <div class="input-group mb-3">
+            <textarea class="form-control" id="isi_komentar" name="isi_komentar" rows="3" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+      @else
+      @endif
+    </div>
+  </div>
 </div>
 
-
-{{-- searh qna --}}
+@if(Auth::check())
+@foreach($post->komentarPosts as $comment)
+@if ($comment->user->nik == Auth::user()->nik)
+<div class="modal fade" id="deleteModal{{ $comment->id }}" tabindex="-1" aria-labelledby="deleteModalLabel{{ $comment->id }}" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLabel{{ $comment->id }}">Konfirmasi Hapus Komentar</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Apakah Anda yakin ingin menghapus komentar ini?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+        <form action="{{ route('delete.comment', ['id' => $comment->id]) }}" method="POST">
+          @csrf
+          @method('DELETE')
+          <button type="submit" class="btn btn-danger">Hapus</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+@endif
+@endforeach
+@else
+@endif
+@endforeach --}}
 <script>
+  // var myModal = document.getElementById('modalKomentar{{ $qna->id }}')
+  // var myInput = document.getElementById('myInput')
 
+  // myModal.addEventListener('shown.bs.modal', function () {
+  //   myInput.focus()
+  // })
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 </script>
 
 @endsection

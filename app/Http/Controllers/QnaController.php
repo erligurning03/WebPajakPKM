@@ -22,13 +22,15 @@ class QnaController extends Controller
         $qnas = Qna::with('like_qna')->with('komentar')->get();
         // dd($qnas);
         $users = User::all();
+        // dd($users);
         $createdDates = $qnas->map(function ($qna) {
             return Carbon::parse($qna->created_at);
         });
-        // $komentar_qnas = Komentar_qna::with('qna')
-        // ->where();
+        $komentar_qnas = Komentar_qna::with('qna')->with('user');//nambah untuk display komentar jg
+        //->where('id', );
+
         $like_qnas = Like_qna::all();
-        return view('qna.qna2', compact('qnas', 'users', 'createdDates'));
+        return view('qna.qna2', compact('qnas', 'users', 'createdDates','komentar_qnas'));
     }
 
     // public function toggleLike($postId)

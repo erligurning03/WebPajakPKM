@@ -27,10 +27,6 @@ class User extends Authenticatable
 
     protected $table = 'users';
 
-    public function qna()
-    {
-        return $this->hasMany(Qna::class, 'id');
-    }
 
     /**
      * The attributes that should be hidden for serialization.
@@ -55,6 +51,13 @@ class User extends Authenticatable
     public function komentarKonten()
     {
         return $this->hasMany(Komentar_konten::class, 'dikomentari_oleh');
+    }
+    public function qna()
+    {
+        return $this->hasMany(Qna::class, 'id');
+    }
+    public function komentarQna(){
+        return $this->hasMany(Komentar_qna::class,'user_id');
     }
 
 }

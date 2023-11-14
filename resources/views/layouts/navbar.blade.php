@@ -47,7 +47,7 @@
       <img src="{{ asset('img/logoRujak5.jpeg') }}" alt="Logo Rujak" style="max-width: 100%; height: auto; width: 60px;">
         <h1 class="logo">RUJAK</h1>
         <ul class="desktop-list">
-            <li><a href="{{ url('index') }}">BERANDA</a></li>
+            <li><a href="{{ url('/') }}">BERANDA</a></li>
             <li><a href="{{ url('kuis') }}">KUIS</></li>
             <li><a href="{{ url('qna') }}">Q & A</a></li>
             <li><a href="{{ url('layanan') }}">LAYANAN</a></li>
@@ -56,7 +56,7 @@
             @endphp
             <li class="nav-item dropdown no-arrow">
             <a class="nav-link" style="color: white" href="" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                {{ $user->name }}</a>
+                                {{ substr($user->name,0,8) }}</a>
                             <!-- Dropdown - User Information -->
             <div class="dropdown-content">
                 <a class="dropdown-item" href="{{ route('profil') }}">

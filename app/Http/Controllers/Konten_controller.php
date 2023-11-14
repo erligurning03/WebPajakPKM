@@ -233,7 +233,7 @@ class Konten_controller extends Controller
         $findKonten = Konten::with('KomentarKonten')
             ->with('LikeKonten')
             ->with('ShareKonten')
-            ->where('id', $id)
+            ->where('id')
             ->orderBy('created_at', 'DESC')
             ->first();
         dd($findKonten->toArray());
@@ -273,28 +273,29 @@ class Konten_controller extends Controller
                     'judul_konten' => 'required',
                     'url_konten' => 'required',
                     'deskripsi_konten' => 'required',
-                    'tipe_konten_id' => 'required|in:' . join(',', $tipeKontenList->toArray()),
-                    'diupload_oleh' => 'required||in:' . join(',', $userList->toArray()),
+                    'tipe_konten' => 'required|in:' . join(',', $tipeKontenList->toArray()),
                 ],
                 [
                     'cover_konten.required' => 'Cover Konten Wajib Diisi',
                     'judul_konten.required' => 'Judul Konten Wajib Diisi',
                     'url_konten.required' => 'URL Konten Wajib Diisi',
                     'deskripsi_konten.required' => 'Deskripsi Konten Wajib Diisi',
-                    'tipe_konten_id.required' => 'Tipe Konten Wajib Diisi',
-                    'tipe_konten_id.in' => 'Tipe Konten tidak valid',
-                    'diupload_oleh.required' => 'Diupload Oleh Wajib Diisi',
-                    'diupload_oleh.in' => 'Diupload Oleh tidak valid'
+                    'tipe_konten.required' => 'Tipe Konten Wajib Diisi',
+                    'tipe_konten.in' => 'Tipe Konten tidak valid',
                 ]
             );
+
+            $validateRequest['diupload_oleh'] = auth()->user()->id;
 
             $findKonten->cover_konten = $validateRequest['cover_konten'];
             $findKonten->judul_konten = $validateRequest['judul_konten'];
             $findKonten->url_konten = $validateRequest['url_konten'];
             $findKonten->deskripsi_konten = $validateRequest['deskripsi_konten'];
-            $findKonten->tipe_konten_id = $validateRequest['tipe_konten_id'];
+            $findKonten->tipe_konten_id = $validateRequest['tipe_konten'];
             $findKonten->diupload_oleh = $validateRequest['diupload_oleh'];
             $findKonten->save();
+
+            return redirect()->to('konten');
         } else {
             throw new Error('Gagal update data. Data tidak ditemukan');
         }

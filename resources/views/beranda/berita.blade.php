@@ -24,8 +24,7 @@
     <h6>16/9/2023, 12.00 WIB</h6>
     <div class="col-md-12">
         <div class="embed-responsive embed-responsive-16by9">
-            <img src="{{asset('img/podcast2.jpg')}}" class="card-img-top img-fluid" alt="..."
-                style="width: 100%; display:block;">
+            <img src="{{$konten->url_konten}}" class="card-img-top img-fluid" alt="..." style="width: 100%; display:block;">
         </div>
         <hr size="5px" width="100%" style="align: center">
         <div class="row">

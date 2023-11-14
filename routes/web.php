@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Konten_controller;
 use App\Models\TipeKonten;
+use App\Http\Controllers\QnaController;
+use Illuminate\Support\Facades\Schema;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,41 +23,36 @@ use App\Models\TipeKonten;
 
 Auth::routes();
 Route::middleware(['auth'])->group(function () {
-    Route::get('/', function () {
-        return view('auth.login');
-    });
     Route::get('logout', [LoginController::class, 'logout']);
     //route dasar tanpa cek status
 });
 
 Route::middleware(['auth', 'status:admin'])->group(function () {
     Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-    //ini route semua halaman admin
     Route::resource('konten', Konten_controller::class);
-    // Route::get('','index')->name('konten');
-    // Route::create('','konten.create')->name('konten.create');
-    //  Route::get('/admin', function () {return view('admin/layouts/navbar_admin');});
-    //  Route::get('/admin/tontonan', function () {return view('admin/beranda/tambah_tontonan');});
-    //  Route::get('/admin/tambahkuis', function () { return view('admin/beranda/tambah_kuis');});
-    //  Route::post('admin/tambahkuis/post', [KuisController::class, 'createKuis']);
-    //semua route dalam grup ini hanya bisa diakses oleh operator
+    Route::get('/kuisAdmin/{id}/edit', [KuisController::class, 'edit']);
+    Route::put('/kuisAdmin/{id}', [KuisController::class, 'update'])->name('kuis.update');
+    //ini route semua halaman admin
 });
 
 Route::middleware(['auth', 'status:pengguna'])->group(function () {
-    Route::prefix('index')->group(function () {
+    Route::prefix('/')->group(function () {
         Route::get('/', [App\Http\Controllers\IndexController::class, 'index'])->name('index');
-        Route::get('/profil', [App\Http\Controllers\IndexController::class, 'editp'])->name('profil');
-
-        $tipeKontenList = TipeKonten::all();
-        foreach ($tipeKontenList as $key => $value) {
-            Route::get($value->tipe_konten, [App\Http\Controllers\Konten_controller::class, 'index' . ucwords($value->tipe_konten)])->name($value->tipe_konten);
-            Route::get($value->tipe_konten . '/{id}', [App\Http\Controllers\Konten_controller::class, 'show' . ucwords($value->tipe_konten)]);
+        $isTableTipeKontenListExist = Schema::hasTable('tipe_konten');
+        if ($isTableTipeKontenListExist) {
+            $tipeKontenList = TipeKonten::all();
+            foreach ($tipeKontenList as $key => $value) {
+                Route::get($value->tipe_konten, [App\Http\Controllers\Konten_controller::class, 'index' . ucwords($value->tipe_konten)])->name($value->tipe_konten);
+                Route::get($value->tipe_konten . '/{id}', [App\Http\Controllers\Konten_controller::class, 'show' . ucwords($value->tipe_konten)]);
+            }
         }
         Route::post('berita/{id}/proses', [Konten_controller::class, 'komenBerita']);
         Route::get('berita/{id}/like', [Konten_controller::class, 'likeBerita']);
         Route::get('berita/{id}/dislike', [Konten_controller::class, 'dislikeBerita']);
     });
+    Route::get('/profil', [App\Http\Controllers\IndexController::class, 'editp'])->name('profil');
+    Route::patch('profile/update', [App\Http\Controllers\IndexController::class, 'updatep'])->name('profil.update');
+    Route::post('profile/update-password', [App\Http\Controllers\IndexController::class, 'updatePw'])->name('profile.updatePw');
 });
 
 
@@ -104,17 +101,24 @@ Route::get('/list_berita', function () {
 
 //ini route semua kuis
 // Show the edit form
-Route::get('/kuisAdmin/{id}/edit', [KuisController::class, 'edit']);
 
-// Handle form submission
-Route::put('/kuisAdmin/{id}', [KuisController::class, 'update'])->name('kuis.update');
 
-//ini route semua QNA
-Route::get('/qna', function () {
+//ini route semua QNA user
+// Route::get('/qna', function () {
 
-    return view('qna/qna2');
-});
+//     return view('qna/qna2');
+// });
+
+Route::get('/qna', [QnaController::class, 'index']);
+Route::post('/qna-baru', [QnaController::class, 'store']);
+
+
 Route::get('/layanan', function () {
 
     return view('layanan/layanan');
+});
+
+Route::get('/profil_awal', function () {
+
+    return view('profil/profil_awal');
 });

@@ -9,7 +9,7 @@
   <div class="box mt-3" style="width: 100%; height: 50px;">
     <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">
       <span>Ingin bertanya tentang pajak kepada forum?</span>
-      <i class="fa-solid fa-plus"></i>         
+      <i class="fa-solid fa-plus"></i>
     </a>
   </div>
   {{-- end tombol komentar --}}
@@ -32,7 +32,7 @@
     <div class="btn-group btn-group-lg" role="group" aria-label="Basic radio toggle button group" style="font-family: 'Courier New', Courier, monospace;  width:60%; height: 40px;">
       <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
       <label class="btn btn-outline-warning btn-lg" for="btnradio1"><b>TRENDING</b></label>
-    
+
       <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
       <label class="btn btn-outline-warning btn-lg" for="btnradio2"><B>TERBARU</B></label>
     </div>
@@ -62,12 +62,12 @@
           <b>{{$qna->jumlah_komentar}}</b>
           <a href="#">
             {{-- @if($qna->isLikeByUser()) --}}
-              <i class="fas fa-heart fa-xl love-icon action-icon text-danger"></i>  
+              <i class="fas fa-heart fa-xl love-icon action-icon text-danger"></i>
             {{-- @else --}}
-              <i class="far fa-heart fa-xl love-icon action-icon"></i> 
+              <i class="far fa-heart fa-xl love-icon action-icon"></i>
             {{-- @endif --}}
           </a>
-       
+
           <b>{{$qna->jumlah_like}}</b>
           <i class="fa-solid fa-share-from-square"></i>
           <b>{{$qna->jumlah_share}}</b>
@@ -90,7 +90,7 @@
       <div class="card-footer">
         <i class="fa-regular fa-comment"></i>
         <i class="far fa-heart fa-xl love-icon action-icon"></i>
-        <i class="fas fa-heart fa-xl love-icon action-icon text-danger"></i>            
+        <i class="fas fa-heart fa-xl love-icon action-icon text-danger"></i>
         <b>100</b>
         <i class="fa-solid fa-share-from-square"></i>
         <b>78</b>
@@ -133,7 +133,7 @@
 <!-- Modal -->
 @foreach($qnas as $qna)
 <div class="modal fade" id="modalKomentar{{ $qna->id }}" tabindex="-1" aria-labelledby="modalKomentarLabel{{ $qna->id }}" aria-hidden="true">
-<div class="modal fade" id="modalKomentar" tabindex="-1" aria-labelledby="modalKomentarLabel" aria-hidden="true">
+{{-- <div class="modal fade" id="modalKomentar" tabindex="-1" aria-labelledby="modalKomentarLabel" aria-hidden="true"> --}}
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
       <div class="modal-header">

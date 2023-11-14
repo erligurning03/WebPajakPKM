@@ -99,7 +99,7 @@ class QnaController extends Controller
         // $qnas->jumlah_komentar = 0;
         // $qnas->jumlah_share =0;
         // $qnas->save();
-        
+
         //return redirect()->back()->with('success', 'pertanyaan berhasil ditambahkan.');
         // session()->flash("post_success", "Post berhasil ditambahkan.");
         //return redirect()->back();

@@ -133,7 +133,6 @@
 <!-- Modal -->
 @foreach($qnas as $qna)
 <div class="modal fade" id="modalKomentar{{ $qna->id }}" tabindex="-1" aria-labelledby="modalKomentarLabel{{ $qna->id }}" aria-hidden="true">
-{{-- <div class="modal fade" id="modalKomentar" tabindex="-1" aria-labelledby="modalKomentarLabel" aria-hidden="true"> --}}
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
       <div class="modal-header">
@@ -308,15 +307,5 @@
 @else
 @endif
 @endforeach --}}
-<script>
-  // var myModal = document.getElementById('modalKomentar{{ $qna->id }}')
-  // var myInput = document.getElementById('myInput')
-
-  // myModal.addEventListener('shown.bs.modal', function () {
-  //   myInput.focus()
-  // })
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-</script>
 
 @endsection

@@ -6,10 +6,10 @@
         <form action="/index">
         <button type="submit" class="btn btn-warning" style="text-align: center; width:110px; height:35px;";><i class="fa-solid fa-arrow-left"></i> Kembali</button>
         </form>
-        <div class="input-group mb-4 mt-3">
+        {{-- <div class="input-group mb-4 mt-3">
             <span class="input-group-text" id="basic-addon1" style="cursor: pointer;" onclick="#"><i class="bi bi-search"></i></span>
             <input type="text" class="form-control" placeholder="Mau baca apa hari ini ?..." aria-label="Cari" aria-describedby="basic-addon1" id="search-input" style="width:60px;">
-        </div>
+        </div> --}}
         @foreach ($listKonten as $konten)
         <div class="col-sm-4 col-md-4 ">
             <div class="card mb-3">

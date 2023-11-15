@@ -113,7 +113,7 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="admin">
                 <div class="sidebar-brand-icon">
-                    <img src="{{asset('admin_assets/assets/img/logo.png')}}" width="100%">
+                    <img src="{{asset('admin_assets\assets\img\logo4.jpeg')}}" width="35%">
                     {{-- <i class="fa fa-home" aria-hidden="true"></i> --}}
                 </div>
                 {{-- <div class="sidebar-brand-text">Desa Nagori Nagori Tongah</div> --}}

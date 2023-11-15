@@ -113,7 +113,7 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="admin">
                 <div class="sidebar-brand-icon">
-                    <img src="{{asset('admin_assets\assets\img\logo4.jpeg')}}" width="35%">
+                    <img src="{{asset('admin_assets\assets\img\logo2.png')}}" width="100%" height="100%" >
                     {{-- <i class="fa fa-home" aria-hidden="true"></i> --}}
                 </div>
                 {{-- <div class="sidebar-brand-text">Desa Nagori Nagori Tongah</div> --}}
@@ -445,7 +445,7 @@
                             <form action="{{ route('logout') }}" method="POST">
                                 @csrf
                                 <button type="submit" class="btn btn-primary">Logout</button>
-                                         
+
                             </form>
                         </div>
                     </div>

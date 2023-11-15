@@ -55,7 +55,7 @@ class LoginController extends Controller
         ]);
         if(auth()->attempt(array('email'=>$input['email'], 'password'=>$input['password']))){
             if(auth()->user()->status=='admin'){
-                return redirect()->route('/admin');
+                return redirect()->route('home');
             }
             elseif(auth()->user()->status=='pengguna'){
                 return redirect()->route('index');

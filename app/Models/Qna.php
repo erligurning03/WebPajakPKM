@@ -27,7 +27,7 @@ class Qna extends Model
 
     public function komentar()
     {
-        return $this->hasMany(Komentar_qna::class, 'user_id');
+        return $this->hasMany(Komentar_qna::class, 'user_id');//dikomentari oleh user x dengan kunci user_id pada tabel qna
     }
 
     
@@ -38,7 +38,7 @@ class Qna extends Model
 
     public function isLikedByUser()
     {
-        $userEmail = Auth::user()->email;
+        $userEmail = Auth()->user()->email;
 
         return Like_qna::where('id_qna', $this->id)
             ->where('email', $userEmail)

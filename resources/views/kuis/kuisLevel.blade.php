@@ -6,9 +6,9 @@
         <div class="col-6 border border-5 bg-warning">
             <h2><a href="#"><strong>LEVEL</strong></a></h2>
         </div>
-        <div class="col-6 border border-5 bg-warning">
+        {{-- <div class="col-6 border border-5 bg-warning">
             <h2><a href=""><strong>PEMENANG</strong></a></h2>
-        </div>
+        </div> --}}
 
         @foreach ($tampil as $data)
         <a href="/kuis/{{ $data->id }}" class="card-link" style="color: black;">

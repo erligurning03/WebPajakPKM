@@ -40,11 +40,11 @@
                 @endif
                 <b>{{$likeCount}}</b>
             </div>
-            <div class="col-6 col-md-6" style="text-align: right">
-                {{-- <i class="fa-regular fa-share-from-square"></i> --}}
+            {{-- <div class="col-6 col-md-6" style="text-align: right">
+                <i class="fa-regular fa-share-from-square"></i>
                 <i class="fa-solid fa-share-from-square"></i>
                 <b>78</b>
-            </div>
+            </div> --}}
         </div>
         <div class="isi-konten">
             <p> {{$konten->deskripsi_konten}} </p>

@@ -25,6 +25,13 @@ class User extends Authenticatable
         'status',
     ];
 
+    protected $table = 'users';
+
+    public function qna()
+    {
+        return $this->hasMany(Qna::class, 'id');
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -49,4 +56,5 @@ class User extends Authenticatable
     {
         return $this->hasMany(Komentar_konten::class, 'dikomentari_oleh');
     }
+
 }

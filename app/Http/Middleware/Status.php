@@ -19,6 +19,6 @@ class Status
             return $next($request);
         }
         abort(403, 'Anda tidak memiliki hak mengakses laman tersebut!');
-        
+
     }
 }

@@ -14,20 +14,24 @@
               <div class="carousel-inner">
                 @foreach ($listKonten->where('tipe_konten_id', 1)->take(1) as $konten)
                 <div class="carousel-item active" data-bs-interval="2000">
+                    <a href="/index/berita/{{$konten->id}}" style="color: black">
                   <img src="{{$konten->url_konten}}" class="d-block w-100 img-fluid" alt="..." >
                   <div class="carousel-caption d-none d-md-block">
                     <h5>{{Str::title($konten->judul_konten)}}</h5>
+                </a>
+                </div>
                 </div>
                 @endforeach
                 @foreach ($listKonten->where('tipe_konten_id', 1)->slice(1,2) as $konten)
                 <div class="carousel-item" data-bs-interval="2000">
-                  <img src="{{$konten->url_konten}}" class="d-block w-100 img-fluid" alt="img1">
+                    <a href="/index/berita/{{$konten->id}}" style="color: black">
+                  <img src="{{$konten->url_konten}}" class="d-block w-100 img-fluid" alt="...">
                   <div class="carousel-caption d-none d-md-block">
                     <h5>{{Str::title($konten->judul_konten)}}</h5>
+                </a>
                   </div>
                 </div>
                 @endforeach
-              </div>
               <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
@@ -40,45 +44,7 @@
       </div>
     </div>
   </div>
-  {{-- <div class="row">
-    <h2>Podcast Rujak</h2>
-    <div class="col-md-3">
-      <div class="card h-100">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="card h-100">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="card h-100">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="card h-100">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        </div>
-      </div>
-    </div>
-  </div> --}}
+</div>
 
     {{-- baris video pembelajaran rujak --}}
     <div class="row">
@@ -87,9 +53,9 @@
         <div class="col-md-4">
             <a href="/index/tontonan/{{$konten->id}}" style="color: black">
             <div class="card mb-3">
-            <img src="{{$konten->cover_konten,3}}" width="200" height="200" class="card-img-top  img-fluid" alt="...">
+            <img src="{{$konten->cover_konten}}" width="200" height="200" class="card-img-top  img-fluid" alt="...">
             <div class="card-body text-center">
-                <h5 class="card-title">{{Str::title($konten->judul_konten)}}</h5>
+                <h5 class="card-title">{{$konten->judul_konten}}</h5>
                 {{-- <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> --}}
             </div>
             </div>
@@ -110,7 +76,7 @@
       <div class="card mb-3">
         <img src="{{$konten->cover_konten,2}}" class="card-img-top img-fluid" alt="...">
         <div class="card-body text-center">
-          <h5 class="card-title">{{Str::title($konten->judul_konten)}}</h5>
+          <h5 class="card-title">{{$konten->judul_konten}}</h5>
           {{-- <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> --}}
         </div>
       </div>

@@ -15,7 +15,7 @@
   {{-- end tombol komentar --}}
   {{-- tombol search --}}
   <div class="box mt-3" style="width: 100%;justify-content: space-between;">
-    <input type="text" placeholder="Cari postingan..." id="searchInput" oninput="#" style="width: 90%;">
+    <input type="text" name = "search" placeholder="Cari postingan..." id="search" oninput="#" style="width: 90%;">
     <i class="fa-solid fa-magnifying-glass"></i>
   </div>
   {{-- end of search --}}
@@ -45,8 +45,12 @@
     <div class="card mt-5">
         <div class="card-header">
             <img src="{{asset('img/podcast2.jpg')}}" alt="Foto Profil" style="border-radius: 50%; object-fit: contain; width:45px; height: 45px; border: 1px solid black; ">
-            {{-- <span>{{$qna->users->name}}</span> --}}
+              <span>{{$qna->users->name}}</span>
+
             {{-- <span class="float-right">{{ $qna->tanggal_upload->format('Y-m-d H:i:s') }}</span> --}}
+            @if ($qna->created_at)
+             <span class="float-right">• {{ $qna->created_at->diffForHumans() }}</span>
+            @endif
             {{-- <span class="float-right">• {{ $qna->created_at->diffForHumans() }}</span> --}}
         </div>
         <div class="card-body">
@@ -72,12 +76,12 @@
     @endforeach
 
     {{-- card pertanyaan selebihnya --}}
-    <div class="card mt-5">
+    {{-- <div class="card mt-5">
       <div class="card-header">
           <img src="{{asset('img/podcast2.jpg')}}" alt="Foto Profil" style="border-radius: 50%; object-fit: contain; width:45px; height: 45px; border: 1px solid black; ">
           <span>lngshe</span>
           {{-- <span class="float-right">{{ $question->created_at->format('Y-m-d H:i:s') }}</span> --}}
-          <span class="float-right">| 2 hari lalu</span>
+          {{--<span class="float-right">| 2 hari lalu</span>
       </div>
       <div class="card-body">
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, illum magnam dolores quo aliquid delectu. Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus facilis, aliquid sapiente soluta dolores quis fuga esse ad ratione? Quod reprehenderit omnis vitae minima ratione, voluptatum ab suscipit aspernatur impedit?</p>
@@ -90,7 +94,7 @@
         <i class="fa-solid fa-share-from-square"></i>
         <b>78</b>
       </div>
-    </div>
+    </div> --}}
 {{-- end of card pertanyaan --}}
 
 <!-- Modal Tambahkan pertanyaan -->
@@ -199,5 +203,10 @@
 
 </div>
 
+
+{{-- searh qna --}}
+<script>
+
+</script>
 
 @endsection

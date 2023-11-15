@@ -15,6 +15,6 @@ class Komentar_qna extends Model
 
     public function qna()
     {
-        return $this->belongsTo(Qna::class, 'id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

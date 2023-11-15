@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 class LoginController extends Controller
 {
     /*
@@ -18,7 +20,7 @@ class LoginController extends Controller
     | to conveniently provide its functionality to your applications.
     |
     */
-    
+
     use AuthenticatesUsers;
 
     /**
@@ -26,14 +28,13 @@ class LoginController extends Controller
      *
      * @var string
      */
-        protected function redirectTo(){
-            if(Auth()->user()->status=='admin'){
-                return route('admin');
-            }
-            elseif(Auth()->user()->status=='pengguna'){
-                return route('index');
-            }
+    protected function redirectTo() {
+        if (Auth::user()->status == 'admin') {
+            return route('/admin');
+        } elseif (Auth::user()->status == 'pengguna') {
+            return route('index');
         }
+    }
 
     /**
      * Create a new controller instance.
@@ -54,7 +55,7 @@ class LoginController extends Controller
         ]);
         if(auth()->attempt(array('email'=>$input['email'], 'password'=>$input['password']))){
             if(auth()->user()->status=='admin'){
-                return redirect()->route('home');
+                return redirect()->route('/admin');
             }
             elseif(auth()->user()->status=='pengguna'){
                 return redirect()->route('index');
@@ -62,5 +63,12 @@ class LoginController extends Controller
         }else{
             return redirect()->route('login')->with('error', 'email and password are wrong');
         }
+    }
+
+    public function logout(Request $request) {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('login');
     }
 }

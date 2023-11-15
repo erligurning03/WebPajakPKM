@@ -16,7 +16,7 @@
                 <a href="/index/berita/{{$konten->id}}" style="color: black">
                 <div class="row">
                     <div class="col-md-6">
-                        <img src="{{$konten->url_konten}}" class="d-block w-100 img-fluid" alt="..." >
+                        <img src="{{$konten->cover_konten}}" class="d-block w-100 img-fluid" alt="..." >
                     </div>
                     <div class="col-md-6">
                         <b>{{ Str::title($konten->judul_konten) }}</b>

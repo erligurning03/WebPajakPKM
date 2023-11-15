@@ -23,6 +23,9 @@ use Illuminate\Support\Facades\Schema;
 
 Auth::routes();
 Route::middleware(['auth'])->group(function () {
+    Route::permanentRedirect('/','login');
+    // Route::get('login', [LoginController::class, 'login']);
+    // Route::get('/masuk', [App\Http\Controllers\Auth\LoginController::class, 'masukLogin'])->name('masuk');
     Route::get('logout', [LoginController::class, 'logout']);
     //route dasar tanpa cek status
 });
@@ -36,7 +39,7 @@ Route::middleware(['auth', 'status:admin'])->group(function () {
 });
 
 Route::middleware(['auth', 'status:pengguna'])->group(function () {
-    Route::prefix('/')->group(function () {
+    Route::prefix('index')->group(function () {
         Route::get('/', [App\Http\Controllers\IndexController::class, 'index'])->name('index');
         $isTableTipeKontenListExist = Schema::hasTable('tipe_konten');
         if ($isTableTipeKontenListExist) {
@@ -46,9 +49,16 @@ Route::middleware(['auth', 'status:pengguna'])->group(function () {
                 Route::get($value->tipe_konten . '/{id}', [App\Http\Controllers\Konten_controller::class, 'show' . ucwords($value->tipe_konten)]);
             }
         }
+        Route::post('/search',[EmployeeController::class,'searchTontonan'])->name('tontonan.cari');
         Route::post('berita/{id}/proses', [Konten_controller::class, 'komenBerita']);
         Route::get('berita/{id}/like', [Konten_controller::class, 'likeBerita']);
         Route::get('berita/{id}/dislike', [Konten_controller::class, 'dislikeBerita']);
+        Route::post('podcast/{id}/proses', [Konten_controller::class, 'komenPodcast']);
+        Route::get('podcast/{id}/like', [Konten_controller::class, 'likePodcast']);
+        Route::get('podcast/{id}/dislike', [Konten_controller::class, 'dislikePodcast']);
+        Route::post('tontonan/{id}/proses', [Konten_controller::class, 'komenTontonan']);
+        Route::get('tontonan/{id}/like', [Konten_controller::class, 'likeTontonan']);
+        Route::get('tontonan/{id}/dislike', [Konten_controller::class, 'dislikeTontonan']);
     });
     Route::get('/profil', [App\Http\Controllers\IndexController::class, 'editp'])->name('profil');
     Route::patch('profile/update', [App\Http\Controllers\IndexController::class, 'updatep'])->name('profil.update');
@@ -102,6 +112,8 @@ Route::get('/list_berita', function () {
 //ini route semua kuis
 // Show the edit form
 
+// Handle form submission
+
 
 //ini route semua QNA user
 // Route::get('/qna', function () {
@@ -116,9 +128,4 @@ Route::post('/qna-baru', [QnaController::class, 'store']);
 Route::get('/layanan', function () {
 
     return view('layanan/layanan');
-});
-
-Route::get('/profil_awal', function () {
-
-    return view('profil/profil_awal');
 });

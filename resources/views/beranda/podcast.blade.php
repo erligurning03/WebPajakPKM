@@ -49,7 +49,7 @@
                     <i class="far fa-heart fa-xl love-icon action-icon"></i>
                 </a>
                 @endif
-                <b>100</b>
+                <b>{{$likeCount}}</b>
             </div>
             {{-- <div class="col-6 col-md-6" style="text-align: right">
                 <i class="fa-regular fa-share-from-square"></i>

@@ -1,5 +1,11 @@
 @extends('admin.layouts.navbar_admin')
 @section('container')
+<style>
+    .flexd{
+        display: flex!important;
+        justify-content: center;
+        }
+</style>
 
 <!-- Begin Page Content -->
 <div class="container-fluid">
@@ -9,7 +15,7 @@
 
     <!-- DataTales Example -->
     <div class="sidebar-brand-icon">
-        <div class="d-flex align-items-center">
+        <div class="d-flex justify-content-center">
             <img class="img-fluid pad" text-align: center; display: block; width="250" height="124" src="{{asset('admin_assets\assets\img\logo.jpeg')}}" style="align-content: center;justify-content:center" >
             {{-- <i class="fa fa-home" aria-hidden="true"></i> --}}
         </div>

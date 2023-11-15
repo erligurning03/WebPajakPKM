@@ -14,10 +14,11 @@
     <!-- Custom fonts for this template-->
     <!--<link href="{{ asset('admin_assets/assets/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css"> -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!-- Custom styles for this template-->
     <link href="{{ asset('admin_assets/assets/css/sb-admin-2.min.css') }}" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
     <!-- font awesome untuk icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Font Lato -->
@@ -111,14 +112,14 @@
         <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar" style="background-image: linear-gradient(to bottom, #144272, #2b5c9b); background-repeat: no-repeat;">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="admin">
+
+            <div class="d-flex align-items-center justify-content-center" href="admin">
                 <div class="sidebar-brand-icon">
-                    <img src="{{asset('admin_assets\assets\img\logo2.png')}}" width="100%" height="100%" >
-                    {{-- <i class="fa fa-home" aria-hidden="true"></i> --}}
+                    <img src="{{asset('admin_assets\assets\img\Logo-1.png')}}" width="100%" height="100%" >
                 </div>
                 {{-- <div class="sidebar-brand-text">Desa Nagori Nagori Tongah</div> --}}
                 {{-- <img src="" alt=""> --}}
-            </a>
+            </div>
 
             <!-- Divider -->
             <hr class="sidebar-divider my-2">

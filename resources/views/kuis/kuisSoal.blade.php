@@ -69,7 +69,7 @@
                                 <label>
                                     <input type="radio" name="answers[{{ $data->id }}]"
                                         value="{{ $Jawaban->opsi_jawaban }}">
-                                    {{ $Jawaban->opsi_jawaban }}. {{ $Jawaban->isi_jawaban }}
+                                    {{ $Jawaban->opsi_jawaban }}. {!! $Jawaban->isi_jawaban !!}
                                 </label>
                             </div>
                             <br>

@@ -33,10 +33,7 @@
     <div class="d-flex justify-content-center mt-3">
         <div class="btn-group btn-group-lg" role="group" aria-label="Basic radio toggle button group"
             style="font-family: 'Courier New', Courier, monospace;  width:60%; height: 40px;">
-            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-            <label class="btn btn-outline-warning btn-lg" for="btnradio1"><b>TRENDING</b></label>
-
-            <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" checked>
             <label class="btn btn-outline-warning btn-lg" for="btnradio2"><B>TERBARU</B></label>
         </div>
     </div>

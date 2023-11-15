@@ -59,22 +59,24 @@ Route::middleware(['auth', 'status:pengguna'])->group(function () {
         Route::post('tontonan/{id}/proses', [Konten_controller::class, 'komenTontonan']);
         Route::get('tontonan/{id}/like', [Konten_controller::class, 'likeTontonan']);
         Route::get('tontonan/{id}/dislike', [Konten_controller::class, 'dislikeTontonan']);
-        //route qna dpindahkan 
-        Route::get('/qna', [QnaController::class, 'index']);
-        Route::post('/qna-baru', [QnaController::class, 'store']);
-        // Route::post('/komentar-qna/{$id}/tes', [QnaController::class, 'komenQna']);
-        //Route::post('/komentar-qna/{$id}', [QnaController::class, 'komenQna']);//->name('komentar-qna');
-        Route::post('/komentar-qna/{id}/tes', [QnaController::class, 'komenQna'])->name('komentar-qna');
+
     });
     Route::get('/profil', [App\Http\Controllers\IndexController::class, 'editp'])->name('profil');
     Route::patch('profile/update', [App\Http\Controllers\IndexController::class, 'updatep'])->name('profil.update');
     Route::post('profile/update-password', [App\Http\Controllers\IndexController::class, 'updatePw'])->name('profile.updatePw');
+    Route::get('/kuis', [KuisController::class, 'tampilLevel']);
+    Route::get('/kuis/{id}', [KuisController::class, 'tampilSoal']);
+    Route::post('/kuis/{id}/proseskuis', [KuisController::class, 'prosesKuis']);
+     //route qna dpindahkan
+     Route::get('/qna', [QnaController::class, 'index']);
+     Route::post('/qna-baru', [QnaController::class, 'store']);
+     // Route::post('/komentar-qna/{$id}/tes', [QnaController::class, 'komenQna']);
+     //Route::post('/komentar-qna/{$id}', [QnaController::class, 'komenQna']);//->name('komentar-qna');
+     Route::post('/komentar-qna/{id}/tes', [QnaController::class, 'komenqna'])->name('komenqna');
 });
 
 
-Route::get('/kuis', [KuisController::class, 'tampilLevel']);
-Route::get('/kuis/{id}', [KuisController::class, 'tampilSoal']);
-Route::post('/kuis/{id}/proseskuis', [KuisController::class, 'prosesKuis']);
+
 
 // Route::get('/navbar', function () {
 

@@ -73,7 +73,7 @@ class QnaController extends Controller
         //return redirect()->back();
     }
 
-    public function komenQna(Request $request, $id)
+    public function komenqna(Request $request, $id)
     {
         // dd($request->all());
         // dd($request->input('isi_komentar'));
@@ -85,9 +85,6 @@ class QnaController extends Controller
             'user_id' => $sessionId,
             'isi_komentar' => $request->input('isi_komentar'),
         ]);
-        // dd($komentarQna);
-
-        // Save the Komentar to the database
         $komentarQna->save();
         // return redirect("/komentar-qna/{$id}")->with('success', 'komentar berhasil ditambahkan');
         // return redirect()->back()->with('success', 'pertanyaan berhasil ditambahkan.');

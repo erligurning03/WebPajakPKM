@@ -175,7 +175,7 @@
       @if(Auth::check())
       <div class="modal-footer">
         {{-- <form action="/komentar-qna/{{$id}}/tes" method="POST" class="w-100"> --}}
-          <form action="{{ route('komentar-qna', ['id' => $qna->id]) }}" method="POST" class="w-100">
+          <form action="{{ route('komenqna', ['id' => $qna->id]) }}" method="POST" class="w-100">
           {{-- <form action="/komentar-qna/{'$id'}" method="POST" class="w-100"> --}}
           @csrf
           <input type="hidden" name="isi_komentar" value="isi_komentar">

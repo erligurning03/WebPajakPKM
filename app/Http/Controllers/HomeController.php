@@ -23,6 +23,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('admin.beranda.tambah_tontonan');
+        return view('admin.beranda.beranda_admin');
     }
 }

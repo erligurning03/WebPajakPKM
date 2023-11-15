@@ -73,6 +73,7 @@ Route::middleware(['auth', 'status:pengguna'])->group(function () {
      // Route::post('/komentar-qna/{$id}/tes', [QnaController::class, 'komenQna']);
      //Route::post('/komentar-qna/{$id}', [QnaController::class, 'komenQna']);//->name('komentar-qna');
      Route::post('/komentar-qna/{id}/tes', [QnaController::class, 'komenqna'])->name('komenqna');
+     Route::get('/komentar-qna/deleteComment/{id}', [QnaController::class, 'deleteKomen']);
 });
 
 

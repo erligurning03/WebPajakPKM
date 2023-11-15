@@ -171,10 +171,12 @@
                             <div class="ms-auto mt-2">
                                 {{-- <button type="button" class="btn btn-danger btn-sm ms-auto" data-bs-toggle="modal"
                                     data-bs-target="#deleteModal{{ $comment->id }}"> --}}
-                                    <button type="button" class="btn btn-danger btn-sm ms-auto" data-bs-toggle="modal"
-                                        data-bs-target="#deleteModal">
-                                        <i class="far fa-trash-alt"></i>
-                                    </button>
+                                    <a href="komentar-qna/deleteComment/{{$comment->id}}">
+                                        <button type="button" class="btn btn-danger btn-sm ms-auto"
+                                            data-bs-toggle="modal" data-bs-target="#deleteModal">
+                                            <i class="far fa-trash-alt"></i>
+                                        </button>
+                                    </a>
                             </div>
                             @endif
                             @endif

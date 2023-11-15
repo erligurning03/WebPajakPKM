@@ -95,4 +95,19 @@ class QnaController extends Controller
         return redirect()->back()->withInput()->with('success', 'pertanyaan berhasil ditambahkan.')->with('id_qna', $id);
 
     }
+    public function deleteKomen($id)
+    {
+        // Find the model instance based on the given criteria
+        $delete = Komentar_qna::where('id', $id)
+            ->first();
+
+        // Check if the model exists before attempting to delete
+        if ($delete) {
+            // Delete the model
+            $delete->delete();
+        }
+
+        return redirect()->back();
+    }
+
 }

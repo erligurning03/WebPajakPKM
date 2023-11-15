@@ -9,11 +9,11 @@ class Like_qna extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id', 'id_qna', 'user_id'];
+    protected $fillable = ['id_qna', 'user_id'];
     protected $table ='like_qnas';
-    
+
     public function qna()
     {
-        return $this->belongsTo(Qna::class, 'id');
+        return $this->belongsTo(Qna::class, 'id_qna');
     }
 }

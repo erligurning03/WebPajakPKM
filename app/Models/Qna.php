@@ -9,11 +9,11 @@ use Illuminate\Support\Facades\Auth;
 class Qna extends Model
 {
     use HasFactory;
-    protected $fillable = ['id', 
+    protected $fillable = [
     'user_id',
-    'isi_pertanyaan', 
-    'jumlah_like', 
-    'jumlah_komentar', 
+    'isi_pertanyaan',
+    'jumlah_like',
+    'jumlah_komentar',
     'jumlah_share',
     'tanggal_upload'];
 
@@ -27,13 +27,13 @@ class Qna extends Model
 
     public function komentar()
     {
-        return $this->hasMany(Komentar_qna::class, 'user_id');//dikomentari oleh user x dengan kunci user_id pada tabel qna
+        return $this->hasMany(Komentar_qna::class, 'id_qna');//dikomentari oleh user x dengan kunci user_id pada tabel qna
     }
 
-    
+
     public function like_qna()
     {
-        return $this->hasMany(Like_qna::class, 'user_id');
+        return $this->hasMany(Like_qna::class, 'id_qna');
     }
 
     public function isLikedByUser()

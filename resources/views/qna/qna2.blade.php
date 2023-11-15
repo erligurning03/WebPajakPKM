@@ -142,7 +142,9 @@
       <div class="modal-body" style="max-height: 50vh; overflow-y: auto;">
         @if ($qna->komentar && count($qna->komentar) > 0)
         <div class="comments-section">
-          @foreach($qna->komentar->where('id_qna', $qna->id)->sortByDesc('created_at') as $comment)
+          {{-- @foreach($qna->komentar->where('id_qna', $qna->id)->sortByDesc('created_at') as $comment) --}}
+          @foreach($komentar_qnas->where('id_qna', $qna->id) as $comment)
+          @php dd($comment); @endphp
           <div class="mb-3">
             <div class="d-flex align-items-start">
               {{-- <img src="{{ asset('img/foto_profile/'.$comment->user->foto_profil) }}" alt="Foto Profil" style="border-radius: 50%; object-fit: contain; width:45px; height: 45px; border: 1px solid black;"> --}}

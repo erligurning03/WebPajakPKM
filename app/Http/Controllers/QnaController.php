@@ -28,6 +28,9 @@ class QnaController extends Controller
         });
         $komentar_qnas = Komentar_qna::with('qna')->with('user');//nambah untuk display komentar jg
         //->where('id', );
+        // $createdDates2 = $komentar_qnas->map(function ($comment) {
+        //     return Carbon::parse($comment->created_at);
+        // });
 
         $like_qnas = Like_qna::all();
         return view('qna.qna2', compact('qnas', 'users', 'createdDates','komentar_qnas'));

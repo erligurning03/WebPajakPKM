@@ -136,7 +136,7 @@
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="modalKomentarLabel">Input Komentar</h5>
+        <h5 class="modal-title" id="modalKomentarLabel{{ $qna->id }}">Input Komentar</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body" style="max-height: 50vh; overflow-y: auto;">
@@ -159,7 +159,7 @@
                 {{-- <button type="button" class="btn btn-danger btn-sm ms-auto" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $comment->id }}"> --}}
                   <button type="button" class="btn btn-danger btn-sm ms-auto" data-bs-toggle="modal" data-bs-target="#deleteModal">
                   <i class="far fa-trash-alt"></i>
-                </button>
+                  </button>
               </div>
               @endif
               @else
@@ -174,9 +174,11 @@
       </div>
       @if(Auth::check())
       <div class="modal-footer">
-        <form action="#" method="POST" class="w-100">
+        {{-- <form action="/komentar-qna/{{$id}}/tes" method="POST" class="w-100"> --}}
+          <form action="{{ route('komentar-qna', ['id' => $qna->id]) }}" method="POST" class="w-100">
+          {{-- <form action="/komentar-qna/{'$id'}" method="POST" class="w-100"> --}}
           @csrf
-          <input type="hidden" name="id_post" value="#">
+          <input type="hidden" name="isi_komentar" value="isi_komentar">
           <div class="input-group mb-3">
             <textarea class="form-control" id="isi_komentar" name="isi_komentar" rows="3" required></textarea>
           </div>

@@ -33,38 +33,6 @@ class QnaController extends Controller
         return view('qna.qna2', compact('qnas', 'users', 'createdDates','komentar_qnas'));
     }
 
-    // public function toggleLike($postId)
-    // {
-    //     $userNik = Auth::user()->nik;
-
-    //     // Periksa apakah data like_post ada berdasarkan id_post dan nik
-    //     $liked = LikePost::where('id_post', $postId)
-    //         ->where('nik', $userNik)
-    //         ->exists();
-
-    //     // Periksa apakah data post ada berdasarkan id_post
-    //     $post = Post::find($postId);
-
-    //     if ($liked) {
-    //         // Jika sudah ada like, hapus like_post dan kurangi jumlah_like di tabel post
-    //         LikePost::where('id_post', $postId)
-    //             ->where('nik', $userNik)
-    //             ->delete();
-
-    //         $post->decrement('jumlah_like');
-    //     } else {
-    //         // Jika belum ada like, tambahkan like_post dan tambahkan jumlah_like di tabel post
-    //         LikePost::create([
-    //             'id_post' => $postId,
-    //             'nik' => $userNik,
-    //         ]);
-
-    //         $post->increment('jumlah_like');
-    //     }
-
-    //     return redirect()->back()->withFragment('post-' . $postId);
-    // }
-
     public function store(Request $request){
         // dd('submit');
         // DB::table('qnas')->insert([
@@ -103,5 +71,28 @@ class QnaController extends Controller
         //return redirect()->back()->with('success', 'pertanyaan berhasil ditambahkan.');
         // session()->flash("post_success", "Post berhasil ditambahkan.");
         //return redirect()->back();
+    }
+
+    public function komenQna(Request $request, $id)
+    {
+        // dd($request->all());
+        // dd($request->input('isi_komentar'));
+        $sessionId = auth()->id();
+        // dd($sessionId);
+        // Create a new Komentar instance
+        $komentarQna = new Komentar_qna([
+            'id_qna' => $id,
+            'user_id' => $sessionId,
+            'isi_komentar' => $request->input('isi_komentar'),
+        ]);
+        // dd($komentarQna);
+
+        // Save the Komentar to the database
+        $komentarQna->save();
+        // return redirect("/komentar-qna/{$id}")->with('success', 'komentar berhasil ditambahkan');
+        // return redirect()->back()->with('success', 'pertanyaan berhasil ditambahkan.');
+        // return redirect()->back()->withInput()->with('success', 'pertanyaan berhasil ditambahkan.');
+        return redirect()->back()->withInput()->with('success', 'pertanyaan berhasil ditambahkan.')->with('id_qna', $id);
+
     }
 }

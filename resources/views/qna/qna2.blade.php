@@ -61,21 +61,10 @@
             <p>{{$qna->isi_pertanyaan}}</p>
         </div>
         <div class="card-footer">
-            <i class="fa-regular fa-comment"></i>
             <i class="far fa-comment fa-xl action-icon" data-bs-toggle="modal"
                 data-bs-target="#modalKomentar{{ $qna->id }}" data-post-id="{{ $qna->id }}"></i>
-            <b>{{$qna->jumlah_komentar}}</b>
-            <a href="#">
-                {{-- @if($qna->isLikeByUser()) --}}
-                <i class="fas fa-heart fa-xl love-icon action-icon text-danger"></i>
-                {{-- @else --}}
-                <i class="far fa-heart fa-xl love-icon action-icon"></i>
-                {{-- @endif --}}
-            </a>
+            <b> {{$qna->komentar->count()}} </b>
 
-            <b>{{$qna->jumlah_like}}</b>
-            <i class="fa-solid fa-share-from-square"></i>
-            <b>{{$qna->jumlah_share}}</b>
         </div>
     </div>
     {{-- end of card pertanyaan --}}
@@ -170,7 +159,11 @@
                                 <b><span>{{$comment->user->name}}</span></b>
                                 {{-- <span class="ms-2 text-muted">{{ $comment->created_at->diffForHumans() }}</span>
                                 --}}
-                                <span class="ms-2 text-muted">5 detik lalu</span>
+                                <span class="ms-2 text-muted">
+                                    @if ($comment->created_at)
+                                    • {{ $comment->created_at->diffForHumans() }}
+                                    @endif
+                                </span>
                                 <p style="margin-top: 5px;">{{ $comment->isi_komentar }}</p>
                             </div>
                             @if(Auth::check())

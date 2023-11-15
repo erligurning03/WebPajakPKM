@@ -34,7 +34,7 @@
                     <i class="fas fa-heart fa-xl love-icon action-icon text-danger"></i>
                 </a>
                 @else
-                <a href="/index/berita/{{$id}}/like">
+                <a href="/index/berita/{{$id}}/like" >
                     <i class="far fa-heart fa-xl love-icon action-icon"></i>
                 </a>
                 @endif

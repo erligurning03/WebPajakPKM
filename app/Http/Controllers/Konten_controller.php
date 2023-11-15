@@ -57,7 +57,9 @@ class Konten_controller extends Controller
         $liked = Like_konten::where('konten_id', $id)
             ->where('disukai_oleh', $sessionId)
             ->exists();
-        $likeCount = $liked->count();
+
+        $likeCount = Like_konten::where('konten_id', $id)
+            ->count();
         // dd($liked);
         // dd($sessionId);
 

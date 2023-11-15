@@ -49,7 +49,7 @@ Route::middleware(['auth', 'status:pengguna'])->group(function () {
                 Route::get($value->tipe_konten . '/{id}', [App\Http\Controllers\Konten_controller::class, 'show' . ucwords($value->tipe_konten)]);
             }
         }
-        Route::post('/search',[EmployeeController::class,'searchTontonan'])->name('tontonan.cari');
+        Route::post('/search',[Konten_controller::class,'searchTontonan'])->name('tontonan.cari');
         Route::post('berita/{id}/proses', [Konten_controller::class, 'komenBerita']);
         Route::get('berita/{id}/like', [Konten_controller::class, 'likeBerita']);
         Route::get('berita/{id}/dislike', [Konten_controller::class, 'dislikeBerita']);

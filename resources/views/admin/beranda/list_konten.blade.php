@@ -8,26 +8,26 @@
     <h1 class="h3 mb-2 text-gray-800">Konten Rujak </h1>
 
     <!-- DataTales Example -->
-    <div class="card shadow mb-4">
-        <div class="card-header py-3">
+    <div class="card shadow mb-4" style="width: 130%">
+        <div class="card-header py-3" >
             <h6 class="m-0 font-weight-bold text-primary">Konten Rujak</h6>
         </div>
 
         <!-- Filter -->
 
-        <div class="card">
+        {{-- <div class="card">
             <div class="card-body">
                 <form action="#" method="GET">
-                    {{-- {{ route('pendapatan.filter') }} --}}
+                    {{ route('pendapatan.filter') }}
                     <div class="form-group">
                         <label for="tahun">Filter berdasarkan :</label>
                         <select name="tahun" id="tahun" class="form-control">
                             <option value="">-- Pilih Tahun --</option>
                             // nanti disini untuk di filter agar sesuai dengan filterisasi yang dibuat
-                            {{-- @foreach ($periode as $data)
+                            @foreach ($periode as $data)
                             <option value="{{ $data->id }}">{{ $data->periode_mulai }}/{{$data->periode_akhir}}</option>
                             <option value="#"></option>
-                            @endforeach --}}
+                            @endforeach
 
                             //Opsional sebelum dihubungkan ke database
                             <option value="1">2020/2022</option>
@@ -40,9 +40,9 @@
                     </div>
                 </form>
             </div>
-        </div>
+        </div> --}}
         <!-- start Modal tambah -->
-        <div id="ModalTambah" class="modal fade" tabindex="-1" aria-labelledby="ModalTambah" aria-hidden="true">
+        {{-- <div id="ModalTambah" class="modal fade" tabindex="-1" aria-labelledby="ModalTambah" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -51,7 +51,7 @@
                     </div>
                     <div class="modal-body">
                         <form action="#" method="POST" enctype="multipart/form-data">
-                            {{-- pergi ke web.php untuk carik route ini yang bertipe post. actionnya ini adalah yang diketikkan route getnya termasuk tanda slashnya '/'--}}
+                            pergi ke web.php untuk carik route ini yang bertipe post. actionnya ini adalah yang diketikkan route getnya termasuk tanda slashnya '/'
                             @csrf
                             <div class="mb-3">
                                 <label for="nama" class="form-label">Judul</label>
@@ -70,11 +70,11 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
+                        <button type="button" class="btn btn-primary">Save changes</button>
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         {{-- end of modal --}}
         @if(session('success'))
@@ -84,15 +84,15 @@
         @endif
 
         <!-- Data tabel-->
-        <div class="card-body">
-            <div class="d-grid gap-2 d-md-block">
+        <div class="card-body" >
+            {{-- <div class="d-grid gap-2 d-md-block">
                 <!-- Button trigger modal -->
                 <button type="button" class="btn" style="background-color: #609966; color:white;font-weight:bold;" data-bs-toggle="modal" data-bs-target="#ModalTambah"><i class="fa-solid fa-plus"></i>  Tambah Tontonan Rujak</button>
-            </div>
-            <div class="table-wrapper">
+            </div> --}}
+            <div class="table-wrapper" >
                 <div class="table-scroll">
 
-                    <table class="table">
+                    <table class="table" >
                         <thead>
                             <tr>
                                 <th scope="col">No.</th>
@@ -103,7 +103,6 @@
                                 <th>Jumlah Likes</th>
                                 <th>Jumlah Share</th>
                                 <th>Aksi</th>
-
                                 <!-- Tambahkan kolom header sesuai kebutuhan -->
                             </tr>
                         </thead>
@@ -134,12 +133,8 @@
                                 <td>{{count($data->LikeKonten)}}</td>
                                 <td>{{count($data->ShareKonten)}}</td>
                                 <td style="display: flex; justify-content: flex-end;">
-                                    <!-- <button type="button" style="width:100px; margin-right: 10px; background-color: #609966; color: white; font-weight:bold;" class="btn" data-toggle="modal" data-target=""><i class="fa-solid fa-circle-info"></i>  Detail</button> -->
                                     <a href='{{ URL::to('konten/'.$data->id.'/edit') }}' type="button" style="width:100px; margin-right: 10px; background-color: orange; color: white; font-weight:bold;" class="btn"> Edit </a>
-                                    {{-- <button type="button" style="width:100px; margin-right: 10px; background-color: orange; color: white; font-weight:bold;" class="btn"><i class="fa-solid fa-pen-to-square"></i>  Edit</button> --}}
                                     <form action="{{ URL::to('konten/'.$data->id) }}" method="POST">
-                                        {{-- <form action="/perangkat_desa/{{$data->id}}" method="POST"> --}}
-                                        {{-- <form action="{{ route('.destroy', $data->id) }}" method="POST"> --}}
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" style="width:100px;color: white;font-weight:bold;" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')"><i class="fa-solid fa-trash"></i>  Hapus</button>

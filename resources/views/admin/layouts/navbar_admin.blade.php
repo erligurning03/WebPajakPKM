@@ -163,13 +163,9 @@
                 <div id="collapseGaleri" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Pilih Aksi:</h6>
-                        <a class="collapse-item" href="#">Level Dasar</a>
-                        <a class="collapse-item" href="#">Tambah Pertanyaan Dasar</a>
-                        <a class="collapse-item" href="#">Level Menengah</a>
-                        <a class="collapse-item" href="#">Tambah Pertanyaan Menengah</a>
-                        <a class="collapse-item" href="#">Level Ahli</a>
-                        <a class="collapse-item" href="#">Tambah Pertanyaan Ahli</a>
-                        <a class="collapse-item" href="#">Pemenang</a>
+                        <a class="collapse-item" href="/kuisAdmin/1/edit">Level Dasar</a>
+                        <a class="collapse-item" href="/kuisAdmin/2/edit">Level Menengah</a>
+                        <a class="collapse-item" href="/kuisAdmin/3/edit">Level Ahli</a>
                     </div>
                 </div>
             </li>
